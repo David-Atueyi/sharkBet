@@ -10,6 +10,7 @@ import { Card } from "./Card";
 import { ILeagueMatch } from "../../base/interface/ILeagueMatch";
 import { LeagueTabs } from "./LeagueTabs";
 
+
 export const cardContext = createContext<any>({});
 const leagueMatches = [All, England, Spain, Italy, France, Germany];
 
@@ -31,6 +32,7 @@ export const Cards = () => {
         {/*  */}
         <HeadingForPc />
         {/*  */}
+        
         <Card datas={allLeague} />
       </div>
     </cardContext.Provider>

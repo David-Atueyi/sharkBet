@@ -9,7 +9,27 @@
     display: none;
   }
   .no-scrollbar {
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
+}
+
+:root {
+  --swiper-navigation-size: 15px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: #0064f991;
+  border-radius: 50%;
+  padding-top: 4.5px;
+  height: 30px;
+  width: 30px;
+  color: rgba(221, 221, 221, 0.773);
+  text-align: center;
+  font-weight: bolder;
+}
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+  opacity: 0;
 }

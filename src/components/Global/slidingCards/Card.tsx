@@ -14,7 +14,7 @@ export const Card = ({ datas }: { datas: any }) => {
       ref={cardContainerRef}
       style={{ scrollSnapType: "x mandatory" }}
     >
-      <PrevAndNextButton slideLeft={slideLeft} slideRight={slideRight} />
+      <PrevAndNextButton slideLeft={slideLeft} slideRight={slideRight} />z
       {datas.map((data: any, index: number) => (
         <div
           key={index}
