@@ -1,0 +1,257 @@
+[
+  {
+    "game": "Football",
+    "country": "Italy",
+    "league": "Serie A",
+    "matchDate": {
+      "date": "08/04",
+      "time": "15:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/juventus.png",
+        "name": "Juventus",
+        "market": {
+          "homeWin": 1.85,
+          "homeOrDraw": 1.22,
+          "homeDrawNoBet": 2.75
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/inter.png",
+        "name": "Inter Milan",
+        "market": {
+          "awayWin": 2.95,
+          "drawOrWin": 1.57,
+          "awayDrawNoBet": 2.05
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.38,
+      "anyTeamToWin": 1.92,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.08 },
+          "1.5": { "name": "1.5", "odd": 1.72 },
+          "2.5": { "name": "2.5", "odd": 2.12 },
+          "3.5": { "name": "3.5", "odd": 3.05 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 6.25 },
+          "1.5": { "name": "1.5", "odd": 2.05 },
+          "2.5": { "name": "2.5", "odd": 1.78 },
+          "3.5": { "name": "3.5", "odd": 1.48 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.51,
+        "No": 1.65
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Italy",
+    "league": "Serie A",
+    "matchDate": {
+      "date": "09/04",
+      "time": "18:30"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/acMilan.png",
+        "name": "AC Milan",
+        "market": {
+          "homeWin": 1.75,
+          "homeOrDraw": 1.18,
+          "homeDrawNoBet": 2.94
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/asRoma.png",
+        "name": "AS Roma",
+        "market": {
+          "awayWin": 3.05,
+          "drawOrWin": 1.65,
+          "awayDrawNoBet": 2.13
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.44,
+      "anyTeamToWin": 1.95,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.12 },
+          "1.5": { "name": "1.5", "odd": 1.72 },
+          "2.5": { "name": "2.5", "odd": 2.23 },
+          "3.5": { "name": "3.5", "odd": 3.15 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.84 },
+          "1.5": { "name": "1.5", "odd": 1.98 },
+          "2.5": { "name": "2.5", "odd": 1.85 },
+          "3.5": { "name": "3.5", "odd": 1.55 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.05,
+        "No": 1.73
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Italy",
+    "league": "Serie A",
+    "matchDate": {
+      "date": "10/04",
+      "time": "20:45"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/napoli.png",
+        "name": "Napoli",
+        "market": {
+          "homeWin": 1.29,
+          "homeOrDraw": 1.25,
+          "homeDrawNoBet": 2.88
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/fiorentina.png",
+        "name": "Fiorentina",
+        "market": {
+          "awayWin": 3.17,
+          "drawOrWin": 1.55,
+          "awayDrawNoBet": 2.05
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.58,
+      "anyTeamToWin": 1.95,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.12 },
+          "1.5": { "name": "1.5", "odd": 1.86 },
+          "2.5": { "name": "2.5", "odd": 2.33 },
+          "3.5": { "name": "3.5", "odd": 3.25 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.53 },
+          "1.5": { "name": "1.5", "odd": 2.03 },
+          "2.5": { "name": "2.5", "odd": 1.85 },
+          "3.5": { "name": "3.5", "odd": 1.55 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.21,
+        "No": 1.75
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Italy",
+    "league": "Serie A",
+    "matchDate": {
+      "date": "12/04",
+      "time": "19:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/lazio.png",
+        "name": "Lazio",
+        "market": {
+          "homeWin": 1.74,
+          "homeOrDraw": 1.15,
+          "homeDrawNoBet": 2.95
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/sassuolo.png",
+        "name": "Sassuolo",
+        "market": {
+          "awayWin": 3.25,
+          "drawOrWin": 1.55,
+          "awayDrawNoBet": 2.18
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.48,
+      "anyTeamToWin": 1.94,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.11 },
+          "1.5": { "name": "1.5", "odd": 1.78 },
+          "2.5": { "name": "2.5", "odd": 2.25 },
+          "3.5": { "name": "3.5", "odd": 3.25 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.75 },
+          "1.5": { "name": "1.5", "odd": 1.97 },
+          "2.5": { "name": "2.5", "odd": 1.82 },
+          "3.5": { "name": "3.5", "odd": 1.53 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.15,
+        "No": 1.77
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Italy",
+    "league": "Serie A",
+    "matchDate": {
+      "date": "13/04",
+      "time": "20:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/atalanta.png",
+        "name": "Atalanta",
+        "market": {
+          "homeWin": 1.75,
+          "homeOrDraw": 1.18,
+          "homeDrawNoBet": 2.97
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/sampdoria.png",
+        "name": "Sampdoria",
+        "market": {
+          "awayWin": 3.14,
+          "drawOrWin": 1.55,
+          "awayDrawNoBet": 2.05
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.48,
+      "anyTeamToWin": 1.98,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.17 },
+          "1.5": { "name": "1.5", "odd": 1.75 },
+          "2.5": { "name": "2.5", "odd": 2.21 },
+          "3.5": { "name": "3.5", "odd": 3.15 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.81 },
+          "1.5": { "name": "1.5", "odd": 2.01 },
+          "2.5": { "name": "2.5", "odd": 1.81 },
+          "3.5": { "name": "3.5", "odd": 1.51 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.14,
+        "No": 1.74
+      }
+    }
+  }
+]

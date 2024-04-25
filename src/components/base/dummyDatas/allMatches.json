@@ -1,0 +1,1274 @@
+[
+  {
+    "game": "Football",
+    "country": "England",
+    "league": "EPL",
+    "matchDate": {
+      "date": "08/04",
+      "time": "12:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/manU.png",
+        "name": "Manchester United",
+        "market": {
+          "homeWin": 2.05,
+          "homeOrDraw": 1.14,
+          "homeDrawNoBet": 3.09
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/liverpool.png",
+        "name": "Liverpool",
+        "market": {
+          "awayWin": 3.15,
+          "drawOrWin": 1.65,
+          "awayDrawNoBet": 2.09
+        }
+      }
+    },
+
+    "generalMarkets": {
+      "fullTimeDraw": 2.46,
+      "anyTeamToWin": 1.85,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.11 },
+          "1.5": { "name": "1.5", "odd": 1.75 },
+          "2.5": { "name": "2.5", "odd": 2.26 },
+          "3.5": { "name": "3.5", "odd": 3.09 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 6.02 },
+          "1.5": { "name": "1.5", "odd": 2.02 },
+          "2.5": { "name": "2.5", "odd": 1.82 },
+          "3.5": { "name": "3.5", "odd": 1.44 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 1.97,
+        "No": 1.72
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "league": "EPL",
+    "matchDate": {
+      "date": "08/04",
+      "time": "16:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/manCity.png",
+        "name": "Manchester City",
+        "market": {
+          "homeWin": 1.65,
+          "homeOrDraw": 1.22,
+          "homeDrawNoBet": 2.78
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/chelsea.png",
+        "name": "Chelsea",
+        "market": {
+          "awayWin": 2.85,
+          "drawOrWin": 1.45,
+          "awayDrawNoBet": 1.98
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 5.46,
+      "anyTeamToWin": 1.75,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.09 },
+          "1.5": { "name": "1.5", "odd": 1.68 },
+          "2.5": { "name": "2.5", "odd": 2.05 },
+          "3.5": { "name": "3.5", "odd": 2.89 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.72 },
+          "1.5": { "name": "1.5", "odd": 1.98 },
+          "2.5": { "name": "2.5", "odd": 1.75 },
+          "3.5": { "name": "3.5", "odd": 1.49 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.05,
+        "No": 1.62
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "league": "EPL",
+    "matchDate": {
+      "date": "09/04",
+      "time": "16:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/arsenal.png",
+        "name": "Arsenal",
+        "market": {
+          "homeWin": 1.98,
+          "homeOrDraw": 1.18,
+          "homeDrawNoBet": 2.91
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/tottenham.png",
+        "name": "Tottenham Hotspur",
+        "market": {
+          "awayWin": 2.75,
+          "drawOrWin": 1.55,
+          "awayDrawNoBet": 1.89
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 3.33,
+      "anyTeamToWin": 1.86,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.13 },
+          "1.5": { "name": "1.5", "odd": 1.72 },
+          "2.5": { "name": "2.5", "odd": 2.15 },
+          "3.5": { "name": "3.5", "odd": 2.98 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.88 },
+          "1.5": { "name": "1.5", "odd": 2.08 },
+          "2.5": { "name": "2.5", "odd": 1.78 },
+          "3.5": { "name": "3.5", "odd": 1.52 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 1.92,
+        "No": 1.67
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "league": "EPL",
+    "matchDate": {
+      "date": "09/04",
+      "time": "17:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/leicester.png",
+        "name": "Leicester City",
+        "market": {
+          "homeWin": 2.25,
+          "homeOrDraw": 1.24,
+          "homeDrawNoBet": 2.95
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/newCastle.png",
+        "name": "NewCastle United",
+        "market": {
+          "awayWin": 3.05,
+          "drawOrWin": 1.51,
+          "awayDrawNoBet": 2.16
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 7.09,
+      "anyTeamToWin": 1.82,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.13 },
+          "1.5": { "name": "1.5", "odd": 1.76 },
+          "2.5": { "name": "2.5", "odd": 2.29 },
+          "3.5": { "name": "3.5", "odd": 3.05 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 6.13 },
+          "1.5": { "name": "1.5", "odd": 2.05 },
+          "2.5": { "name": "2.5", "odd": 1.89 },
+          "3.5": { "name": "3.5", "odd": 1.55 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.03,
+        "No": 1.78
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "league": "EPL",
+    "matchDate": {
+      "date": "10/04",
+      "time": "19:45"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/everton.png",
+        "name": "Everton",
+        "market": {
+          "homeWin": 2.22,
+          "homeOrDraw": 1.25,
+          "homeDrawNoBet": 3.05
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/wolves.png",
+        "name": "Wolverhampton Wanderers",
+        "market": {
+          "awayWin": 3.35,
+          "drawOrWin": 1.63,
+          "awayDrawNoBet": 2.05
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 3.46,
+      "anyTeamToWin": 1.85,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.01 },
+          "1.5": { "name": "1.5", "odd": 1.78 },
+          "2.5": { "name": "2.5", "odd": 2.15 },
+          "3.5": { "name": "3.5", "odd": 3.16 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 6.04 },
+          "1.5": { "name": "1.5", "odd": 2.05 },
+          "2.5": { "name": "2.5", "odd": 1.75 },
+          "3.5": { "name": "3.5", "odd": 1.55 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 1.99,
+        "No": 1.76
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Spain",
+    "league": "La Liga",
+    "matchDate": {
+      "date": "08/04",
+      "time": "16:15"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/barcelona.png",
+        "name": "FC Barcelona",
+        "market": {
+          "homeWin": 1.85,
+          "homeOrDraw": 1.25,
+          "homeDrawNoBet": 2.75
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/realMadrid.png",
+        "name": "Real Madrid",
+        "market": {
+          "awayWin": 2.95,
+          "drawOrWin": 1.65,
+          "awayDrawNoBet": 2.21
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.55,
+      "anyTeamToWin": 1.92,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.14 },
+          "1.5": { "name": "1.5", "odd": 1.84 },
+          "2.5": { "name": "2.5", "odd": 2.35 },
+          "3.5": { "name": "3.5", "odd": 3.24 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.21 },
+          "1.5": { "name": "1.5", "odd": 2.11 },
+          "2.5": { "name": "2.5", "odd": 1.91 },
+          "3.5": { "name": "3.5", "odd": 1.51 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 1.85,
+        "No": 1.75
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Spain",
+    "league": "La Liga",
+    "matchDate": {
+      "date": "08/04",
+      "time": "20:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/atleticoMadrid.png",
+        "name": "Atletico Madrid",
+        "market": {
+          "homeWin": 1.75,
+          "homeOrDraw": 1.22,
+          "homeDrawNoBet": 2.54
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/realSociedad.png",
+        "name": "Real Sociedad",
+        "market": {
+          "awayWin": 3.42,
+          "drawOrWin": 1.69,
+          "awayDrawNoBet": 2.14
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.64,
+      "anyTeamToWin": 1.95,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.16 },
+          "1.5": { "name": "1.5", "odd": 1.85 },
+          "2.5": { "name": "2.5", "odd": 2.47 },
+          "3.5": { "name": "3.5", "odd": 3.37 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.53 },
+          "1.5": { "name": "1.5", "odd": 2.23 },
+          "2.5": { "name": "2.5", "odd": 2.03 },
+          "3.5": { "name": "3.5", "odd": 1.55 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.03,
+        "No": 1.73
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Spain",
+    "league": "La Liga",
+    "matchDate": {
+      "date": "09/04",
+      "time": "18:30"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/sevilla.png",
+        "name": "Sevilla FC",
+        "market": {
+          "homeWin": 1.91,
+          "homeOrDraw": 1.33,
+          "homeDrawNoBet": 2.65
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/valencia.png",
+        "name": "Valencia CF",
+        "market": {
+          "awayWin": 3.25,
+          "drawOrWin": 1.55,
+          "awayDrawNoBet": 2.05
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.5,
+      "anyTeamToWin": 1.8,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.12 },
+          "1.5": { "name": "1.5", "odd": 1.78 },
+          "2.5": { "name": "2.5", "odd": 2.39 },
+          "3.5": { "name": "3.5", "odd": 3.19 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.83 },
+          "1.5": { "name": "1.5", "odd": 2.03 },
+          "2.5": { "name": "2.5", "odd": 1.88 },
+          "3.5": { "name": "3.5", "odd": 1.48 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 1.95,
+        "No": 1.75
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Spain",
+    "league": "La Liga",
+    "matchDate": {
+      "date": "09/04",
+      "time": "21:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/realBetis.png",
+        "name": "Real Betis",
+        "market": {
+          "homeWin": 1.82,
+          "homeOrDraw": 1.25,
+          "homeDrawNoBet": 2.45
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/athleticBilbao.png",
+        "name": "Athletic Bilbao",
+        "market": {
+          "awayWin": 3.57,
+          "drawOrWin": 1.64,
+          "awayDrawNoBet": 2.22
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.65,
+      "anyTeamToWin": 1.96,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.18 },
+          "1.5": { "name": "1.5", "odd": 1.82 },
+          "2.5": { "name": "2.5", "odd": 2.25 },
+          "3.5": { "name": "3.5", "odd": 3.42 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.08 },
+          "1.5": { "name": "1.5", "odd": 2.18 },
+          "2.5": { "name": "2.5", "odd": 1.98 },
+          "3.5": { "name": "3.5", "odd": 1.68 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 1.85,
+        "No": 1.72
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Spain",
+    "league": "La Liga",
+    "matchDate": {
+      "date": "10/04",
+      "time": "17:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/villarreal.png",
+        "name": "Villarreal CF",
+        "market": {
+          "homeWin": 1.72,
+          "homeOrDraw": 1.15,
+          "homeDrawNoBet": 2.43
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/getafe.png",
+        "name": "Getafe CF",
+        "market": {
+          "awayWin": 3.63,
+          "drawOrWin": 1.55,
+          "awayDrawNoBet": 2.32
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.77,
+      "anyTeamToWin": 1.95,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.25 },
+          "1.5": { "name": "1.5", "odd": 1.85 },
+          "2.5": { "name": "2.5", "odd": 2.25 },
+          "3.5": { "name": "3.5", "odd": 3.55 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 4.86 },
+          "1.5": { "name": "1.5", "odd": 2.06 },
+          "2.5": { "name": "2.5", "odd": 1.96 },
+          "3.5": { "name": "3.5", "odd": 1.65 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 1.93,
+        "No": 1.75
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Italy",
+    "league": "Serie A",
+    "matchDate": {
+      "date": "08/04",
+      "time": "15:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/juventus.png",
+        "name": "Juventus",
+        "market": {
+          "homeWin": 1.85,
+          "homeOrDraw": 1.22,
+          "homeDrawNoBet": 2.75
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/inter.png",
+        "name": "Inter Milan",
+        "market": {
+          "awayWin": 2.95,
+          "drawOrWin": 1.57,
+          "awayDrawNoBet": 2.05
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.38,
+      "anyTeamToWin": 1.92,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.08 },
+          "1.5": { "name": "1.5", "odd": 1.72 },
+          "2.5": { "name": "2.5", "odd": 2.12 },
+          "3.5": { "name": "3.5", "odd": 3.05 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 6.25 },
+          "1.5": { "name": "1.5", "odd": 2.05 },
+          "2.5": { "name": "2.5", "odd": 1.78 },
+          "3.5": { "name": "3.5", "odd": 1.48 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.51,
+        "No": 1.65
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Italy",
+    "league": "Serie A",
+    "matchDate": {
+      "date": "09/04",
+      "time": "18:30"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/acMilan.png",
+        "name": "AC Milan",
+        "market": {
+          "homeWin": 1.75,
+          "homeOrDraw": 1.18,
+          "homeDrawNoBet": 2.94
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/asRoma.png",
+        "name": "AS Roma",
+        "market": {
+          "awayWin": 3.05,
+          "drawOrWin": 1.65,
+          "awayDrawNoBet": 2.13
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.44,
+      "anyTeamToWin": 1.95,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.12 },
+          "1.5": { "name": "1.5", "odd": 1.72 },
+          "2.5": { "name": "2.5", "odd": 2.23 },
+          "3.5": { "name": "3.5", "odd": 3.15 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.84 },
+          "1.5": { "name": "1.5", "odd": 1.98 },
+          "2.5": { "name": "2.5", "odd": 1.85 },
+          "3.5": { "name": "3.5", "odd": 1.55 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.05,
+        "No": 1.73
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Italy",
+    "league": "Serie A",
+    "matchDate": {
+      "date": "10/04",
+      "time": "20:45"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/napoli.png",
+        "name": "Napoli",
+        "market": {
+          "homeWin": 1.29,
+          "homeOrDraw": 1.25,
+          "homeDrawNoBet": 2.88
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/fiorentina.png",
+        "name": "Fiorentina",
+        "market": {
+          "awayWin": 3.17,
+          "drawOrWin": 1.55,
+          "awayDrawNoBet": 2.05
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.58,
+      "anyTeamToWin": 1.95,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.12 },
+          "1.5": { "name": "1.5", "odd": 1.86 },
+          "2.5": { "name": "2.5", "odd": 2.33 },
+          "3.5": { "name": "3.5", "odd": 3.25 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.53 },
+          "1.5": { "name": "1.5", "odd": 2.03 },
+          "2.5": { "name": "2.5", "odd": 1.85 },
+          "3.5": { "name": "3.5", "odd": 1.55 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.21,
+        "No": 1.75
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Italy",
+    "league": "Serie A",
+    "matchDate": {
+      "date": "12/04",
+      "time": "19:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/lazio.png",
+        "name": "Lazio",
+        "market": {
+          "homeWin": 1.74,
+          "homeOrDraw": 1.15,
+          "homeDrawNoBet": 2.95
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/sassuolo.png",
+        "name": "Sassuolo",
+        "market": {
+          "awayWin": 3.25,
+          "drawOrWin": 1.55,
+          "awayDrawNoBet": 2.18
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.48,
+      "anyTeamToWin": 1.94,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.11 },
+          "1.5": { "name": "1.5", "odd": 1.78 },
+          "2.5": { "name": "2.5", "odd": 2.25 },
+          "3.5": { "name": "3.5", "odd": 3.25 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.75 },
+          "1.5": { "name": "1.5", "odd": 1.97 },
+          "2.5": { "name": "2.5", "odd": 1.82 },
+          "3.5": { "name": "3.5", "odd": 1.53 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.15,
+        "No": 1.77
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Italy",
+    "league": "Serie A",
+    "matchDate": {
+      "date": "13/04",
+      "time": "20:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/atalanta.png",
+        "name": "Atalanta",
+        "market": {
+          "homeWin": 1.75,
+          "homeOrDraw": 1.18,
+          "homeDrawNoBet": 2.97
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/sampdoria.png",
+        "name": "Sampdoria",
+        "market": {
+          "awayWin": 3.14,
+          "drawOrWin": 1.55,
+          "awayDrawNoBet": 2.05
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.48,
+      "anyTeamToWin": 1.98,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.17 },
+          "1.5": { "name": "1.5", "odd": 1.75 },
+          "2.5": { "name": "2.5", "odd": 2.21 },
+          "3.5": { "name": "3.5", "odd": 3.15 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.81 },
+          "1.5": { "name": "1.5", "odd": 2.01 },
+          "2.5": { "name": "2.5", "odd": 1.81 },
+          "3.5": { "name": "3.5", "odd": 1.51 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.14,
+        "No": 1.74
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "France",
+    "league": "Ligue 1",
+    "matchDate": {
+      "date": "08/04",
+      "time": "15:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/psg.png",
+        "name": "Paris Saint-Germain",
+        "market": {
+          "homeWin": 1.45,
+          "homeOrDraw": 1.22,
+          "homeDrawNoBet": 2.09
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/marseille.png",
+        "name": "Olympique de Marseille",
+        "market": {
+          "awayWin": 4.25,
+          "drawOrWin": 1.75,
+          "awayDrawNoBet": 3.85
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.65,
+      "anyTeamToWin": 1.55,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.17 },
+          "1.5": { "name": "1.5", "odd": 1.65 },
+          "2.5": { "name": "2.5", "odd": 2.05 },
+          "3.5": { "name": "3.5", "odd": 3.35 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.25 },
+          "1.5": { "name": "1.5", "odd": 2.35 },
+          "2.5": { "name": "2.5", "odd": 1.85 },
+          "3.5": { "name": "3.5", "odd": 1.55 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.05,
+        "No": 1.75
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "France",
+    "league": "Ligue 1",
+    "matchDate": {
+      "date": "10/04",
+      "time": "18:30"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/lyon.png",
+        "name": "Olympique Lyonnais",
+        "market": {
+          "homeWin": 1.85,
+          "homeOrDraw": 1.25,
+          "homeDrawNoBet": 2.55
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/monaco.png",
+        "name": "AS Monaco",
+        "market": {
+          "awayWin": 3.75,
+          "drawOrWin": 1.65,
+          "awayDrawNoBet": 2.95
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.55,
+      "anyTeamToWin": 1.75,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.15 },
+          "1.5": { "name": "1.5", "odd": 1.55 },
+          "2.5": { "name": "2.5", "odd": 2.05 },
+          "3.5": { "name": "3.5", "odd": 3.25 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.35 },
+          "1.5": { "name": "1.5", "odd": 2.45 },
+          "2.5": { "name": "2.5", "odd": 1.75 },
+          "3.5": { "name": "3.5", "odd": 1.65 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 1.95,
+        "No": 1.81
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "France",
+    "league": "Ligue 1",
+    "matchDate": {
+      "date": "12/04",
+      "time": "20:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/lille.png",
+        "name": "LOSC Lille",
+        "market": {
+          "homeWin": 1.65,
+          "homeOrDraw": 1.35,
+          "homeDrawNoBet": 2.25
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/rennes.png",
+        "name": "Stade Rennais",
+        "market": {
+          "awayWin": 3.25,
+          "drawOrWin": 1.55,
+          "awayDrawNoBet": 2.85
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.45,
+      "anyTeamToWin": 1.72,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.19 },
+          "1.5": { "name": "1.5", "odd": 1.67 },
+          "2.5": { "name": "2.5", "odd": 2.07 },
+          "3.5": { "name": "3.5", "odd": 3.15 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 4.95 },
+          "1.5": { "name": "1.5", "odd": 2.35 },
+          "2.5": { "name": "2.5", "odd": 1.81 },
+          "3.5": { "name": "3.5", "odd": 1.71 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 1.92,
+        "No": 1.85
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "France",
+    "league": "Ligue 1",
+    "matchDate": {
+      "date": "14/04",
+      "time": "17:30"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/bordeaux.png",
+        "name": "FC Girondins de Bordeaux",
+        "market": {
+          "homeWin": 2.25,
+          "homeOrDraw": 1.43,
+          "homeDrawNoBet": 2.85
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/nantes.png",
+        "name": "FC Nantes",
+        "market": {
+          "awayWin": 3.55,
+          "drawOrWin": 1.63,
+          "awayDrawNoBet": 3.05
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.62,
+      "anyTeamToWin": 1.75,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.24 },
+          "1.5": { "name": "1.5", "odd": 1.74 },
+          "2.5": { "name": "2.5", "odd": 2.14 },
+          "3.5": { "name": "3.5", "odd": 3.25 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 4.82 },
+          "1.5": { "name": "1.5", "odd": 2.32 },
+          "2.5": { "name": "2.5", "odd": 1.75 },
+          "3.5": { "name": "3.5", "odd": 1.65 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.01,
+        "No": 1.81
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "France",
+    "league": "Ligue 1",
+    "matchDate": {
+      "date": "16/04",
+      "time": "19:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/saint-etienne.png",
+        "name": "AS Saint-Étienne",
+        "market": {
+          "homeWin": 1.95,
+          "homeOrDraw": 1.33,
+          "homeDrawNoBet": 2.75
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/angers.png",
+        "name": "Angers SCO",
+        "market": {
+          "awayWin": 3.45,
+          "drawOrWin": 1.55,
+          "awayDrawNoBet": 3.08
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.592,
+      "anyTeamToWin": 1.72,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.18 },
+          "1.5": { "name": "1.5", "odd": 1.65 },
+          "2.5": { "name": "2.5", "odd": 2.05 },
+          "3.5": { "name": "3.5", "odd": 3.22 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 4.91 },
+          "1.5": { "name": "1.5", "odd": 2.41 },
+          "2.5": { "name": "2.5", "odd": 1.81 },
+          "3.5": { "name": "3.5", "odd": 1.61 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 1.95,
+        "No": 1.85
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Germany",
+    "league": "Bundesliga",
+    "matchDate": {
+      "date": "08/04",
+      "time": "15:30"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/bayern.png",
+        "name": "Bayern Munich",
+        "market": {
+          "homeWin": 1.75,
+          "homeOrDraw": 1.25,
+          "homeDrawNoBet": 2.89
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/dortmund.png",
+        "name": "Borussia Dortmund",
+        "market": {
+          "awayWin": 2.95,
+          "drawOrWin": 1.65,
+          "awayDrawNoBet": 2.09
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.56,
+      "anyTeamToWin": 1.95,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.18 },
+          "1.5": { "name": "1.5", "odd": 1.85 },
+          "2.5": { "name": "2.5", "odd": 2.36 },
+          "3.5": { "name": "3.5", "odd": 3.19 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.22 },
+          "1.5": { "name": "1.5", "odd": 1.95 },
+          "2.5": { "name": "2.5", "odd": 1.75 },
+          "3.5": { "name": "3.5", "odd": 1.49 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 1.87,
+        "No": 1.68
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Germany",
+    "league": "Bundesliga",
+    "matchDate": {
+      "date": "09/04",
+      "time": "14:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/leverkusen.png",
+        "name": "Bayer Leverkusen",
+        "market": {
+          "homeWin": 1.95,
+          "homeOrDraw": 1.34,
+          "homeDrawNoBet": 2.75
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/borussiaMG.png",
+        "name": "Borussia Mönchengladbach",
+        "market": {
+          "awayWin": 2.75,
+          "drawOrWin": 1.66,
+          "awayDrawNoBet": 2.05
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.55,
+      "anyTeamToWin": 1.85,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.15 },
+          "1.5": { "name": "1.5", "odd": 1.82 },
+          "2.5": { "name": "2.5", "odd": 2.36 },
+          "3.5": { "name": "3.5", "odd": 3.05 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.35 },
+          "1.5": { "name": "1.5", "odd": 2.09 },
+          "2.5": { "name": "2.5", "odd": 1.75 },
+          "3.5": { "name": "3.5", "odd": 1.55 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.05,
+        "No": 1.75
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Germany",
+    "league": "Bundesliga",
+    "matchDate": {
+      "date": "10/04",
+      "time": "17:30"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/leipzig.png",
+        "name": "RB Leipzig",
+        "market": {
+          "homeWin": 2.13,
+          "homeOrDraw": 1.72,
+          "homeDrawNoBet": 3.08
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/frankfurt.png",
+        "name": "Eintracht Frankfurt",
+        "market": {
+          "awayWin": 3.23,
+          "drawOrWin": 1.76,
+          "awayDrawNoBet": 2.15
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.62,
+      "anyTeamToWin": 1.98,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.25 },
+          "1.5": { "name": "1.5", "odd": 1.85 },
+          "2.5": { "name": "2.5", "odd": 2.42 },
+          "3.5": { "name": "3.5", "odd": 3.28 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.02 },
+          "1.5": { "name": "1.5", "odd": 2.12 },
+          "2.5": { "name": "2.5", "odd": 1.82 },
+          "3.5": { "name": "3.5", "odd": 1.62 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.07,
+        "No": 1.87
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Germany",
+    "league": "Bundesliga",
+    "matchDate": {
+      "date": "11/04",
+      "time": "15:30"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/schalke.png",
+        "name": "FC Schalke 04",
+        "market": {
+          "homeWin": 2.53,
+          "homeOrDraw": 1.45,
+          "homeDrawNoBet": 3.85
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/hoffenheim.png",
+        "name": "TSG 1899 Hoffenheim",
+        "market": {
+          "awayWin": 2.83,
+          "drawOrWin": 1.69,
+          "awayDrawNoBet": 2.31
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.81,
+      "anyTeamToWin": 2.01,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.25 },
+          "1.5": { "name": "1.5", "odd": 1.94 },
+          "2.5": { "name": "2.5", "odd": 2.54 },
+          "3.5": { "name": "3.5", "odd": 3.34 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 4.81 },
+          "1.5": { "name": "1.5", "odd": 2.01 },
+          "2.5": { "name": "2.5", "odd": 1.71 },
+          "3.5": { "name": "3.5", "odd": 1.55 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.92,
+        "No": 1.82
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "country": "Germany",
+    "league": "Bundesliga",
+    "matchDate": {
+      "date": "12/04",
+      "time": "18:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/wolfsburg.png",
+        "name": "VfL Wolfsburg",
+        "market": {
+          "homeWin": 2.22,
+          "homeOrDraw": 1.34,
+          "homeDrawNoBet": 3.22
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/mainz.png",
+        "name": "FSV Mainz 05",
+        "market": {
+          "awayWin": 3.03,
+          "drawOrWin": 1.65,
+          "awayDrawNoBet": 2.07
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 2.77,
+      "anyTeamToWin": 1.97,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.22 },
+          "1.5": { "name": "1.5", "odd": 1.85 },
+          "2.5": { "name": "2.5", "odd": 2.46 },
+          "3.5": { "name": "3.5", "odd": 3.26 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.01 },
+          "1.5": { "name": "1.5", "odd": 2.01 },
+          "2.5": { "name": "2.5", "odd": 1.71 },
+          "3.5": { "name": "3.5", "odd": 1.55 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.12,
+        "No": 1.72
+      }
+    }
+  }
+]

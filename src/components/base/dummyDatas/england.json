@@ -1,0 +1,254 @@
+[
+  {
+    "game": "Football",
+    "country": "England",
+    "league": "EPL",
+    "matchDate": {
+      "date": "08/04",
+      "time": "12:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/manU.png",
+        "name": "Manchester United",
+        "market": {
+          "homeWin": 2.05,
+          "homeOrDraw": 1.14,
+          "homeDrawNoBet": 3.09
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/liverpool.png",
+        "name": "Liverpool",
+        "market": {
+          "awayWin": 3.15,
+          "drawOrWin": 1.65,
+          "awayDrawNoBet": 2.09
+        }
+      }
+    },
+
+    "generalMarkets": {
+      "fullTimeDraw": 2.46,
+      "anyTeamToWin": 1.85,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.11 },
+          "1.5": { "name": "1.5", "odd": 1.75 },
+          "2.5": { "name": "2.5", "odd": 2.26 },
+          "3.5": { "name": "3.5", "odd": 3.09 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 6.02 },
+          "1.5": { "name": "1.5", "odd": 2.02 },
+          "2.5": { "name": "2.5", "odd": 1.82 },
+          "3.5": { "name": "3.5", "odd": 1.44 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 1.97,
+        "No": 1.72
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "league": "EPL",
+    "matchDate": {
+      "date": "08/04",
+      "time": "16:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/manCity.png",
+        "name": "Manchester City",
+        "market": {
+          "homeWin": 1.65,
+          "homeOrDraw": 1.22,
+          "homeDrawNoBet": 2.78
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/chelsea.png",
+        "name": "Chelsea",
+        "market": {
+          "awayWin": 2.85,
+          "drawOrWin": 1.45,
+          "awayDrawNoBet": 1.98
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 5.46,
+      "anyTeamToWin": 1.75,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.09 },
+          "1.5": { "name": "1.5", "odd": 1.68 },
+          "2.5": { "name": "2.5", "odd": 2.05 },
+          "3.5": { "name": "3.5", "odd": 2.89 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.72 },
+          "1.5": { "name": "1.5", "odd": 1.98 },
+          "2.5": { "name": "2.5", "odd": 1.75 },
+          "3.5": { "name": "3.5", "odd": 1.49 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.05,
+        "No": 1.62
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "league": "EPL",
+    "matchDate": {
+      "date": "09/04",
+      "time": "16:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/arsenal.png",
+        "name": "Arsenal",
+        "market": {
+          "homeWin": 1.98,
+          "homeOrDraw": 1.18,
+          "homeDrawNoBet": 2.91
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/tottenham.png",
+        "name": "Tottenham Hotspur",
+        "market": {
+          "awayWin": 2.75,
+          "drawOrWin": 1.55,
+          "awayDrawNoBet": 1.89
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 3.33,
+      "anyTeamToWin": 1.86,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.13 },
+          "1.5": { "name": "1.5", "odd": 1.72 },
+          "2.5": { "name": "2.5", "odd": 2.15 },
+          "3.5": { "name": "3.5", "odd": 2.98 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 5.88 },
+          "1.5": { "name": "1.5", "odd": 2.08 },
+          "2.5": { "name": "2.5", "odd": 1.78 },
+          "3.5": { "name": "3.5", "odd": 1.52 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 1.92,
+        "No": 1.67
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "league": "EPL",
+    "matchDate": {
+      "date": "09/04",
+      "time": "17:00"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/leicester.png",
+        "name": "Leicester City",
+        "market": {
+          "homeWin": 2.25,
+          "homeOrDraw": 1.24,
+          "homeDrawNoBet": 2.95
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/newCastle.png",
+        "name": "NewCastle United",
+        "market": {
+          "awayWin": 3.05,
+          "drawOrWin": 1.51,
+          "awayDrawNoBet": 2.16
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 7.09,
+      "anyTeamToWin": 1.82,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.13 },
+          "1.5": { "name": "1.5", "odd": 1.76 },
+          "2.5": { "name": "2.5", "odd": 2.29 },
+          "3.5": { "name": "3.5", "odd": 3.05 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 6.13 },
+          "1.5": { "name": "1.5", "odd": 2.05 },
+          "2.5": { "name": "2.5", "odd": 1.89 },
+          "3.5": { "name": "3.5", "odd": 1.55 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 2.03,
+        "No": 1.78
+      }
+    }
+  },
+  {
+    "game": "Football",
+    "league": "EPL",
+    "matchDate": {
+      "date": "10/04",
+      "time": "19:45"
+    },
+    "teams": {
+      "home": {
+        "logo": "/clubsLogo/everton.png",
+        "name": "Everton",
+        "market": {
+          "homeWin": 2.22,
+          "homeOrDraw": 1.25,
+          "homeDrawNoBet": 3.05
+        }
+      },
+      "away": {
+        "logo": "/clubsLogo/wolves.png",
+        "name": "Wolverhampton Wanderers",
+        "market": {
+          "awayWin": 3.35,
+          "drawOrWin": 1.63,
+          "awayDrawNoBet": 2.05
+        }
+      }
+    },
+    "generalMarkets": {
+      "fullTimeDraw": 3.46,
+      "anyTeamToWin": 1.85,
+      "overAndUnder": {
+        "overGoals": {
+          "0.5": { "name": "0.5", "odd": 1.01 },
+          "1.5": { "name": "1.5", "odd": 1.78 },
+          "2.5": { "name": "2.5", "odd": 2.15 },
+          "3.5": { "name": "3.5", "odd": 3.16 }
+        },
+        "underGoals": {
+          "0.5": { "name": "0.5", "odd": 6.04 },
+          "1.5": { "name": "1.5", "odd": 2.05 },
+          "2.5": { "name": "2.5", "odd": 1.75 },
+          "3.5": { "name": "3.5", "odd": 1.55 }
+        }
+      },
+      "bothTeamsToScore": {
+        "Yes": 1.99,
+        "No": 1.76
+      }
+    }
+  }
+]

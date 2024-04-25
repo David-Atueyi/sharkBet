@@ -1,0 +1,14 @@
+[
+  { "image": "/leaguesLogo/ball.png", "name": "Top Leagues" },
+  { "image": "/leaguesLogo/epl.png", "name": "Premier League" },
+  { "image": "/leaguesLogo/laliga.png", "name": "Spanish laliga" },
+  { "image": "/leaguesLogo/serieA.png", "name": "Italian Serie A" },
+  {
+    "image": "/leaguesLogo/leagueOne.png",
+    "name": "French league 1"
+  },
+  {
+    "image": "/leaguesLogo/bundesliga.png",
+    "name": "German Bundesliga"
+  }
+]
