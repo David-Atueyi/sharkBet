@@ -32,10 +32,10 @@ export const LogInForm = () => {
             type="text"
             placeholder="user name"
             id="user_name"
-            extraStyle="sm:w-[300px]"
+            extraStyle="mobile:w-[36vh] tablet:w-[300px]"
           />
           {methods.formState.errors.user_name && (
-            <p className="text-right mt-1 text-sm text-rose-5">
+            <p className="text-right mt-1 mobile:text-[12px] tablet:text-sm text-rose-5">
               {methods.formState.errors?.user_name.message}
             </p>
           )}
@@ -50,10 +50,10 @@ export const LogInForm = () => {
             type="password"
             placeholder="password"
             id="password"
-            extraStyle="sm:w-[300px]"
+            extraStyle="mobile:w-[36vh] tablet:w-[300px]"
           />
           {methods.formState.errors.password && (
-            <p className="text-right mt-1 text-sm text-rose-5">
+            <p className="text-right mt-1 mobile:text-[12px] tablet:text-sm text-rose-5">
               {methods.formState.errors?.password.message}
             </p>
           )}
@@ -66,7 +66,7 @@ export const LogInForm = () => {
         {/*  */}
         <p className="text-center">
           Don't have an account?{" "}
-          <Link to={"/auth/sign-up"} className="uppercase text-blue-7">
+          <Link to={"/auth/sign-up"} className="uppercase text-blue-6">
             sign up
           </Link>
         </p>

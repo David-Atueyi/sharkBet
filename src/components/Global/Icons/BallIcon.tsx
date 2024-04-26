@@ -6,7 +6,7 @@ export const BallIcon = ({ extraStyle }: { extraStyle?: string }) => {
     <div className="flex items-center">
       <FontAwesomeIcon
         icon={faSoccerBall}
-        className={`text-lg text-blue-7 ${extraStyle}`}
+        className={`text-lg text-blue-6 ${extraStyle}`}
       />
     </div>
   );

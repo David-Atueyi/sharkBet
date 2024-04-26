@@ -12,7 +12,11 @@ export const MenuDropDown = () => {
 
   return (
     <div className="relative">
-      <DropDownIcon handleClick={handleComponentContentVisibility} />
+      <img
+        src="/dropDownIcon.svg"
+        alt=""
+        onClick={handleComponentContentVisibility}
+      />
       <div
         className={`bg-zinc-10/50 absolute z-[2] left-[-12px] top-[-31px] w-[100dvw] h-[100vh] ${
           isVisible ? "block" : "hidden"

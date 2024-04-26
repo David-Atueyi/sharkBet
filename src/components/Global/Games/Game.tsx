@@ -1,6 +1,7 @@
 import { leagueMatchesContext } from "./Games";
 import { useContext } from "react";
 import { ILeagueMatch } from "../../base/interface/ILeagueMatch";
+import { Link } from "react-router-dom";
 
 export const Game = () => {
   const { allLeague, leagueTitle } = useContext(leagueMatchesContext);
@@ -36,32 +37,36 @@ export const Game = () => {
             <p>{data.league}</p>
           </div>
           <div className="flex justify-between">
-            <div className="text-[14px]">
-              <p className="w-[100px] truncate">{data.teams?.home.name}</p>
-              <p className="w-[100px] truncate">{data.teams?.away.name}</p>
-            </div>
+            <Link to={""} className="text-[14px] w-full">
+              <p className="w-[100px] truncate tablet:w-[180px] pc:w-[100px]">
+                {data.teams?.home.name}
+              </p>
+              <p className="w-[100px] truncate tablet:w-[180px] pc:w-[100px] ">
+                {data.teams?.away.name}
+              </p>
+            </Link>
             <div className="flex justify-between text-center gap-3 items-center text-blue-6 text-[12px]">
               <div className="flex gap-[3px]">
-                <div className="mobile:w-[52px] pc:w-[60px] h-[40px] rounded-[8px] bg-zinc-7 flex justify-center items-center hover:bg-zinc-10">
+                <button className="mobile:w-[52px] pc:w-[60px] h-[40px] rounded-[8px] bg-zinc-7 flex justify-center items-center hover:bg-zinc-10">
                   {data.teams.home.market.homeWin}
-                </div>
-                <div className="mobile:w-[52px] pc:w-[60px] h-[40px] rounded-[8px]  bg-zinc-7 flex justify-center items-center hover:bg-zinc-10">
+                </button>
+                <button className="mobile:w-[52px] pc:w-[60px] h-[40px] rounded-[8px]  bg-zinc-7 flex justify-center items-center hover:bg-zinc-10">
                   {data.generalMarkets.fullTimeDraw}
-                </div>
-                <div className="mobile:w-[52px] pc:w-[60px] h-[40px] rounded-[8px]  bg-zinc-7 flex justify-center items-center hover:bg-zinc-10">
+                </button>
+                <button className="mobile:w-[52px] pc:w-[60px] h-[40px] rounded-[8px]  bg-zinc-7 flex justify-center items-center hover:bg-zinc-10">
                   {data.teams.away.market.awayWin}
-                </div>
+                </button>
               </div>
               <div className="flex gap-[3px] mobile:hidden pc:flex">
-                <div className="mobile:w-[52px] pc:w-[60px] flex justify-center items-center h-[40px] rounded-[8px] bg-zinc-7 hover:bg-zinc-10">
+                <button className="mobile:w-[52px] pc:w-[60px] flex justify-center items-center h-[40px] rounded-[8px] bg-zinc-7 hover:bg-zinc-10">
                   {data.generalMarkets.overAndUnder.overGoals["0.5"].name}
-                </div>
-                <div className="mobile:w-[52px] pc:w-[60px] h-[40px] rounded-[8px]  bg-zinc-7 flex justify-center items-center hover:bg-zinc-10">
+                </button>
+                <button className="mobile:w-[52px] pc:w-[60px] h-[40px] rounded-[8px]  bg-zinc-7 flex justify-center items-center hover:bg-zinc-10">
                   {data.generalMarkets.overAndUnder.overGoals["0.5"].odd}
-                </div>
-                <div className="mobile:w-[52px] pc:w-[60px] h-[40px] rounded-[8px]  bg-zinc-7 flex justify-center items-center hover:bg-zinc-10">
+                </button>
+                <button className="mobile:w-[52px] pc:w-[60px] h-[40px] rounded-[8px]  bg-zinc-7 flex justify-center items-center hover:bg-zinc-10">
                   {data.generalMarkets.overAndUnder.underGoals["0.5"].odd}
-                </div>
+                </button>
               </div>
             </div>
           </div>

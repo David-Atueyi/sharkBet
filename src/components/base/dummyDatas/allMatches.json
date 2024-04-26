@@ -382,8 +382,8 @@
       }
     },
     "generalMarkets": {
-      "fullTimeDraw": 2.5,
-      "anyTeamToWin": 1.8,
+      "fullTimeDraw": 2.56,
+      "anyTeamToWin": 1.86,
       "overAndUnder": {
         "overGoals": {
           "0.5": { "name": "0.5", "odd": 1.12 },
@@ -994,7 +994,7 @@
       }
     },
     "generalMarkets": {
-      "fullTimeDraw": 2.592,
+      "fullTimeDraw": 2.52,
       "anyTeamToWin": 1.72,
       "overAndUnder": {
         "overGoals": {

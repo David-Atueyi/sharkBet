@@ -2,7 +2,7 @@ import { BetSlip } from "../BetSlip/BetSlip";
 
 export const BetSlipDropDown = () => {
   return (
-    <div>
+    <div className="bg-white">
       <BetSlip />
     </div>
   );

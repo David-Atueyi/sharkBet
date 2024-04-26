@@ -56,7 +56,7 @@ export const BetSlip = () => {
           <div className="min-h-32 text-zinc-8">
             {/*  */}
             <div>
-              <div className="pc:h-[300px] mobile:h-[200px] overflow-y-auto no-scrollbar">
+              <div className="pc:h-[300px] mobile:max-h-[45vh] overflow-y-auto no-scrollbar">
                 {/*  */}
                 <div>
                   <GamesSelected />

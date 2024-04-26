@@ -43,7 +43,7 @@ export const MenuContent = () => {
         </div>
       </div>
       <div className="bg-zinc-8 rounded-[20px] uppercase text-sm">
-        <div className="bg-gradient-to-r from-indigo-500 p-3 rounded-t-[20px] flex items-center gap-[3px]">
+        <div className="bg-gradient-to-r from-blue-8 p-3 rounded-t-[20px] flex items-center gap-[3px]">
           <BallIcon />
           <p>soccer</p>
         </div>

@@ -19,14 +19,12 @@ export const GeneralHeaderLayout = () => {
       </div>
       <div className="flex capitalize items-center mobile:gap-2 tablet:gap-3 ">
         <LogInFormPcView />
-        <div>
           <NavLink
             to={"/auth/sign-up"}
-            className="h-[31px] text-xs bg-blue-6 p-[11px] text-zinc-0 font-bold rounded-md mobile:p-[6px] pc:px-[13px] pc:py-[7px]"
+            className="h-[30px] text-xs bg-blue-6 p-[11px] text-zinc-0 font-bold rounded-md mobile:p-[6px] pc:px-[13px] pc:py-[7px]"
           >
             sign up
           </NavLink>
-        </div>
       </div>
     </div>
   );

@@ -10,15 +10,15 @@ export const Card = ({ datas }: { datas: any }) => {
 
   return (
     <div
-      className="flex gap-3 overflow-x-auto no-scrollbar snap-x-mandatory"
+      className="flex gap-3 overflow-x-auto no-scrollbar snap-x-mandatory "
       ref={cardContainerRef}
       style={{ scrollSnapType: "x mandatory" }}
     >
-      <PrevAndNextButton slideLeft={slideLeft} slideRight={slideRight} />z
+      <PrevAndNextButton slideLeft={slideLeft} slideRight={slideRight} />
       {datas.map((data: any, index: number) => (
         <div
           key={index}
-          className="bg-zinc-8 px-[15px] pt-[2px] pb-[8px] gap-2 text-ellipsis mobile:h-[130px] pc:h-[168px] rounded-[8px] flex flex-col justify-evenly"
+          className="bg-zinc-8 px-[15px] pt-[2px] pb-[8px] gap-2 text-ellipsis pc:h-[168px] rounded-[8px] flex flex-col justify-evenly"
           style={{ scrollSnapAlign: "start" }}
         >
           <div className="mobile:text-[10px] pc:text-xs flex gap-1 pt-1 mobile:mt-2 pc:mt-0">

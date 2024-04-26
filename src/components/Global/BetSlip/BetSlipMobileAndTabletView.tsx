@@ -33,7 +33,7 @@ export const BetSlipMobileAndTabletView = () => {
       </div>
 
       <div
-        className={`flex flex-col w-full fixed left-0 bottom-0 pc:hidden ${
+        className={`flex flex-col w-full fixed left-0 bottom-0 pc:hidden  ${
           isVisible ? "flex" : "hidden"
         }`}
       >
@@ -51,7 +51,7 @@ export const BetSlipMobileAndTabletView = () => {
           </div>
         </div>
 
-        <div className={`${fullBetSlipVisible ? "block" : "hidden"}`}>
+        <div className={`${fullBetSlipVisible ? "block" : "hidden"} `}>
           <div
             onClick={handleCloseViewFullBetSlipInfo}
             className="bg-zinc-8 rounded-t-full"
