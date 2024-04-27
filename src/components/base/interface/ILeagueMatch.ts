@@ -1,4 +1,6 @@
 export interface ILeagueMatch {
+  id: number;
+  hotMatch: boolean;
   game: string;
   country?: string;
   league: string;
