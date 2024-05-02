@@ -1,18 +1,18 @@
 import { ChevronRight } from "../Icons/ChevronRight";
 import { ChevronLeft } from "../Icons/ChevronLeft";
-import { useContext } from "react";
-import { cardContext } from "./Cards";
+
 
 interface IPrevAndNextButton {
   slideLeft: () => void;
   slideRight: () => void;
+  hover:boolean;
 }
 
 export const PrevAndNextButton = ({
   slideLeft,
   slideRight,
+  hover,
 }: IPrevAndNextButton) => {
-  const { hover } = useContext(cardContext);
   return (
     <>
       <button

@@ -1,5 +1,4 @@
 import { useHandleComponentVisibility } from "../../base/hooks/useHandleComponentVisibility";
-import { DropDownIcon } from "../Icons/DropDownIcon";
 import { XIcon } from "../Icons/XIcon";
 import { MenuContent } from "../MenuContent/MenuContent";
 

@@ -1,11 +1,16 @@
-import { leagueMatchesContext } from "./Games";
-import { useContext } from "react";
 import { ILeagueMatch } from "../../base/interface/ILeagueMatch";
 import { Link } from "react-router-dom";
+import { ILeague } from "./leagues";
 
-export const Game = () => {
-  const { allLeague, leagueTitle } = useContext(leagueMatchesContext);
 
+
+export const Game = ({
+  leagueTitle,
+  allLeague,
+}: {
+  leagueTitle: ILeague;
+  allLeague: ILeagueMatch[];
+}) => {
   return (
     <div className=" capitalize">
       <p className="text-[12px] h-[20px] px-[15px]">
@@ -48,18 +53,18 @@ export const Game = () => {
             <div className="flex justify-between text-center gap-3 items-center text-blue-6 text-[12px]">
               <div className="flex gap-[3px]">
                 <button className="mobile:w-[52px] pc:w-[60px] h-[40px] rounded-[8px] bg-zinc-7 flex justify-center items-center hover:bg-zinc-10">
-                  {data.teams.home.market.homeWin}
+                  {data.teams.home.market.homeWin.odd}
                 </button>
                 <button className="mobile:w-[52px] pc:w-[60px] h-[40px] rounded-[8px]  bg-zinc-7 flex justify-center items-center hover:bg-zinc-10">
-                  {data.generalMarkets.fullTimeDraw}
+                  {data.generalMarkets.fullTimeDraw.odd}
                 </button>
                 <button className="mobile:w-[52px] pc:w-[60px] h-[40px] rounded-[8px]  bg-zinc-7 flex justify-center items-center hover:bg-zinc-10">
-                  {data.teams.away.market.awayWin}
+                  {data.teams.away.market.awayWin.odd}
                 </button>
               </div>
               <div className="flex gap-[3px] mobile:hidden pc:flex">
                 <button className="mobile:w-[52px] pc:w-[60px] flex justify-center items-center h-[40px] rounded-[8px] bg-zinc-7 hover:bg-zinc-10">
-                  {data.generalMarkets.overAndUnder.overGoals["0.5"].name}
+                  0.5
                 </button>
                 <button className="mobile:w-[52px] pc:w-[60px] h-[40px] rounded-[8px]  bg-zinc-7 flex justify-center items-center hover:bg-zinc-10">
                   {data.generalMarkets.overAndUnder.overGoals["0.5"].odd}

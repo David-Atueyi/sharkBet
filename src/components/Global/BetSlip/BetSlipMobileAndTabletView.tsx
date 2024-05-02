@@ -1,11 +1,16 @@
 import { useHandleComponentVisibility } from "../../base/hooks/useHandleComponentVisibility";
 import { useHandleViewFullBetSlipInfo } from "../../base/hooks/useHandleViewFullBetSlipInfo";
+import { useBetStore } from "../../base/store/useBetStore";
 import { BetSlipDropDown } from "../BetSlipDropDown/BetSlipDropDown";
 import { BriefBetSlipDropDownInfo } from "../BetSlipDropDown/BriefBetSlipDropDownInfo";
 import { DownArrow } from "../Icons/DownArrow";
 import { XIcon } from "../Icons/XIcon";
 
 export const BetSlipMobileAndTabletView = () => {
+  const { selectedBetsArray } = useBetStore((state) => ({
+    selectedBetsArray: state.selectedBetsArray,
+  }));
+
   const {
     isVisible,
     handleComponentContentVisibility,
@@ -27,7 +32,7 @@ export const BetSlipMobileAndTabletView = () => {
         onClick={handleComponentContentVisibility}
       >
         <div className="bg-blue-5 rounded-full w-[22px] h-[22px] text-center">
-          <p>2</p>
+          <p>{selectedBetsArray.length}</p>
         </div>
         <p className="font-bold capitalize text-sm">betslip</p>
       </div>
@@ -51,7 +56,7 @@ export const BetSlipMobileAndTabletView = () => {
           </div>
         </div>
 
-        <div className={`${fullBetSlipVisible ? "block" : "hidden"} `}>
+        <div className={`${fullBetSlipVisible ? "block" : "hidden"}`}>
           <div
             onClick={handleCloseViewFullBetSlipInfo}
             className="bg-zinc-8 rounded-t-full"

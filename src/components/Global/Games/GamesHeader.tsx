@@ -1,19 +1,18 @@
-import { useContext } from "react";
-import { leagueMatchesContext } from "./Games";
 import { GamesTabs } from "./Tabs/GamesTabs";
 import { ILeagues } from "../../base/interface/ILeagues";
+import { useGamesUtilities } from "../../base/store/useGamesUtilities";
+import { ILeague } from "./leagues";
 
-
-export const GamesHeader = () => {
-  const {
-    handleButtonClick,
-    activeLeagueIndex,
-    leagueMatches,
-    setAllLeague,
-    leagues,
-    setLeagueTitle,
-  } = useContext(leagueMatchesContext);
-  
+export const GamesHeader = ({
+  handleButtonClick,
+  leagues,
+}: {
+  handleButtonClick: (index: number, button: ILeagues) => any;
+  leagues: ILeague[];
+}) => {
+  const { activeLeagueIndex } = useGamesUtilities((state) => ({
+    activeLeagueIndex: state.activeLeagueIndex,
+  }));
 
   return (
     <div className="mobile:flex pc:block items-center mobile:px-[20px] pc:px-0 mb-3">
@@ -27,7 +26,7 @@ export const GamesHeader = () => {
       </div>
 
       <div className="h-[36px] pl-[15px] flex items-center mobile:border-l-2 mobile:border-b-0 pc:border-b-2 pc:border-l-0 border-zinc-7 gap-5 text-[14px] font-extrabold overflow-x-auto overflow-y-hidden no-scrollbar relative">
-        {leagues.map((button:ILeagues, index:number) => (
+        {leagues.map((button: ILeagues, index: number) => (
           <GamesTabs
             key={index}
             nameOfTab={button.country}
@@ -35,9 +34,7 @@ export const GamesHeader = () => {
               activeLeagueIndex === index ? "text-blue-7" : "text-zinc-4"
             }
             onClickFunction={() => {
-              handleButtonClick(index),
-                setAllLeague(leagueMatches[index]),
-                setLeagueTitle({country:button.country,leagueName:button.leagueName});
+              handleButtonClick(index, button);
             }}
           />
         ))}

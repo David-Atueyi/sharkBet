@@ -7,12 +7,12 @@ export const ClearBetIcon = ({
   handleClearBet: () => void;
 }) => {
   return (
-    <div
+    <button
       className="p-1 flex justify-end items-center capitalize text-sm w-[118px]"
       onClick={handleClearBet}
     >
       <p>clear all bet</p>
       <FontAwesomeIcon icon={faTrashCan} className="text-zinc-0 m-2" />
-    </div>
+    </button>
   );
 };

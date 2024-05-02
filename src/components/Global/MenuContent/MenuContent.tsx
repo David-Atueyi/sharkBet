@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { BallIcon } from "../Icons/BallIcon";
 import All from "../../base/dummyDatas/allMatches.json";
-import England from "../../base/dummyDatas/england.json";
-import Spain from "../../base/dummyDatas/spain.json";
-import Italy from "../../base/dummyDatas/italy.json";
-import France from "../../base/dummyDatas/france.json";
-import Germany from "../../base/dummyDatas/germany.json";
+
 
 export const MenuContent = () => {
+  const getMatchesCountByCountry = ( countryData:string ) => {
+    return All.filter((match) => match.country === countryData).length;
+  };
+
   return (
     <div className="flex flex-col gap-4">
       <div className="bg-zinc-8 rounded-[20px]">
@@ -63,7 +63,7 @@ export const MenuContent = () => {
               className="py-3 pl-8 hover:text-blue-7 flex justify-between pr-2"
             >
               <span>england</span>
-              <span>{England.length}</span>
+              <span>{getMatchesCountByCountry("England")}</span>
             </Link>
           </div>
           <div className="pr-2">
@@ -72,7 +72,7 @@ export const MenuContent = () => {
               className="py-3 pl-8 hover:text-blue-7 flex justify-between pr-2"
             >
               <span>spain</span>
-              <span>{Spain.length}</span>
+              <span>{getMatchesCountByCountry("Spain")}</span>
             </Link>
           </div>
           <div className="pr-2">
@@ -81,7 +81,7 @@ export const MenuContent = () => {
               className="py-3 pl-8 hover:text-blue-7 flex justify-between pr-2"
             >
               <span>italy</span>
-              <span>{Italy.length}</span>
+              <span>{getMatchesCountByCountry("Italy")}</span>
             </Link>
           </div>
           <div className="pr-2">
@@ -90,7 +90,7 @@ export const MenuContent = () => {
               className="py-3 pl-8 hover:text-blue-7 flex justify-between pr-2"
             >
               <span>french</span>
-              <span>{France.length}</span>
+              <span>{getMatchesCountByCountry("France")}</span>
             </Link>
           </div>
           <div className="pr-2">
@@ -99,7 +99,7 @@ export const MenuContent = () => {
               className="py-3 pl-8 hover:text-blue-7 flex justify-between pr-2"
             >
               <span>germany</span>
-              <span>{Germany.length}</span>
+              <span>{getMatchesCountByCountry("Germany")}</span>
             </Link>
           </div>
         </div>

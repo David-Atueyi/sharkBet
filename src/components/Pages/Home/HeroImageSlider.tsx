@@ -25,7 +25,7 @@ export const HeroImageSlider = () => {
           prevEl: ".swiper-button-prev",
         }}
         pagination={{ clickable: true }}
-        className=" rounded-[20px]"
+        className=" rounded-[20px] z-0"
       >
         <div
           className={`swiper-button-next mobile:opacity-0 pc:opacity-100 ${

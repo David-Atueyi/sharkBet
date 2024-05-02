@@ -1,26 +1,109 @@
+import { useBetStore } from "../../base/store/useBetStore";
 import { OddsButton } from "../OddsButton/OddsButton";
 
 export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
+  const { setSelectedBet, selectedBetsArray } = useBetStore((state) => ({
+    setSelectedBet: state.setSelectedBet,
+    selectedBetsArray: state.selectedBetsArray,
+  }));
+
+  const isButtonClicked = (homeClub: string, awayClub: string, odd: number) => {
+    return selectedBetsArray.some(
+      (bet) =>
+        bet.homeClub === homeClub &&
+        bet.awayClub === awayClub &&
+        bet.odd === odd
+    );
+  };
+
+  const handleClick = (
+    homeClub: string,
+    awayClub: string,
+    odd: number,
+    marketType: string,
+    oddName: string,
+    date: string,
+    time: string
+  ) => {
+    setSelectedBet(
+      homeClub,
+      awayClub,
+      odd,
+      marketType,
+      oddName,
+      date,
+      time,
+    );
+  };
+
   return (
     <div>
       <div className="flex">
         <OddsButton
-          extraStyle="mobile:w-[79px] pc:w-[77px] h-[25px] ml-[4px] text-[12px] px-[8px] rounded-[4px] pt-1 "
+          onClick={() =>
+            handleClick(
+              gameOdds.teams.home.name,
+              gameOdds.teams.away.name,
+              gameOdds.teams.home.market.homeWin.odd,
+              gameOdds.teams.home.market.homeWin.marketType,
+              gameOdds.teams.home.market.homeWin.oddName,
+              gameOdds.matchDate.date,
+              gameOdds.matchDate.time
+            )
+          }
+          extraStyle="mobile:w-[79px] pc:w-[77px] h-[25px] ml-[4px] text-[12px] px-[8px] rounded-[4px] pt-1"
           contentOne="1"
-          contentTwo={gameOdds.teams?.home.market.homeWin}
+          contentTwo={gameOdds.teams?.home.market.homeWin.odd}
           extraStyleContentTwo="text-blue-6"
+          isClicked={isButtonClicked(
+            gameOdds.teams.home.name,
+            gameOdds.teams.away.name,
+            gameOdds.teams.home.market.homeWin.odd
+          )}
         />
         <OddsButton
+          onClick={() =>
+            handleClick(
+              gameOdds.teams.home.name,
+              gameOdds.teams.away.name,
+              gameOdds.generalMarkets.fullTimeDraw.odd,
+              gameOdds.generalMarkets.fullTimeDraw.marketType,
+              gameOdds.generalMarkets.fullTimeDraw.oddName,
+              gameOdds.matchDate.date,
+              gameOdds.matchDate.time
+            )
+          }
           extraStyle="mobile:w-[79px] pc:w-[77px] h-[25px] ml-[4px] text-[12px] px-[8px] rounded-[4px] pt-1"
           contentOne="X"
-          contentTwo={gameOdds.generalMarkets?.fullTimeDraw}
+          contentTwo={gameOdds.generalMarkets?.fullTimeDraw.odd}
           extraStyleContentTwo="text-blue-6"
+          isClicked={isButtonClicked(
+            gameOdds.teams.home.name,
+            gameOdds.teams.away.name,
+            gameOdds.generalMarkets.fullTimeDraw.odd
+          )}
         />
         <OddsButton
+          onClick={() =>
+            handleClick(
+              gameOdds.teams.home.name,
+              gameOdds.teams.away.name,
+              gameOdds.teams.away.market.awayWin.odd,
+              gameOdds.teams.away.market.awayWin.marketType,
+              gameOdds.teams.away.market.awayWin.oddName,
+              gameOdds.matchDate.date,
+              gameOdds.matchDate.time
+            )
+          }
           extraStyle="mobile:w-[79px] pc:w-[77px] h-[25px] ml-[4px] text-[12px] px-[8px] rounded-[4px] pt-1"
           contentOne="2"
-          contentTwo={gameOdds.teams?.away.market.awayWin}
+          contentTwo={gameOdds.teams?.away.market.awayWin.odd}
           extraStyleContentTwo="text-blue-6"
+          isClicked={isButtonClicked(
+            gameOdds.teams.home.name,
+            gameOdds.teams.away.name,
+            gameOdds.teams.away.market.awayWin.odd
+          )}
         />
       </div>
     </div>

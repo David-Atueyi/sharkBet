@@ -1,26 +1,10 @@
 import { useState } from "react";
-import All from "../../base/dummyDatas/allMatches.json";
-import England from "../../base/dummyDatas/england.json";
-import Spain from "../../base/dummyDatas/spain.json";
-import Italy from "../../base/dummyDatas/italy.json";
-import France from "../../base/dummyDatas/france.json";
-import Germany from "../../base/dummyDatas/germany.json";
 import { ILeagueMatch } from "../interface/ILeagueMatch";
-
-
-const leagues = [
-  { country: "all", leagueName: "top leagues" },
-  { country: "england", leagueName: "EPL" },
-  { country: "spain", leagueName: "laliga" },
-  { country: "italy", leagueName: "serie a" },
-  { country: "france", leagueName: "league 1" },
-  { country: "germany", leagueName: "bundesliga" },
-];
-
-const leagueMatches = [All, England, Spain, Italy, France, Germany]; 
+import { leagues } from "../../Global/Games/leagues";
+import { useGamesUtilities } from "../store/useGamesUtilities";
+import All from "../../base/dummyDatas/allMatches.json";
 
 export const useHandleActiveLeague = () => {
-  const [activeLeagueIndex, setActiveLeagueIndex] = useState<number>(0);
   const [allLeague, setAllLeague] = useState<ILeagueMatch[]>(All);
   const [leagueTitle, setLeagueTitle] = useState<{
     country: string;
@@ -29,19 +13,29 @@ export const useHandleActiveLeague = () => {
     country: leagues[0].country,
     leagueName: leagues[0].leagueName,
   });
+  const { setActiveLeagueIndex } = useGamesUtilities((state) => ({
+    setActiveLeagueIndex: state.setActiveLeagueIndex,
+  }));
 
-  const handleButtonClick = (index: number) => {
+  const handleButtonClick = (
+    index: number,
+    title: { country: string; leagueName: string }
+  ) => {
+    //
     setActiveLeagueIndex(index);
+    //
+    setLeagueTitle({
+      country: title.country,
+      leagueName: title.leagueName,
+    });
+    //
+    const filteredMatches = All.filter(
+      (match) => match.country === leagues[index].country
+    );
+    leagues[index].country === "All"
+      ? setAllLeague(All)
+      : setAllLeague(filteredMatches);
   };
 
-  return {
-    allLeague,
-    setAllLeague,
-    activeLeagueIndex,
-    handleButtonClick,
-    leagueMatches,
-    leagues,
-    leagueTitle,
-    setLeagueTitle,
-  };
+  return { allLeague, leagueTitle, handleButtonClick };
 };

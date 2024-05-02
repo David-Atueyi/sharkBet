@@ -1,14 +1,28 @@
 [
-  { "image": "/leaguesLogo/ball.png", "name": "Top Leagues" },
-  { "image": "/leaguesLogo/epl.png", "name": "Premier League" },
-  { "image": "/leaguesLogo/laliga.png", "name": "Spanish laliga" },
-  { "image": "/leaguesLogo/serieA.png", "name": "Italian Serie A" },
+  { "image": "/leaguesLogo/ball.png", "name": "Top Leagues", "country": "All" },
+  {
+    "image": "/leaguesLogo/epl.png",
+    "name": "Premier League",
+    "country": "England"
+  },
+  {
+    "image": "/leaguesLogo/laliga.png",
+    "name": "Spanish laliga",
+    "country": "Spain"
+  },
+  {
+    "image": "/leaguesLogo/serieA.png",
+    "name": "Italian Serie A",
+    "country": "Italy"
+  },
   {
     "image": "/leaguesLogo/leagueOne.png",
-    "name": "French league 1"
+    "name": "French league 1",
+    "country": "France"
   },
   {
     "image": "/leaguesLogo/bundesliga.png",
-    "name": "German Bundesliga"
+    "name": "German Bundesliga",
+    "country": "Germany"
   }
 ]

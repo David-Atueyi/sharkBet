@@ -38,7 +38,7 @@ export const HotMatch = () => {
                 </div>
               </div>
               <p className="text-[12px] text-blue-7 max-w-[60px] mt-[25px] w-[45px] truncate">
-                1000000000
+                {hotMatch.popularity}
               </p>
             </div>
           ))}

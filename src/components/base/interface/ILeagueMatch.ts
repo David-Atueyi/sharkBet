@@ -1,6 +1,7 @@
 export interface ILeagueMatch {
   id: number;
   hotMatch: boolean;
+  popularity?: number;
   game: string;
   country?: string;
   league: string;
@@ -13,41 +14,35 @@ export interface ILeagueMatch {
       logo: string;
       name: string;
       market: {
-        homeWin: number;
-        homeOrDraw: number;
-        homeDrawNoBet: number;
+        homeWin: { oddName: string; odd: number; marketType: string };
+        homeOrDraw: { oddName: string; odd: number; marketType: string };
+        homeDrawNoBet: { oddName: string; odd: number; marketType: string };
       };
     };
     away: {
       logo: string;
       name: string;
       market: {
-        awayWin: number;
-        drawOrWin: number;
-        awayDrawNoBet: number;
+        awayWin: { oddName: string; odd: number; marketType: string };
+        drawOrWin: { oddName: string; odd: number; marketType: string };
+        awayDrawNoBet: { oddName: string; odd: number; marketType: string };
       };
     };
   };
   generalMarkets: {
-    fullTimeDraw: number;
-    anyTeamToWin: number;
+    fullTimeDraw: { oddName: string; odd: number; marketType: string };
+    anyTeamToWin: { oddName: string; odd: number; marketType: string };
     overAndUnder: {
       overGoals: {
-        [key: string]: {
-          name: string;
-          odd: number;
-        };
+        [key: string]: { oddName: string; odd: number; marketType: string };
       };
       underGoals: {
-        [key: string]: {
-          name: string;
-          odd: number;
-        };
+        [key: string]: { oddName: string; odd: number; marketType: string };
       };
     };
     bothTeamsToScore: {
-      Yes: number;
-      No: number;
+      Yes: { oddName: string; odd: number; marketType: string };
+      No: { oddName: string; odd: number; marketType: string };
     };
   };
 }
