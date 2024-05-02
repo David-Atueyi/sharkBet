@@ -54,7 +54,6 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
           extraStyle="mobile:w-[79px] pc:w-[77px] h-[25px] ml-[4px] text-[12px] px-[8px] rounded-[4px] pt-1"
           contentOne="1"
           contentTwo={gameOdds.teams?.home.market.homeWin.odd}
-          extraStyleContentTwo="text-blue-6"
           isClicked={isButtonClicked(
             gameOdds.teams.home.name,
             gameOdds.teams.away.name,
@@ -76,7 +75,6 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
           extraStyle="mobile:w-[79px] pc:w-[77px] h-[25px] ml-[4px] text-[12px] px-[8px] rounded-[4px] pt-1"
           contentOne="X"
           contentTwo={gameOdds.generalMarkets?.fullTimeDraw.odd}
-          extraStyleContentTwo="text-blue-6"
           isClicked={isButtonClicked(
             gameOdds.teams.home.name,
             gameOdds.teams.away.name,
@@ -98,7 +96,6 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
           extraStyle="mobile:w-[79px] pc:w-[77px] h-[25px] ml-[4px] text-[12px] px-[8px] rounded-[4px] pt-1"
           contentOne="2"
           contentTwo={gameOdds.teams?.away.market.awayWin.odd}
-          extraStyleContentTwo="text-blue-6"
           isClicked={isButtonClicked(
             gameOdds.teams.home.name,
             gameOdds.teams.away.name,

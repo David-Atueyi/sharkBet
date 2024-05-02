@@ -15,7 +15,7 @@ export const LeagueTabs = ({
       {leagues.map((league, index) => (
         <button
           key={index}
-          className={`flex items-center pr-2 text-[12px] rounded-[6px] ${
+          className={`flex items-center text-[12px] rounded-[6px] ${
             index === activeIndex ? "bg-zinc-7" : null
           }`}
           onClick={() => {
@@ -33,13 +33,23 @@ export const LeagueTabs = ({
               className="w-full h-full object-contain"
             />
           </div>
-          <p
-            className={`pl-0 p-1 text-nowrap text-left ${
-              index === activeIndex ? "visible" : "hidden"
+          <div
+            className={`${
+              index === activeIndex
+                ? "visible w-[120px] transition-all duration-300 ease-linear delay-150"
+                : "invisible w-0"
             }`}
           >
-            {league.name}
-          </p>
+            <p
+              className={`pl-0 p-1 text-nowrap text-left ${
+                index === activeIndex
+                  ? "visible transition-all duration-300 ease delay-500"
+                  : "invisible"
+              }`}
+            >
+              {league.name}
+            </p>
+          </div>
         </button>
       ))}
     </div>

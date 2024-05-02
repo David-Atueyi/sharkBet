@@ -1,4 +1,4 @@
-import { GamesTabs } from "./Tabs/GamesTabs";
+import { GamesTabs } from "./GameButton/GamesTabs";
 import { ILeagues } from "../../base/interface/ILeagues";
 import { useGamesUtilities } from "../../base/store/useGamesUtilities";
 import { ILeague } from "./leagues";

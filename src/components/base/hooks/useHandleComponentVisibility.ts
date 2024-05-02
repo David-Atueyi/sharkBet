@@ -5,12 +5,10 @@ export const useHandleComponentVisibility = () => {
 
   const handleComponentContentVisibility = () => {
     !isVisible ? setIsVisible(true) : null;
-    window.document.body.style.overflow = "hidden";
   };
 
   const handleCloseComponentContentVisibility = () => {
     isVisible ? setIsVisible(false) : null;
-    window.document.body.style.overflow = "";
   };
 
   return {

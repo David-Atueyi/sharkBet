@@ -1,5 +1,5 @@
-import { BetSlip } from "../../Global/BetSlip/BetSlip";
-import { HotMatches } from "../../Global/HotMatches/HotMatches";
+import { BetSlip } from "../components/Global/BetSlip/BetSlip";
+import { HotMatches } from "../components/Global/HotMatches/HotMatches";
 
 export const RightSideSection = () => {
   return (

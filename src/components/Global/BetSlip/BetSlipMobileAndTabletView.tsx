@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useHandleComponentVisibility } from "../../base/hooks/useHandleComponentVisibility";
 import { useHandleViewFullBetSlipInfo } from "../../base/hooks/useHandleViewFullBetSlipInfo";
 import { useBetStore } from "../../base/store/useBetStore";
@@ -22,6 +23,19 @@ export const BetSlipMobileAndTabletView = () => {
     handleViewFullBetSlipInfo,
     handleCloseViewFullBetSlipInfo,
   } = useHandleViewFullBetSlipInfo();
+
+  const handleBodyOverflow = () => {
+    if (fullBetSlipVisible) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  };
+
+  // Call handleBodyOverflow when fullBetSlipVisible changes
+  useEffect(() => {
+    handleBodyOverflow();
+  }, [fullBetSlipVisible]);
 
   return (
     <>
@@ -56,16 +70,26 @@ export const BetSlipMobileAndTabletView = () => {
           </div>
         </div>
 
-        <div className={`${fullBetSlipVisible ? "block" : "hidden"}`}>
+      
           <div
-            onClick={handleCloseViewFullBetSlipInfo}
-            className="bg-zinc-8 rounded-t-full"
+            className={`${fullBetSlipVisible ? "block" : "hidden"}
+           `}
           >
-            <DownArrow />
+            <div
+              onClick={handleCloseViewFullBetSlipInfo}
+              className={`bg-zinc-8 rounded-t-full `}
+            >
+              <DownArrow />
+            </div>
+            <BetSlipDropDown />
           </div>
-          <BetSlipDropDown />
-        </div>
       </div>
     </>
   );
 };
+
+// ${
+//               fullBetSlipVisible
+//                 ? (window.document.body.style.overflow = "hidden")
+//                 : (window.document.body.style.overflow = "")
+//             }
