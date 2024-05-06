@@ -3,6 +3,8 @@ import { GeneralHeaderLayout } from "../components/Global/Layout/GeneralHeaderLa
 import { GeneralFooterLayout } from "../components/Global/Layout/GeneralFooterLayout";
 import { BetSlipMobileAndTabletView } from "../components/Global/BetSlip/BetSlipMobileAndTabletView";
 import { useLayoutEffect } from "react";
+import { LeftSideSection } from "./LeftSideSection";
+import { RightSideSection } from "./RightSideSection";
 
 export const GlobalPageLayout = () => {
   const { pathname } = useLocation();
@@ -14,12 +16,19 @@ export const GlobalPageLayout = () => {
       behavior: "smooth",
     });
   }, [pathname]);
-  
+
   return (
     <div className="min-w-[320px] flex flex-col font-sharkBetFont max-w-[1200px] m-auto px-3">
       <GeneralHeaderLayout />
       <main className="flex-1 relative">
-        <Outlet />
+        {/*  */}
+        <div className="flex mt-4 gap-3 mobile:justify-center relative">
+          <LeftSideSection />
+          <div className="w-[57%] mobile:w-full tablet:w-[81%] pc:w-[57%]">
+            <Outlet />
+          </div>
+          <RightSideSection />
+        </div>
         {/*  */}
         <BetSlipMobileAndTabletView />
         {/*  */}

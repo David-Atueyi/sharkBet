@@ -7,9 +7,10 @@ export const HotMatch = () => {
   return (
     <>
       {hotMatches.length > 0 && (
-        <Link to={""}>
+        <>
           {hotMatches.map((hotMatch, index) => (
-            <div
+            <Link
+              to={`/FullMatch/homeTeam=${hotMatch.teams?.home.name}&awayTeam=${hotMatch.teams?.away.name}&?gameId=${hotMatch.id}`}
               key={index}
               className={`px-[10px] pt-[10px] pb-[8px] h-[62px] flex justify-between mx-[1px] ${
                 index === hotMatches.length - 1
@@ -40,9 +41,9 @@ export const HotMatch = () => {
               <p className="text-[12px] text-blue-7 max-w-[60px] mt-[25px] w-[45px] truncate">
                 {hotMatch.popularity}
               </p>
-            </div>
+            </Link>
           ))}
-        </Link>
+        </>
       )}
     </>
   );

@@ -1,5 +1,5 @@
-import { useCardUtilities } from "../../base/store/useCardUtilities";
-import leagues from "../../base/dummyDatas/leagueLogo.json";
+import { useCardUtilities } from "../../../base/store/useCardUtilities";
+import leagues from "../../../base/dummyDatas/leagueLogo.json";
 
 export const LeagueTabs = ({
   handleLeagueClicked,

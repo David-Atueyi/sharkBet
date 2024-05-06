@@ -1,10 +1,10 @@
 import { Games } from "../../Global/Games/Games";
-import { Cards } from "../../Global/slidingCards/Cards";
+import { Cards } from "./slidingCards/Cards";
 import { HeroImageSlider } from "./HeroImageSlider";
 
-export const CenterSection = () => {
+export const HomePage = () => {
   return (
-    <div className="w-[57%] mobile:w-full tablet:w-[81%] pc:w-[57%]">
+    <div>
       <div>
         <HeroImageSlider />
       </div>

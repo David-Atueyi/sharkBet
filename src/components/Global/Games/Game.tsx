@@ -8,7 +8,7 @@ export const Game = ({
   leagueTitle,
   allLeague,
 }: {
-  leagueTitle: ILeague;
+  leagueTitle?: ILeague;
   allLeague: ILeagueMatch[];
 }) => {
 
@@ -16,7 +16,7 @@ export const Game = ({
   return (
     <div className=" capitalize">
       <p className="text-[12px] h-[20px] px-[15px]">
-        {leagueTitle.country} - {leagueTitle.leagueName}
+        {leagueTitle?.country} - {leagueTitle?.leagueName}
       </p>
       <GameSubHeader />
       {allLeague.map((data: ILeagueMatch, index: number) => (

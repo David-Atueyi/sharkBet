@@ -1,11 +1,10 @@
-import { ChevronRight } from "../Icons/ChevronRight";
-import { ChevronLeft } from "../Icons/ChevronLeft";
-
+import { ChevronRight } from "../../../Global/Icons/ChevronRight";
+import { ChevronLeft } from "../../../Global/Icons/ChevronLeft";
 
 interface IPrevAndNextButton {
   slideLeft: () => void;
   slideRight: () => void;
-  hover:boolean;
+  hover: boolean;
 }
 
 export const PrevAndNextButton = ({

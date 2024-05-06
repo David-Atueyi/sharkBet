@@ -8,6 +8,7 @@ export const MenuContent = () => {
     return All.filter((match) => match.country === countryData).length;
   };
 
+
   return (
     <div className="flex flex-col gap-4">
       <div className="bg-zinc-8 rounded-[20px]">
@@ -18,7 +19,7 @@ export const MenuContent = () => {
         <div className="font-bold text-sm capitalize mt-2">
           <p>
             <Link
-              to={"*"}
+              to={`/Games/&?identifier=08/04`}
               className=" p-2 hover:bg-blue-7/20 hover:text-blue-5 block px-4"
             >
               today matches
@@ -26,7 +27,7 @@ export const MenuContent = () => {
           </p>
           <p>
             <Link
-              to={"*"}
+              to={`/Games/&?identifier=09/04`}
               className=" p-2 hover:bg-blue-7/20 hover:text-blue-5 block px-4"
             >
               tomorrow matches
@@ -34,7 +35,7 @@ export const MenuContent = () => {
           </p>
           <p>
             <Link
-              to={"*"}
+              to={`/Games/&?identifier=10/04`}
               className="p-2 hover:bg-blue-7/20 hover:text-blue-5 rounded-b-[20px] block px-4"
             >
               Next 3 days matches
@@ -50,7 +51,7 @@ export const MenuContent = () => {
         <div className="mt-2">
           <div className="pr-2">
             <Link
-              to={"*"}
+              to={`/Games/&?identifier=allLeagues`}
               className="py-3 pl-8 hover:text-blue-7 flex justify-between pr-2"
             >
               <span>top league</span>
@@ -59,7 +60,7 @@ export const MenuContent = () => {
           </div>
           <div className="pr-2">
             <Link
-              to={"*"}
+              to={`/Games/&?identifier=England`}
               className="py-3 pl-8 hover:text-blue-7 flex justify-between pr-2"
             >
               <span>england</span>
@@ -68,7 +69,7 @@ export const MenuContent = () => {
           </div>
           <div className="pr-2">
             <Link
-              to={"*"}
+              to={`/Games/&?identifier=Spain`}
               className="py-3 pl-8 hover:text-blue-7 flex justify-between pr-2"
             >
               <span>spain</span>
@@ -77,7 +78,7 @@ export const MenuContent = () => {
           </div>
           <div className="pr-2">
             <Link
-              to={"*"}
+              to={`/Games/&?identifier=Italy`}
               className="py-3 pl-8 hover:text-blue-7 flex justify-between pr-2"
             >
               <span>italy</span>
@@ -86,7 +87,7 @@ export const MenuContent = () => {
           </div>
           <div className="pr-2">
             <Link
-              to={"*"}
+              to={`/Games/&?identifier=France`}
               className="py-3 pl-8 hover:text-blue-7 flex justify-between pr-2"
             >
               <span>french</span>
@@ -95,7 +96,7 @@ export const MenuContent = () => {
           </div>
           <div className="pr-2">
             <Link
-              to={"*"}
+              to={`/Games/&?identifier=Germany`}
               className="py-3 pl-8 hover:text-blue-7 flex justify-between pr-2"
             >
               <span>germany</span>

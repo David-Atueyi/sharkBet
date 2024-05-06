@@ -11,13 +11,15 @@ export const GameButtons = ({ data }:{data: ILeagueMatch}) => {
       const isButtonClicked = (
         homeClub: string,
         awayClub: string,
-        odd: number
+        oddName: string,
+        marketType: string
       ) => {
         return selectedBetsArray.some(
           (bet) =>
             bet.homeClub === homeClub &&
             bet.awayClub === awayClub &&
-            bet.odd === odd
+            bet.oddName === oddName &&
+            bet.marketType === marketType
         );
       };
 
@@ -60,7 +62,8 @@ export const GameButtons = ({ data }:{data: ILeagueMatch}) => {
           isClicked={isButtonClicked(
             data.teams.home.name,
             data.teams.away.name,
-            data.teams.home.market.homeWin.odd
+            data.teams.home.market.homeWin.oddName,
+            data.teams.home.market.homeWin.marketType
           )}
         />
         {/*  */}
@@ -80,7 +83,8 @@ export const GameButtons = ({ data }:{data: ILeagueMatch}) => {
           isClicked={isButtonClicked(
             data.teams.home.name,
             data.teams.away.name,
-            data.generalMarkets.fullTimeDraw.odd
+            data.generalMarkets.fullTimeDraw.oddName,
+            data.generalMarkets.fullTimeDraw.marketType
           )}
         />
         {/*  */}
@@ -100,7 +104,8 @@ export const GameButtons = ({ data }:{data: ILeagueMatch}) => {
           isClicked={isButtonClicked(
             data.teams.home.name,
             data.teams.away.name,
-            data.teams.away.market.awayWin.odd
+            data.teams.away.market.awayWin.oddName,
+            data.teams.away.market.awayWin.marketType
           )}
         />
       </div>
@@ -125,7 +130,8 @@ export const GameButtons = ({ data }:{data: ILeagueMatch}) => {
           isClicked={isButtonClicked(
             data.teams.home.name,
             data.teams.away.name,
-            data.generalMarkets.overAndUnder.overGoals["0.5"].odd
+            data.generalMarkets.overAndUnder.overGoals["0.5"].oddName,
+            data.generalMarkets.overAndUnder.overGoals["0.5"].marketType
           )}
         />
         {/*  */}
@@ -145,9 +151,9 @@ export const GameButtons = ({ data }:{data: ILeagueMatch}) => {
           isClicked={isButtonClicked(
             data.teams.home.name,
             data.teams.away.name,
-            data.generalMarkets.overAndUnder.underGoals["0.5"].odd
+            data.generalMarkets.overAndUnder.underGoals["0.5"].oddName,
+            data.generalMarkets.overAndUnder.underGoals["0.5"].marketType
           )}
-          
         />
         {/*  */}
       </div>

@@ -1,10 +1,10 @@
-import All from "../../base/dummyDatas/allMatches.json";
+import All from "../../../base/dummyDatas/allMatches.json";
 import { createContext, useState } from "react";
 import { HeadingForPc } from "./HeadingForPc";
-import leagues from "../../base/dummyDatas/leagueLogo.json";
-import { ILeagueMatch } from "../../base/interface/ILeagueMatch";
+import leagues from "../../../base/dummyDatas/leagueLogo.json";
+import { ILeagueMatch } from "../../../base/interface/ILeagueMatch";
 import { Card } from "./Card";
-import { useCardUtilities } from "../../base/store/useCardUtilities";
+import { useCardUtilities } from "../../../base/store/useCardUtilities";
 import { LeagueTabs } from "./LeagueTabs";
 
 export const cardContext = createContext<any>({});

@@ -4,7 +4,8 @@ import { GlobalPageLayout } from "./layout/GlobalPageLayout";
 import { HomePage } from "./pages/HomePage";
 import { SignUpPage } from "./pages/SignUpPage";
 import { LogInPage } from "./pages/LogInPage";
-import { FullMatchDetailPage } from "./pages/FullMatchDetailPage";
+import { FullMatchDetailsPage } from "./pages/FullMatchDetailsPage";
+import { Games } from "./pages/Games";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<GlobalPageLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="FullMatch/:gameId" element={<FullMatchDetailPage />} />
+          <Route path="FullMatch/:gameId" element={<FullMatchDetailsPage />} />
+          <Route path="Games/:identifier" element={<Games />} />
         </Route>
         <Route path="/auth" element={<GeneralAuthPageLayout />}>
           <Route path="sign-up" element={<SignUpPage />} />

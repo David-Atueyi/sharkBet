@@ -1,5 +1,5 @@
-import { useBetStore } from "../../base/store/useBetStore";
-import { OddsButton } from "../OddsButton/OddsButton";
+import { useBetStore } from "../../../base/store/useBetStore";
+import { OddsButton } from "../../../Global/OddsButton/OddsButton";
 
 export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
   const { setSelectedBet, selectedBetsArray } = useBetStore((state) => ({
@@ -7,12 +7,18 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
     selectedBetsArray: state.selectedBetsArray,
   }));
 
-  const isButtonClicked = (homeClub: string, awayClub: string, odd: number) => {
+  const isButtonClicked = (
+    homeClub: string,
+    awayClub: string,
+    oddName: string,
+    marketType: string
+  ) => {
     return selectedBetsArray.some(
       (bet) =>
         bet.homeClub === homeClub &&
         bet.awayClub === awayClub &&
-        bet.odd === odd
+        bet.oddName === oddName &&
+        bet.marketType === marketType
     );
   };
 
@@ -25,15 +31,7 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
     date: string,
     time: string
   ) => {
-    setSelectedBet(
-      homeClub,
-      awayClub,
-      odd,
-      marketType,
-      oddName,
-      date,
-      time,
-    );
+    setSelectedBet(homeClub, awayClub, odd, marketType, oddName, date, time);
   };
 
   return (
@@ -57,7 +55,8 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
           isClicked={isButtonClicked(
             gameOdds.teams.home.name,
             gameOdds.teams.away.name,
-            gameOdds.teams.home.market.homeWin.odd
+            gameOdds.teams.home.market.homeWin.oddName,
+            gameOdds.teams.home.market.homeWin.marketType
           )}
         />
         <OddsButton
@@ -78,7 +77,8 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
           isClicked={isButtonClicked(
             gameOdds.teams.home.name,
             gameOdds.teams.away.name,
-            gameOdds.generalMarkets.fullTimeDraw.odd
+            gameOdds.generalMarkets.fullTimeDraw.oddName,
+            gameOdds.generalMarkets.fullTimeDraw.marketType
           )}
         />
         <OddsButton
@@ -99,7 +99,8 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
           isClicked={isButtonClicked(
             gameOdds.teams.home.name,
             gameOdds.teams.away.name,
-            gameOdds.teams.away.market.awayWin.odd
+            gameOdds.teams.away.market.awayWin.oddName,
+            gameOdds.teams.away.market.awayWin.marketType
           )}
         />
       </div>

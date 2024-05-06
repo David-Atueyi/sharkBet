@@ -1,15 +1,15 @@
-import { FireIcon } from "../Icons/FireIcon";
 import { Link } from "react-router-dom";
-import { ChevronRight } from "../Icons/ChevronRight";
-import { useMoveBetCards } from "../../base/hooks/useMoveBetCards";
 import { PrevAndNextButton } from "./PrevAndNextButton";
 import { OddsButtons } from "./OddsButtons";
-import { ILeagueMatch } from "../../base/interface/ILeagueMatch";
-import { useCardUtilities } from "../../base/store/useCardUtilities";
+import { ILeagueMatch } from "../../../base/interface/ILeagueMatch";
+import { useMoveBetCards } from "../../../base/hooks/useMoveBetCards";
+import { useCardUtilities } from "../../../base/store/useCardUtilities";
+import { FireIcon } from "../../../Global/Icons/FireIcon";
+import { ChevronRight } from "../../../Global/Icons/ChevronRight";
 
 export const Card = ({ datas }: { datas: ILeagueMatch[] }) => {
   const { cardContainerRef, slideLeft, slideRight } = useMoveBetCards();
-  const {  hover } = useCardUtilities((state) => ({
+  const { hover } = useCardUtilities((state) => ({
     hover: state.hover,
   }));
 
@@ -35,7 +35,10 @@ export const Card = ({ datas }: { datas: ILeagueMatch[] }) => {
             <p>best odds </p>
             <FireIcon extraStyle="text-rose-6 text-xs" />
           </div>
-          <Link to={""} className="text-zinc-0">
+          <Link
+            to={`/FullMatch/homeTeam=${data.teams?.home.name}&awayTeam=${data.teams?.away.name}&?gameId=${data.id}`}
+            className="text-zinc-0"
+          >
             <div className="flex items-center justify-between pc:hidden">
               <div className="text-[12px]">
                 <div className="flex items-center gap-1">
@@ -106,7 +109,10 @@ export const Card = ({ datas }: { datas: ILeagueMatch[] }) => {
 
           <div className="text-[10px] flex mobile:justify-center pc:justify-between">
             <p className="mobile:hidden pc:block">{data.league}</p>
-            <Link to={""} className="capitalize flex items-center gap-1">
+            <Link
+              to={`/FullMatch/homeTeam=${data.teams?.home.name}&awayTeam=${data.teams?.away.name}&?gameId=${data.id}`}
+              className="capitalize flex items-center gap-1"
+            >
               more event <ChevronRight />
             </Link>
           </div>

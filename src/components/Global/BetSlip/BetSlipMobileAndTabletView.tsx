@@ -32,7 +32,6 @@ export const BetSlipMobileAndTabletView = () => {
     }
   };
 
-  // Call handleBodyOverflow when fullBetSlipVisible changes
   useEffect(() => {
     handleBodyOverflow();
   }, [fullBetSlipVisible]);
@@ -87,9 +86,3 @@ export const BetSlipMobileAndTabletView = () => {
     </>
   );
 };
-
-// ${
-//               fullBetSlipVisible
-//                 ? (window.document.body.style.overflow = "hidden")
-//                 : (window.document.body.style.overflow = "")
-//             }
