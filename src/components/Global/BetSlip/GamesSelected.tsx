@@ -22,13 +22,13 @@ export const GamesSelected = () => {
           <div className="flex gap-2">
             <div className="self-center">
               <XIcon
-                textStyle="text-zinc-4 text-sm hover:text-zinc-7 p-1 cursor-pointer"
                 handleClick={() => handleRemoveBet(index)}
+                extraStyle=" w-[20px] h-[20px] stroke-zinc-4 pc:hover:stroke-zinc-7 pc:cursor-pointer"
               />
             </div>
             <div className="flex flex-col gap-2">
               <div className="flex text-sm gap-1">
-                <BallIcon extraStyle="text-zinc-8" />
+                <BallIcon extraStyle="text-zinc-8 w-[21px] h-[21px]" />
                 <p>{selectedBet.oddName}</p>
               </div>
               <div className="text-xs">

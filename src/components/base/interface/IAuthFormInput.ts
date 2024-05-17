@@ -4,5 +4,6 @@ export interface IAuthFormInput {
   name: string;
   id: string;
   extraStyle?: string;
-  togglePasswordExtraStyle?:string;
+  maxLength?: number;
+  togglePasswordExtraStyle?: string;
 }

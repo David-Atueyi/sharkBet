@@ -57,10 +57,11 @@ export const BetSlipMobileAndTabletView = () => {
       >
         <div className={`relative ${!fullBetSlipVisible ? "block" : "hidden"}`}>
           <div>
-            <div className="absolute top-[-33px] right-4 text-zinc-6 bg-zinc-1 w-[60px] h-[33px] text-center rounded-t-full">
+            <div className="absolute top-[-33px] right-4 text-zinc-6 bg-zinc-1 w-[60px] h-[33px] flex justify-center rounded-t-full">
               <XIcon
                 handleClick={handleCloseComponentContentVisibility}
-                textStyle="text-zinc-6 text-xl"
+                extraStyle="w-[28px] h-[28px]"
+                textStyle="stroke-zinc-6"
               />
             </div>
             <div onClick={handleViewFullBetSlipInfo}>
@@ -69,19 +70,18 @@ export const BetSlipMobileAndTabletView = () => {
           </div>
         </div>
 
-      
-          <div
-            className={`${fullBetSlipVisible ? "block" : "hidden"}
+        <div
+          className={`${fullBetSlipVisible ? "block" : "hidden"}
            `}
+        >
+          <div
+            onClick={handleCloseViewFullBetSlipInfo}
+            className={`bg-zinc-8 rounded-t-full `}
           >
-            <div
-              onClick={handleCloseViewFullBetSlipInfo}
-              className={`bg-zinc-8 rounded-t-full `}
-            >
-              <DownArrow />
-            </div>
-            <BetSlipDropDown />
+            <DownArrow />
           </div>
+          <BetSlipDropDown />
+        </div>
       </div>
     </>
   );

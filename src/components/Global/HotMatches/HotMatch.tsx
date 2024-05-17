@@ -26,7 +26,7 @@ export const HotMatch = () => {
                   <p className="max-w-[80%]">
                     {hotMatch.country} - {hotMatch.league}
                   </p>
-                  <BallIcon extraStyle="text-zinc-5 text-xs" />
+                  <BallIcon extraStyle="text-zinc-5 text-xs w-[18px] h-[18px]" />
                 </div>
                 <div className="flex gap-2 text-[14px] capitalize text-zinc-2">
                   <p className="max-w-[40.1235%] truncate">

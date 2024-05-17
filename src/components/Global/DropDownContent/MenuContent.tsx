@@ -3,11 +3,10 @@ import { BallIcon } from "../Icons/BallIcon";
 import All from "../../base/dummyDatas/allMatches.json";
 
 
-export const MenuContent = () => {
-  const getMatchesCountByCountry = ( countryData:string ) => {
+export const MenuContent = ({ onClick }: { onClick? :()=>void}) => {
+  const getMatchesCountByCountry = (countryData: string) => {
     return All.filter((match) => match.country === countryData).length;
   };
-
 
   return (
     <div className="flex flex-col gap-4">
@@ -16,7 +15,7 @@ export const MenuContent = () => {
           <span>pop</span>
           <span className="text-blue-7">ular</span>
         </h1>
-        <div className="font-bold text-sm capitalize mt-2">
+        <div className="font-bold text-sm capitalize mt-2" onClick={onClick}>
           <p>
             <Link
               to={`/Games/&?identifier=08/04`}
@@ -43,9 +42,12 @@ export const MenuContent = () => {
           </p>
         </div>
       </div>
-      <div className="bg-zinc-8 rounded-[20px] uppercase text-sm">
+      <div
+        className="bg-zinc-8 rounded-[20px] uppercase text-sm"
+        onClick={onClick}
+      >
         <div className="bg-gradient-to-r from-blue-8 p-3 rounded-t-[20px] flex items-center gap-[3px]">
-          <BallIcon />
+          <BallIcon extraStyle="w-[26px] h-[26px]" />
           <p>soccer</p>
         </div>
         <div className="mt-2">

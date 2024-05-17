@@ -35,3 +35,8 @@
 }
 
 
+.hide-number-input-buttons::-webkit-inner-spin-button,
+  .hide-number-input-buttons::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }

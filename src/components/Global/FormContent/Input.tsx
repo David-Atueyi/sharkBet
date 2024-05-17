@@ -1,8 +1,8 @@
 import { useFormContext } from "react-hook-form";
 import { useTogglePassword } from "../../base/hooks/useTogglePassWord";
 import { IAuthFormInput } from "../../base/interface/IAuthFormInput";
-import { PasswordVisibilityIcon } from "../Icons/PasswordVisibilityIcon";
-import { PasswordVisibilityOffIcon } from "../Icons/PasswordVisibilityOffIcon";
+import { EyeOpenIcon } from "../Icons/EyeOpenIcon";
+import { EyeCloseIcon } from "../Icons/EyeCloseIcon";
 
 export const Input = ({
   type,
@@ -10,6 +10,7 @@ export const Input = ({
   name,
   id,
   extraStyle,
+  maxLength,
   togglePasswordExtraStyle,
 }: IAuthFormInput) => {
   //
@@ -24,6 +25,7 @@ export const Input = ({
         placeholder={placeholder}
         className={`px-3 py-2 bg-gray-100 w-full border rounded text-zinc-9 ${extraStyle}`}
         id={id}
+        maxLength={maxLength}
         {...register(name)}
       />
       {type === "password" ? (
@@ -33,14 +35,12 @@ export const Input = ({
           className={`absolute right-3 top-2 ${togglePasswordExtraStyle}`}
         >
           {passwordVisibility ? (
-            <PasswordVisibilityIcon />
+            <EyeOpenIcon extraStyle="text-zinc-6" />
           ) : (
-            <PasswordVisibilityOffIcon />
+            <EyeCloseIcon extraStyle="text-zinc-6" />
           )}
         </button>
       ) : null}
     </div>
   );
 };
-
-// sm:w-[350px]

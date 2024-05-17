@@ -7,7 +7,7 @@ export const BetTabs = ({
 }) => {
   return (
     <div className="relative">
-      <div className="mobile:text-md bg-zinc-8 pc:rounded-t-[20px] pc:text-xl pc:flex justify-evenly">
+      <div className="mobile:text-md bg-zinc-9 pc:rounded-t-[20px] pc:text-xl pc:flex justify-evenly">
         <button
           className={`p-3 cursor-pointer mobile:text-left capitalize ${
             betTabs.tabOne ? "text-blue-7" : "text-zinc-4"

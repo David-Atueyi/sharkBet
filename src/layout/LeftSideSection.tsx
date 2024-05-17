@@ -1,4 +1,4 @@
-import { MenuContent } from "../components/Global/MenuContent/MenuContent";
+import { MenuContent } from "../components/Global/DropDownContent/MenuContent";
 
 export const LeftSideSection = () => {
   return (
