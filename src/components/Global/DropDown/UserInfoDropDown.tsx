@@ -8,6 +8,7 @@ import { UserInfoContent } from "../DropDownContent/UserInfoContent";
 import { useUserInfoDropDownVisibility } from "../../base/store/useUserInfoDropDownVisibility";
 import { useAccountBalanceVisibility } from "../../base/store/useAccountBalanceVisibility";
 import { useAccountBalance } from "../../base/store/useAccountBalance";
+import { useActiveBetsStore } from "../../base/store/useActiveBetsStore";
 
 export const UserInfoDropDown = () => {
   const { accountBalanceVisibility, setAccountBalanceVisibility } =
@@ -23,6 +24,10 @@ export const UserInfoDropDown = () => {
     })
   );
 
+   const { activeBets } = useActiveBetsStore((state) => ({
+     activeBets: state.activeBets,
+   }));
+
   const { accountBalance } = useAccountBalance((state) => ({
     accountBalance: state.accountBalance,
   }));
@@ -32,8 +37,11 @@ export const UserInfoDropDown = () => {
       <div className="pr-1 flex gap-4 pc:hidden">
         <Link
           to={"/me/my-bets"}
-          className="capitalize flex flex-col items-center text-blue-6 font-bold mobile:text-[12px] tablet:text-[16px]"
+          className="relative capitalize flex flex-col items-center text-blue-6 font-bold mobile:text-[12px] tablet:text-[16px]"
         >
+          <div className={`px-[10px] pb-[10px] pt-[11px] absolute -top-[10px] right-[3px] bg-blue-6 w-[17px] h-[17px] rounded-full text-zinc-3 flex justify-center items-center ${activeBets.length>0 ? "block" : "hidden"}`}>
+            <p>{activeBets.length}</p>
+          </div>
           <DocumentIcon />
           <p className="leading-4">my bets</p>
         </Link>
@@ -55,7 +63,11 @@ export const UserInfoDropDown = () => {
       <div className=" items-center gap-2 capitalize text-blue-6 font-bold mobile:hidden pc:flex  ">
         <div className="flex gap-1">
           <p>NGN</p>
-          <p>{accountBalanceVisibility ? accountBalance.toLocaleString() : "******"}</p>
+          <p>
+            {accountBalanceVisibility
+              ? accountBalance.toLocaleString()
+              : "******"}
+          </p>
           <EyeOpenIcon
             extraStyle={`${accountBalanceVisibility ? "block" : "hidden"}`}
             onClick={() => setAccountBalanceVisibility(false)}
@@ -71,7 +83,7 @@ export const UserInfoDropDown = () => {
         <div>
           <button
             onClick={() =>
-              !isVisible ? setIsVisible(true, false) : setIsVisible(false)
+              !isVisible ? setIsVisible(true, false) : setIsVisible(false, true)
             }
             className="flex items-center justify-center capitalize"
           >

@@ -28,6 +28,7 @@ export const OverUnderButtons = ({ oddType }: { oddType:string }) => {
   };
 
   const handleClick = (
+    id:number,
     homeClub: string,
     awayClub: string,
     odd: number,
@@ -36,7 +37,7 @@ export const OverUnderButtons = ({ oddType }: { oddType:string }) => {
     date: string,
     time: string
   ) => {
-    setSelectedBet(homeClub, awayClub, odd, marketType, oddName, date, time);
+    setSelectedBet(id,homeClub, awayClub, odd, marketType, oddName, date, time);
   };
 
   return (
@@ -47,6 +48,7 @@ export const OverUnderButtons = ({ oddType }: { oddType:string }) => {
       <OverUnderButton
         onClick={() =>
           handleClick(
+            fullMatchDetailsFound.id,
             fullMatchDetailsFound.teams.home.name,
             fullMatchDetailsFound.teams.away.name,
             fullMatchDetailsFound?.generalMarkets.overAndUnder.overGoals[
@@ -78,6 +80,7 @@ export const OverUnderButtons = ({ oddType }: { oddType:string }) => {
       <OverUnderButton
         onClick={() =>
           handleClick(
+            fullMatchDetailsFound.id,
             fullMatchDetailsFound.teams.home.name,
             fullMatchDetailsFound.teams.away.name,
             fullMatchDetailsFound?.generalMarkets.overAndUnder.underGoals[

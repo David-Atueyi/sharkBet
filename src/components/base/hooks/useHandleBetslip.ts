@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useBetStore } from "../store/useBetStore";
 import { useAccountBalance } from "../store/useAccountBalance";
+import { useTransactionHistoryStore } from "../store/useTransactionHistoryStore";
+import { formattedDate } from "../funcs/date";
+import { formattedTime } from "../funcs/time";
+import { useActiveBetsStore } from "../store/useActiveBetsStore";
 
 export const useHandleBetslip = () => {
   const [betTabs, setBetTabs] = useState<{ tabOne: boolean; tabTwo: boolean }>({
@@ -19,6 +23,14 @@ export const useHandleBetslip = () => {
   const { accountBalance, setAccountBalance } = useAccountBalance((state) => ({
     accountBalance: state.accountBalance,
     setAccountBalance: state.setAccountBalance,
+  }));
+
+  const { setTransactionHistory } = useTransactionHistoryStore((state) => ({
+    setTransactionHistory: state.setTransactionHistory,
+  }));
+
+  const {setActiveBets } = useActiveBetsStore((state) => ({
+    setActiveBets: state.setActiveBets,
   }));
 
   const totalOdds = selectedBetsArray
@@ -41,16 +53,32 @@ export const useHandleBetslip = () => {
     parseFloat(betAmount) * parseFloat(totalOdds)
   ).toFixed(2);
 
-const placeBet = () => {
-  const bet = Number(betAmount);
-  const balance = Number(accountBalance);
+  const placeBet = () => {
+    const bet = Number(betAmount);
+    const balance = Number(accountBalance);
 
-  bet < 10 || bet > 3000000
-    ? setError("Amount must be between 10 to 3000000")
-    : bet > balance
-    ? setError("Insufficient balance. Top up")
-    : (setAccountBalance(balance - bet), setBetAmount(""), clearSelectedBets());
-};
+    bet < 10 || bet > 3000000
+      ? setError("Amount must be between 10 to 3000000")
+      : bet > balance
+      ? setError("Insufficient balance. Top up")
+      : (setAccountBalance(balance - bet),
+        setBetAmount(""),
+        clearSelectedBets(),
+        setTransactionHistory(
+          `-${betAmount}`,
+          "Bet Placed",
+          formattedDate,
+          formattedTime,
+          "successful"
+        ),
+        setActiveBets(
+          selectedBetsArray,
+          formattedDate,
+          formattedTime,
+          betAmount,
+          Number(potentialReturn).toLocaleString()
+        ));
+  };
 
   return {
     betTabs,

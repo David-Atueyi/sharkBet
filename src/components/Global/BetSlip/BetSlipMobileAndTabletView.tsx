@@ -51,7 +51,7 @@ export const BetSlipMobileAndTabletView = () => {
       </div>
 
       <div
-        className={`flex flex-col w-full fixed left-0 bottom-0 pc:hidden  ${
+        className={`flex flex-col w-full fixed left-0 bottom-0 pc:hidden ${
           isVisible ? "flex" : "hidden"
         }`}
       >

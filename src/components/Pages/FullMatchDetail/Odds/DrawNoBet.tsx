@@ -31,7 +31,8 @@ export const DrawNoBet = () => {
         );
       };
 
-      const handleClick = (
+  const handleClick = (
+        id:number,
         homeClub: string,
         awayClub: string,
         odd: number,
@@ -41,6 +42,7 @@ export const DrawNoBet = () => {
         time: string
       ) => {
         setSelectedBet(
+          id,
           homeClub,
           awayClub,
           odd,
@@ -73,6 +75,7 @@ export const DrawNoBet = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.teams.home.name,
               fullMatchDetailsFound.teams.away.name,
               fullMatchDetailsFound.teams.home.market.homeDrawNoBet.odd,
@@ -97,6 +100,7 @@ export const DrawNoBet = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.teams.home.name,
               fullMatchDetailsFound.teams.away.name,
               fullMatchDetailsFound.teams.away.market.awayDrawNoBet.odd,

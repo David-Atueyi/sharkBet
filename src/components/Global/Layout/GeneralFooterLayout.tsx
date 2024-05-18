@@ -4,7 +4,7 @@ export const GeneralFooterLayout = () => {
       <div className="pc:w-[33.3%] flex flex-col gap-5 text-center mobile:items-center">
         <div className="w-[200px] h-[50px]">
           <img
-            src="./sharkbetlogo.png"
+            src="/sharkbetlogo.png"
             alt=""
             className="w-full h-full object-contain"
           />
@@ -14,7 +14,7 @@ export const GeneralFooterLayout = () => {
             18+
           </p>
           <p>
-            Players must be 18 or older to register or play at MSport. Please
+            Players must be 18 or older to register or play at SharkBet. Please
             note that gambles may have negative effects if not made with
             temperance.
           </p>

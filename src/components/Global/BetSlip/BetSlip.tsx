@@ -25,6 +25,8 @@ export const BetSlip = () => {
     clearSelectedBets: state.clearSelectedBets,
   }));
 
+  
+
   return (
     <div className="bg-slate-50 rounded-[23px]">
       <BetTabs betTabs={betTabs} setBetTabs={setBetTabs} />
@@ -36,7 +38,7 @@ export const BetSlip = () => {
         >
           <ClearBetIcon onClick={() => setConfirmClearBet(true)} />
           <div className="min-h-32 text-zinc-9 relative">
-            <div className="pc:min-h-[200px] pc:max-h-[300px] mobile:max-h-[45vh] overflow-y-auto no-scrollbar">
+            <div className="pc:min-h-[200px] pc:max-h-[300px] mobile:max-h-[57vh] overflow-y-auto no-scrollbar">
               {/*  */}
               <div>
                 <GamesSelected />

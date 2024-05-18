@@ -6,8 +6,9 @@ import { depositValidator } from "./depositValidator";
 import { IDepositInputs } from "../../base/interface/IDepositInputs";
 import { useAccountBalance } from "../../base/store/useAccountBalance";
 import { useTransactionHistoryStore } from "../../base/store/useTransactionHistoryStore";
-import { formattedDate } from "./date";
-import { formattedTime } from "./time";
+import { formattedTime } from "../../base/funcs/time";
+import { formattedDate } from "../../base/funcs/date";
+
 
 export const Deposit = () => {
   const methods = useForm<IDepositInputs>({
@@ -24,13 +25,10 @@ export const Deposit = () => {
       setTransactionHistory: state.setTransactionHistory,
     }));
   
-
-
-
   const submitFunction = (data: any) => {
     setAccountBalance(Number(accountBalance) + Number(data.top_up));
     setTransactionHistory(
-      Number(data.top_up),
+      data.top_up,
       "Deposits - Transfer",
       formattedDate,
       formattedTime,
@@ -113,7 +111,7 @@ export const Deposit = () => {
               </p>
               <div className="relative tablet:w-fit">
                 <div className="flex mobile:w-[100%] tablet:w-[240px] pc:w-[300px] rounded-full border-2 pc:hover:border-blue-7 justify-between items-center pl-3 bg-zinc-1">
-                  <p>NGN</p>
+                  <p className="font-bold">NGN</p>
                   <Input
                     name="top_up"
                     type="number"

@@ -32,6 +32,7 @@ export const OneXTwo = () => {
   };
 
   const handleClick = (
+    id:number,
     homeClub: string,
     awayClub: string,
     odd: number,
@@ -40,7 +41,7 @@ export const OneXTwo = () => {
     date: string,
     time: string
   ) => {
-    setSelectedBet(homeClub, awayClub, odd, marketType, oddName, date, time);
+    setSelectedBet(id,homeClub, awayClub, odd, marketType, oddName, date, time);
   };
 
   return (
@@ -64,6 +65,7 @@ export const OneXTwo = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.teams.home.name,
               fullMatchDetailsFound.teams.away.name,
               fullMatchDetailsFound.teams.home.market.homeWin.odd,
@@ -86,6 +88,7 @@ export const OneXTwo = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.teams.home.name,
               fullMatchDetailsFound.teams.away.name,
               fullMatchDetailsFound.generalMarkets.fullTimeDraw.odd,
@@ -110,6 +113,7 @@ export const OneXTwo = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.teams.home.name,
               fullMatchDetailsFound.teams.away.name,
               fullMatchDetailsFound.teams.away.market.awayWin.odd,

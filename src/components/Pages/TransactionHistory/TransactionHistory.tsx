@@ -9,7 +9,7 @@ const {  transactionHistory } =
   }));
 
   return (
-    <div className="text-zinc-3 bg-zinc-9 mobile:h-[50dvh] mobile:pb-3 tablet:h-[57.6dvh] rounded-[20px]">
+    <div className="text-zinc-3 bg-zinc-9 mobile:min-h-[50dvh] mobile:pb-3 tablet:min-h-[57.6dvh] rounded-[20px]">
       <p className="text-center pt-3 font-bold border-b-4 border-zinc-6 text-blue-7">
         My Transactions
       </p>

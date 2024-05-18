@@ -32,6 +32,7 @@ export const DoubleChance = () => {
   };
 
   const handleClick = (
+    id:number,
     homeClub: string,
     awayClub: string,
     odd: number,
@@ -40,7 +41,7 @@ export const DoubleChance = () => {
     date: string,
     time: string
   ) => {
-    setSelectedBet(homeClub, awayClub, odd, marketType, oddName, date, time);
+    setSelectedBet(id,homeClub, awayClub, odd, marketType, oddName, date, time);
   };
 
   return (
@@ -64,6 +65,7 @@ export const DoubleChance = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.teams.home.name,
               fullMatchDetailsFound.teams.away.name,
               fullMatchDetailsFound.teams.home.market.homeOrDraw.odd,
@@ -88,6 +90,7 @@ export const DoubleChance = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.teams.home.name,
               fullMatchDetailsFound.teams.away.name,
               fullMatchDetailsFound.generalMarkets.anyTeamToWin.odd,
@@ -112,6 +115,7 @@ export const DoubleChance = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.teams.home.name,
               fullMatchDetailsFound.teams.away.name,
               fullMatchDetailsFound.teams.away.market.drawOrWin.odd,

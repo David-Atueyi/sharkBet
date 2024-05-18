@@ -18,14 +18,6 @@ export const MyBets = () => {
       <div className="capitalize h-[355px] bg-zinc-9 rounded-b-[20px] flex flex-col overflow-y-auto no-scrollbar">
         {/* <p>you have no unsettled bet</p> */}
         <MyBet />
-        <MyBet />
-        <MyBet />
-        <MyBet />
-        <MyBet />
-        <MyBet />
-        <MyBet />
-        <MyBet />
-        <MyBet />
       </div>
     </div>
   );

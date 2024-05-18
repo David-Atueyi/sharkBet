@@ -8,10 +8,11 @@ const initialState = {
 export const useBetStore = create<IBetStore>((set) => ({
   ...initialState,
 
-  setSelectedBet: (homeClub, awayClub, odd, marketType, oddName, date, time) =>
+  setSelectedBet: (id,homeClub, awayClub, odd, marketType, oddName, date, time) =>
     set((state) => {
       const existingBetIndex = state.selectedBetsArray.findIndex(
         (bet) =>
+          bet.id === id &&
           bet.homeClub === homeClub &&
           bet.awayClub === awayClub &&
           bet.odd === odd &&
@@ -30,6 +31,7 @@ export const useBetStore = create<IBetStore>((set) => ({
           selectedBetsArray: [
             ...state.selectedBetsArray,
             {
+              id,
               homeClub,
               awayClub,
               odd,

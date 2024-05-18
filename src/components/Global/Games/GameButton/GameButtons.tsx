@@ -23,7 +23,8 @@ export const GameButtons = ({ data }:{data: ILeagueMatch}) => {
         );
       };
 
-      const handleClick = (
+  const handleClick = (
+        id:number,
         homeClub: string,
         awayClub: string,
         odd: number,
@@ -33,6 +34,7 @@ export const GameButtons = ({ data }:{data: ILeagueMatch}) => {
         time: string
       ) => {
         setSelectedBet(
+          id,
           homeClub,
           awayClub,
           odd,
@@ -50,6 +52,7 @@ export const GameButtons = ({ data }:{data: ILeagueMatch}) => {
           buttonName={data.teams.home.market.homeWin.odd}
           onClick={() =>
             handleClick(
+              data.id,
               data.teams.home.name,
               data.teams.away.name,
               data.teams.home.market.homeWin.odd,
@@ -71,6 +74,7 @@ export const GameButtons = ({ data }:{data: ILeagueMatch}) => {
           buttonName={data.generalMarkets.fullTimeDraw.odd}
           onClick={() =>
             handleClick(
+              data.id,
               data.teams.home.name,
               data.teams.away.name,
               data.generalMarkets.fullTimeDraw.odd,
@@ -92,6 +96,7 @@ export const GameButtons = ({ data }:{data: ILeagueMatch}) => {
           buttonName={data.teams.away.market.awayWin.odd}
           onClick={() =>
             handleClick(
+              data.id,
               data.teams.home.name,
               data.teams.away.name,
               data.teams.away.market.awayWin.odd,
@@ -118,6 +123,7 @@ export const GameButtons = ({ data }:{data: ILeagueMatch}) => {
           buttonName={data.generalMarkets.overAndUnder.overGoals["0.5"].odd}
           onClick={() =>
             handleClick(
+              data.id,
               data.teams.home.name,
               data.teams.away.name,
               data.generalMarkets.overAndUnder.overGoals["0.5"].odd,
@@ -139,6 +145,7 @@ export const GameButtons = ({ data }:{data: ILeagueMatch}) => {
           buttonName={data.generalMarkets.overAndUnder.underGoals["0.5"].odd}
           onClick={() =>
             handleClick(
+              data.id,
               data.teams.home.name,
               data.teams.away.name,
               data.generalMarkets.overAndUnder.underGoals["0.5"].odd,

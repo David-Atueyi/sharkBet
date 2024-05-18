@@ -32,6 +32,7 @@ export const GoalGoalAndNoGoal = () => {
   };
 
   const handleClick = (
+    id: number,
     homeClub: string,
     awayClub: string,
     odd: number,
@@ -40,7 +41,7 @@ export const GoalGoalAndNoGoal = () => {
     date: string,
     time: string
   ) => {
-    setSelectedBet(homeClub, awayClub, odd, marketType, oddName, date, time);
+    setSelectedBet(id,homeClub, awayClub, odd, marketType, oddName, date, time);
   };
 
   return (
@@ -64,6 +65,7 @@ export const GoalGoalAndNoGoal = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.teams.home.name,
               fullMatchDetailsFound.teams.away.name,
               fullMatchDetailsFound.generalMarkets.bothTeamsToScore.Yes.odd,
@@ -91,6 +93,7 @@ export const GoalGoalAndNoGoal = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.teams.home.name,
               fullMatchDetailsFound.teams.away.name,
               fullMatchDetailsFound.generalMarkets.bothTeamsToScore.No.odd,

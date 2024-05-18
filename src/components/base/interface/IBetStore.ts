@@ -1,5 +1,6 @@
 // IBetStore.ts
 export interface SelectedBet {
+  id:number
   homeClub: string;
   awayClub: string;
   odd: number;
@@ -12,6 +13,7 @@ export interface SelectedBet {
 export interface IBetStore {
   selectedBetsArray: SelectedBet[];
   setSelectedBet: (
+    id:number,
     homeClub: string,
     awayClub: string,
     odd: number,

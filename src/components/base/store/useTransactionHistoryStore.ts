@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 interface transactionHistory {
-  transactionAmount: number;
+  transactionAmount: string;
   transactionType: string;
   transactionDate: string;
   transactionTime: string;
@@ -11,7 +11,7 @@ interface transactionHistory {
 interface IUseTransactionHistoryStore {
   transactionHistory: transactionHistory[];
   setTransactionHistory: (
-    transactionAmount: number,
+    transactionAmount: string,
     transactionType: string,
     transactionDate: string,
     transactionTime: string,
