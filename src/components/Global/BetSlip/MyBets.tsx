@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import { MyBet } from "../MyBet/MyBet";
 import { ChevronRight } from "../Icons/ChevronRight";
+import { useActiveBetsStore } from "../../base/store/useActiveBetsStore";
 
 export const MyBets = () => {
+const { activeBets } = useActiveBetsStore((state) => ({
+  activeBets: state.activeBets,
+}));
+
   return (
     <div>
       <div className="border-t-2 border-zinc-5 text-right flex justify-between items-center capitalize bg-zinc-9 px-3">
@@ -15,8 +20,13 @@ export const MyBets = () => {
           <ChevronRight extraStyle="text-[10px] text-blue-7" />
         </Link>
       </div>
-      <div className="capitalize h-[355px] bg-zinc-9 rounded-b-[20px] flex flex-col overflow-y-auto no-scrollbar">
-        {/* <p>you have no unsettled bet</p> */}
+      <div
+        className={`capitalize h-[350px] bg-zinc-9 rounded-b-[20px] overflow-y-auto no-scrollbar ${
+          activeBets.length <= 0
+            ? "flex items-center justify-center "
+            : ""
+        }`}
+      >
         <MyBet />
       </div>
     </div>

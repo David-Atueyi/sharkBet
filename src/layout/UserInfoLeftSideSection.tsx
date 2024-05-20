@@ -46,7 +46,7 @@ export const UserInfoLeftSideSection = () => {
         </Link>
       </div>
       <Link
-        to={""}
+        to={"/me/account-info"}
         className="flex justify-between px-4 py-2 border-t-8 border-zinc-3 focus:bg-blue-7/45 focus:font-bold focus:border-l-4 focus:border-l-blue-7 rounded-b-[8px]"
       >
         <p>my account info</p>

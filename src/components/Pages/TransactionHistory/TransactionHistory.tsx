@@ -16,7 +16,7 @@ const {  transactionHistory } =
       <div
         className={`px-[13px] capitalize ${
           transactionHistory.length <= 0
-            ? "h-full flex justify-center items-center"
+            ? "h-[50vh] flex justify-center items-center"
             : "block"
         } `}
       >

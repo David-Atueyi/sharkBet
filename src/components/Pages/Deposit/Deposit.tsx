@@ -37,11 +37,11 @@ export const Deposit = () => {
     methods.reset();
   };
 
-
-
   return (
-    <div className="text-zinc-9 bg-zinc-0 mobile:h-fit mobile:pb-3 tablet:h-[57.6dvh] rounded-[20px]">
-      <p className="text-center pt-3 font-bold border-b-4">Bank Card</p>
+    <div className="text-zinc-3 bg-zinc-9 mobile:h-fit mobile:pb-3 tablet:h-[57.6dvh] rounded-[20px]">
+      <p className="text-center pt-3 font-bold border-b-4 border-b-zinc-6">
+        Bank Card
+      </p>
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(submitFunction)}
@@ -60,7 +60,7 @@ export const Deposit = () => {
                     placeholder="Card Number"
                     id="card_number"
                     maxLength={16}
-                    extraStyle="mobile:w-[100%] tablet:w-[240px] pc:w-[300px] rounded-full border-2 pc:hover:border-blue-7 hide-number-input-buttons outline-none"
+                    extraStyle="mobile:w-[100%] tablet:w-[240px] pc:w-[300px] rounded-full border-2 pc:hover:border-blue-7 hide-number-input-buttons outline-none bg-zinc-2"
                   />
                   {methods.formState.errors.card_number && (
                     <p className="text-right capitalize mt-1 mobile:text-[10px] tablet:text-sm text-rose-5 absolute right-0">
@@ -77,7 +77,7 @@ export const Deposit = () => {
                       placeholder="MM/YY"
                       id="expiry_date"
                       maxLength={5}
-                      extraStyle="mobile:w-[100%] tablet:w-[116px] pc:w-[145px] rounded-full border-2 pc:hover:border-blue-7 hide-number-input-buttons outline-none "
+                      extraStyle="mobile:w-[100%] tablet:w-[116px] pc:w-[145px] rounded-full border-2 pc:hover:border-blue-7 hide-number-input-buttons outline-none bg-zinc-2"
                     />
                     {methods.formState.errors.expiry_date && (
                       <p className="text-right text-nowrap mt-1 mobile:text-[10px] tablet:text-sm text-rose-5 pr-1 absolute right-0 capitalize">
@@ -93,7 +93,7 @@ export const Deposit = () => {
                       placeholder="CVV"
                       id="cvv"
                       maxLength={3}
-                      extraStyle="mobile:w-[100%] tablet:w-[116px] pc:w-[145px] rounded-full border-2 pc:hover:border-blue-7 hide-number-input-buttons outline-none"
+                      extraStyle="mobile:w-[100%] tablet:w-[116px] pc:w-[145px] rounded-full border-2 pc:hover:border-blue-7 hide-number-input-buttons outline-none bg-zinc-2"
                     />
                     {methods.formState.errors.cvv && (
                       <p className="text-right text-nowrap mt-1 mobile:text-[10px] tablet:text-sm text-rose-5 pr-1 absolute right-0 capitalize">
@@ -110,14 +110,14 @@ export const Deposit = () => {
                 Amount
               </p>
               <div className="relative tablet:w-fit">
-                <div className="flex mobile:w-[100%] tablet:w-[240px] pc:w-[300px] rounded-full border-2 pc:hover:border-blue-7 justify-between items-center pl-3 bg-zinc-1">
-                  <p className="font-bold">NGN</p>
+                <div className="flex mobile:w-[100%] tablet:w-[240px] pc:w-[300px] rounded-full border-2 pc:hover:border-blue-7 justify-between items-center pl-3 bg-zinc-2">
+                  <p className="font-bold text-zinc-9">NGN</p>
                   <Input
                     name="top_up"
                     type="number"
                     placeholder="Amount"
                     id="top_up"
-                    extraStyle="rounded-r-full hide-number-input-buttons outline-none text-right border-none"
+                    extraStyle="rounded-r-full bg-zinc-2 hide-number-input-buttons outline-none text-right border-none"
                   />
                 </div>
                 {methods.formState.errors.top_up && (

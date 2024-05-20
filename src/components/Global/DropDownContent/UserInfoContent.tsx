@@ -38,7 +38,8 @@ export const UserInfoContent = () => {
         <div className="z-[3] absolute -top-[60px] pc:top-0 no-scrollbar -right-4 pc:right-0 h-[100dvh] pc:h-[50dvh] bg-zinc-8 pc:bg-zinc-1 flex flex-col justify-between text-zinc-1 pc:text-zinc-9 mobile:w-[80dvw] tablet:w-[60dvw] pc:w-[19dvw] py-1 overflow-y-scroll pc:rounded-[10px] pc:pt-4">
           <div>
             <div className="flex bg-zinc-9 pc:bg-zinc-1 px-[10px] pc:h-[30px]">
-              <button
+              <Link
+                to={"/me/account-info"}
                 onClick={() => setIsVisible(false, true)}
                 className="flex gap-1 capitalize w-full items-center "
               >
@@ -46,7 +47,7 @@ export const UserInfoContent = () => {
                 <p>david</p>
                 <GoodShield extraStyle="pc:hidden" />
                 <ChevronRight extraStyle="text-[12px] pc:hidden" />
-              </button>
+              </Link>
               <XIcon
                 textStyle="stroke-zinc-1 pc:stroke-zinc-9 pc:hidden"
                 extraStyle="w-[30px] h-[30px] m-1"

@@ -1,6 +1,6 @@
 import { SVGProps } from 'react'
 
-export function GoodShield({ props, extraStyle }: { props?: SVGProps<SVGSVGElement>; extraStyle:string }) {
+export function GoodShield({ props, extraStyle }: { props?: SVGProps<SVGSVGElement>; extraStyle?:string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

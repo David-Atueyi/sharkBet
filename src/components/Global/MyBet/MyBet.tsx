@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useActiveBetsStore } from "../../base/store/useActiveBetsStore";
 import { useAccountBalance } from "../../base/store/useAccountBalance";
 import { formattedDate } from "../../base/funcs/date";
@@ -6,6 +6,8 @@ import { formattedTime } from "../../base/funcs/time";
 import { useTransactionHistoryStore } from "../../base/store/useTransactionHistoryStore";
 
 export const MyBet = () => {
+const { pathname } = useLocation();
+
   const { activeBets, removeActiveBet } = useActiveBetsStore((state) => ({
     activeBets: state.activeBets,
     removeActiveBet: state.removeActiveBet,
@@ -50,17 +52,41 @@ export const MyBet = () => {
               >
                 <div className="flex gap-2 flex-col">
                   <div className="flex gap-2 items-baseline capitalize">
-                    <p className="font-bold text-[14px] mobile:max-w-[50px] tablet:max-w-[70px] pc:max-w-[100%] truncate">
+                    <p
+                      className={`font-bold text-[14px] mobile:max-w-[50px] tablet:max-w-[70px]  truncate ${
+                        pathname === "/me/my-bets"
+                          ? "pc:max-w-[100%]"
+                          : "pc:w-[55px]"
+                      }`}
+                    >
                       {selectedMatch.homeClub}
                     </p>
                     <p className="text-[12px] text-zinc-5 uppercase">vs</p>
-                    <p className="font-bold text-[14px] mobile:max-w-[50px] tablet:max-w-[70px] pc:max-w-[100%] truncate">
+                    <p
+                      className={`font-bold text-[14px] mobile:max-w-[50px] tablet:max-w-[70px] pc:max-w-[100%] truncate ${
+                        pathname === "/me/my-bets"
+                          ? "pc:max-w-[100%]"
+                          : "pc:w-[55px]"
+                      }`}
+                    >
                       {selectedMatch.awayClub}
                     </p>
-                    <div className="flex gap-1 text-[12px] text-zinc-3">
+                    <div
+                      className={`gap-1 text-[10px] text-zinc-3 ${
+                        pathname === "/me/my-bets" ? "flex" : "hidden"
+                      }`}
+                    >
                       (<p>{selectedMatch.time}</p>
                       <p>{selectedMatch.date}</p>)
                     </div>
+                  </div>
+                  <div
+                    className={`gap-1 text-[10px] text-zinc-3 ${
+                      pathname !== "/me/my-bets" ? "flex" : "hidden"
+                    }`}
+                  >
+                    (<p>{selectedMatch.time}</p>
+                    <p>{selectedMatch.date}</p>)
                   </div>
                   <p className="font-bold capitalize">
                     {selectedMatch.oddName}

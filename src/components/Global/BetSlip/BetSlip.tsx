@@ -100,7 +100,7 @@ export const BetSlip = () => {
           </div>
         </div>
         <div
-          className={` text-zinc-9 flex justify-center items-center capitalize pc:min-h-[200px] mobile:min-h-[100px] ${
+          className={`text-zinc-9 flex justify-center items-center capitalize pc:min-h-[200px] mobile:min-h-[100px] ${
             betTabs.tabOne && selectedBetsArray.length === 0
               ? "block"
               : "hidden"

@@ -10,6 +10,7 @@ import { GeneralUserInfoLayout } from "./layout/GeneralUserInfoLayout";
 import { DepositPage } from "./pages/DepositPage";
 import { MyBetsPage } from "./pages/MyBetsPage";
 import { TransactionHistoryPage } from "./pages/TransactionHistoryPage";
+import { MyAccountInfo } from "./pages/MyAccountInfo";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="my-bets" element={<MyBetsPage />} />
           <Route path="deposit" element={<DepositPage />} />
           <Route path="transaction-history" element={<TransactionHistoryPage />} />
+          <Route path="account-info" element={<MyAccountInfo />} />
         </Route>
         <Route path="/auth" element={<GeneralAuthPageLayout />}>
           <Route path="sign-up" element={<SignUpPage />} />

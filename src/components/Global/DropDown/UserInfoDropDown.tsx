@@ -24,9 +24,9 @@ export const UserInfoDropDown = () => {
     })
   );
 
-   const { activeBets } = useActiveBetsStore((state) => ({
-     activeBets: state.activeBets,
-   }));
+  const { activeBets } = useActiveBetsStore((state) => ({
+    activeBets: state.activeBets,
+  }));
 
   const { accountBalance } = useAccountBalance((state) => ({
     accountBalance: state.accountBalance,
@@ -39,7 +39,11 @@ export const UserInfoDropDown = () => {
           to={"/me/my-bets"}
           className="relative capitalize flex flex-col items-center text-blue-6 font-bold mobile:text-[12px] tablet:text-[16px]"
         >
-          <div className={`px-[10px] pb-[10px] pt-[11px] absolute -top-[10px] right-[3px] bg-blue-6 w-[17px] h-[17px] rounded-full text-zinc-3 flex justify-center items-center ${activeBets.length>0 ? "block" : "hidden"}`}>
+          <div
+            className={`px-[10px] pb-[10px] pt-[11px] absolute -top-[10px] right-[3px] bg-blue-6 w-[17px] h-[17px] rounded-full text-zinc-3 flex justify-center items-center ${
+              activeBets.length > 0 ? "block" : "hidden"
+            }`}
+          >
             <p>{activeBets.length}</p>
           </div>
           <DocumentIcon />
@@ -78,8 +82,18 @@ export const UserInfoDropDown = () => {
             onClick={() => setAccountBalanceVisibility(true)}
           />
         </div>
-        |<Link to={"/me/deposit"}>deposit</Link>|
-        <Link to={"/me/my-bets"}>my bets</Link>|
+        |
+        <Link to={"/me/deposit"}>
+          <p>deposit</p>
+        </Link>
+        |
+        <Link to={"/me/my-bets"} className="flex gap-1">
+          <p>my bets</p>
+          <div className={`${activeBets.length > 0 ? "block" : "hidden"}`}>
+            <p>({activeBets.length})</p>
+          </div>
+        </Link>
+        |
         <div>
           <button
             onClick={() =>
@@ -87,7 +101,7 @@ export const UserInfoDropDown = () => {
             }
             className="flex items-center justify-center capitalize"
           >
-            <p>my Account</p>{" "}
+            <p>my Account</p>
             <ChevronUp
               extraStyle={`text-[12px] pt-[5px] ${
                 isVisible ? "rotate-180" : "rotate-0"
