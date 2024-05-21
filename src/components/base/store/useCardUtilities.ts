@@ -1,13 +1,5 @@
 import { create } from "zustand";
-
-
-interface ICardUtility {
-  hover: boolean;
-  activeIndex: number;
-  setActiveIndex: (index: number) => void;
-  updateHover: () => void;
-  resetHover: () => void;
-}
+import { ICardUtility } from "../interface/ICardUtility";
 
 export const useCardUtilities = create<ICardUtility>((set) => ({
   hover: false,

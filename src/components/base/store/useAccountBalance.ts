@@ -1,9 +1,5 @@
 import { create } from "zustand";
-
-interface IUseAccountBalance {
-  accountBalance: number | string;
-  setAccountBalance: (accountBalance: number) => void;
-}
+import { IUseAccountBalance } from "../interface/IUseAccountBalance";
 
 export const useAccountBalance = create<IUseAccountBalance>((set) => ({
   accountBalance: "0.00",

@@ -1,9 +1,5 @@
 import { create } from "zustand";
-
-interface IAccountBalanceVisibility {
-  accountBalanceVisibility: boolean;
-  setAccountBalanceVisibility: (accountBalanceVisibility: boolean) => void;
-}
+import { IAccountBalanceVisibility } from "../interface/IAccountBalanceVisibility";
 
 export const useAccountBalanceVisibility = create<IAccountBalanceVisibility>(
   (set) => ({

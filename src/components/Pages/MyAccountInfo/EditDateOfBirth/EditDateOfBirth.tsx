@@ -51,7 +51,14 @@ export const EditDateOfBirth = () => {
           onClick={toggleForm}
           className="text-zinc-4 text-[14px] flex items-baseline gap-1"
         >
-          <p>Edit</p> <ChevronRight extraStyle="text-[12px]" />
+          <p>Edit</p>{" "}
+          <ChevronRight
+            extraStyle={`text-[12px] ${
+              isFormOpen
+                ? "rotate-90 transition-all duration-200 ease-linear delay-50"
+                : "rotate-0 transition-all duration-200 ease-linear delay-50"
+            }`}
+          />
         </button>
       </div>
       <FormProvider {...methods}>

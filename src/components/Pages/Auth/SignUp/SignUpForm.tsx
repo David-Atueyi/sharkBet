@@ -1,19 +1,32 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { Input } from "../../../Global/FormContent/Input";
 import { Button } from "../../../Global/FormContent/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IAuthInputs } from "../../../base/interface/IAuthInputs";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signUpFormValidator } from "./signUpFormValidator";
+import supabase from "../../../../config/superBaseClient";
+import { toast } from "sonner";
 
 export const SignUpForm = () => {
+  const redirect = useNavigate();
+
   const methods = useForm<IAuthInputs>({
     resolver: yupResolver(signUpFormValidator),
   });
 
-  const handleSignUp = (data: any) => {
-    console.log(data);
+  const handleSignUp = async (data: any) => {
+    const response = await supabase.auth.signUp({
+      options: { data: { "User Name": data.user_name } },
+      email: data.email,
+      password: data.password,
+    });
+    if (response.error) {
+      toast.error(response.error.message);
+      return;
+    }
     methods.reset();
+    redirect("/");
   };
 
   return (

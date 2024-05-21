@@ -1,17 +1,7 @@
 import { create } from "zustand";
+import { IToggleUserInfoFormsState } from "../interface/IToggleUserInfoFormsState";
 
-interface ToggleUserInfoFormsState {
-  toggleUserInfoForms: {
-    user_name: boolean;
-    password: boolean;
-    date_of_birth: boolean;
-  };
-  setToggleUserInfoForms: (
-    forms: Partial<ToggleUserInfoFormsState["toggleUserInfoForms"]>
-  ) => void;
-}
-
-export const useToggleUserInfoForms = create<ToggleUserInfoFormsState>(
+export const useToggleUserInfoForms = create<IToggleUserInfoFormsState>(
   (set) => ({
     toggleUserInfoForms: {
       user_name: false,

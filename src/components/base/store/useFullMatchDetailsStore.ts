@@ -115,12 +115,14 @@ const initialState = {
   },
 };
 
-export const useFullMatchDetailsStore = create<IFullMatchDetailsStore>((set) => ({
-  ...initialState,
+export const useFullMatchDetailsStore = create<IFullMatchDetailsStore>(
+  (set) => ({
+    ...initialState,
 
-  setFullMatchDetailsFound: (matchFound: ILeagueMatch) =>
-    set((state) => ({
-      ...state,
-      fullMatchDetailsFound: matchFound,
-    })),
-}));
+    setFullMatchDetailsFound: (matchFound: ILeagueMatch) =>
+      set((state) => ({
+        ...state,
+        fullMatchDetailsFound: matchFound,
+      })),
+  })
+);

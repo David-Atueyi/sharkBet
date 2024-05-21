@@ -27,6 +27,7 @@ export const Input = ({
         id={id}
         maxLength={maxLength}
         {...register(name)}
+        onChange={(e) => register(name).onChange(e)}
       />
       {type === "password" ? (
         <button

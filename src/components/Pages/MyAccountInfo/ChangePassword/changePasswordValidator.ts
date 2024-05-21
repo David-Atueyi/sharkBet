@@ -1,27 +1,37 @@
-
 import * as yup from "yup";
 
 export const changePasswordValidator = yup.object({
   old_password: yup
     .string()
-    .required("Old password is required")
-    .min(5, "Old password must be at least 5 characters")
-    .matches(/[a-z]/, "Old password must contain at least one lowercase letter")
-    .matches(/[A-Z]/, "Old password must contain at least one uppercase letter")
-    .matches(/\d/, "Old password must contain at least one number"),
+    .required("Please enter your old password.")
+    .min(5, "Your old password must be at least 5 characters long.")
+    .matches(
+      /[a-z]/,
+      "Your old password must contain at least one lowercase letter."
+    )
+    .matches(
+      /[A-Z]/,
+      "Your old password must contain at least one uppercase letter."
+    )
+    .matches(/\d/, "Your old password must contain at least one number."),
   new_password: yup
     .string()
-    .required("New password is required")
-    .min(5, "New password must be at least 5 characters")
-    .matches(/[a-z]/, "New password must contain at least one lowercase letter")
-    .matches(/[A-Z]/, "New password must contain at least one uppercase letter")
-    .matches(/\d/, "New password must contain at least one number"),
+    .required("Please enter a new password.")
+    .min(5, "Your new password must be at least 5 characters long.")
+    .matches(
+      /[a-z]/,
+      "Your new password must contain at least one lowercase letter."
+    )
+    .matches(
+      /[A-Z]/,
+      "Your new password must contain at least one uppercase letter."
+    )
+    .matches(/\d/, "Your new password must contain at least one number."),
   confirm_new_password: yup
     .string()
-    .required("New password is required")
-    .min(5, "New password must be at least 5 characters")
-    .matches(/[a-z]/, "New password must contain at least one lowercase letter")
-    .matches(/[A-Z]/, "New password must contain at least one uppercase letter")
-    .matches(/\d/, "New password must contain at least one number"),
+    .required("Please confirm your new password.")
+    .oneOf(
+      [yup.ref("new_password")],
+      "The new passwords you entered do not match. Please try again."
+    ),
 });
-

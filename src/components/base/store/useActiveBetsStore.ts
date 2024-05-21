@@ -1,23 +1,5 @@
 import { create } from "zustand";
-import { SelectedBet } from "../interface/IBetStore";
-
-interface IActiveBets {
-  activeBets: {
-    selectedMatches: SelectedBet[];
-    date: string;
-    time: string;
-    amount: string;
-    toReturn: string;
-  }[];
-  setActiveBets: (
-    selectedMatches: SelectedBet[],
-    date: string,
-    time: string,
-    amount: string,
-    toReturn: string
-  ) => void;
-  removeActiveBet: (date: string, time: string, amount: string) => void;
-}
+import { IActiveBets } from "../interface/IActiveBets";
 
 export const useActiveBetsStore = create<IActiveBets>((set) => ({
   activeBets: [],

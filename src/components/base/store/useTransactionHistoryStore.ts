@@ -1,23 +1,5 @@
 import { create } from "zustand";
-
-interface transactionHistory {
-  transactionAmount: string;
-  transactionType: string;
-  transactionDate: string;
-  transactionTime: string;
-  transactionStatus: string;
-}
-
-interface IUseTransactionHistoryStore {
-  transactionHistory: transactionHistory[];
-  setTransactionHistory: (
-    transactionAmount: string,
-    transactionType: string,
-    transactionDate: string,
-    transactionTime: string,
-    transactionStatus: string
-  ) => void;
-}
+import { IUseTransactionHistoryStore } from "../interface/IUseTransactionHistoryStore";
 
 export const useTransactionHistoryStore = create<IUseTransactionHistoryStore>(
   (set) => ({

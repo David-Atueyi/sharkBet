@@ -1,9 +1,5 @@
 import { create } from "zustand";
-
-interface IUseGameUtilities {
-  activeLeagueIndex: number;
-  setActiveLeagueIndex: (index: number) => void;
-}
+import { IUseGameUtilities } from "../interface/IUseGameUtilities";
 
 export const useGamesUtilities = create<IUseGameUtilities>((set) => ({
   activeLeagueIndex: 0,
