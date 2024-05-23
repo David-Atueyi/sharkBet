@@ -5,6 +5,8 @@ import { useTransactionHistoryStore } from "../store/useTransactionHistoryStore"
 import { formattedDate } from "../funcs/date";
 import { formattedTime } from "../funcs/time";
 import { useActiveBetsStore } from "../store/useActiveBetsStore";
+import { useUserIsActive } from "../store/useUserIsActive";
+import { toast } from "sonner";
 
 export const useHandleBetslip = () => {
   const [betTabs, setBetTabs] = useState<{ tabOne: boolean; tabTwo: boolean }>({
@@ -20,6 +22,10 @@ export const useHandleBetslip = () => {
     clearSelectedBets: state.clearSelectedBets,
   }));
 
+  const { userIsActive } = useUserIsActive((state) => ({
+    userIsActive: state.userIsActive,
+  }));
+
   const { accountBalance, setAccountBalance } = useAccountBalance((state) => ({
     accountBalance: state.accountBalance,
     setAccountBalance: state.setAccountBalance,
@@ -29,7 +35,7 @@ export const useHandleBetslip = () => {
     setTransactionHistory: state.setTransactionHistory,
   }));
 
-  const {setActiveBets } = useActiveBetsStore((state) => ({
+  const { setActiveBets } = useActiveBetsStore((state) => ({
     setActiveBets: state.setActiveBets,
   }));
 
@@ -56,8 +62,11 @@ export const useHandleBetslip = () => {
   const placeBet = () => {
     const bet = Number(betAmount);
     const balance = Number(accountBalance);
-
-    bet < 10 || bet > 3000000
+    !userIsActive
+      ? toast.error(
+          "You are not signed in,create an account if you don't have an account"
+        )
+      : bet < 10 || bet > 3000000
       ? setError("Amount must be between 10 to 3000000")
       : bet > balance
       ? setError("Insufficient balance. Top up")

@@ -5,6 +5,7 @@ import { BetSlipMobileAndTabletView } from "../components/Global/BetSlip/BetSlip
 import { useLayoutEffect } from "react";
 import { LeftSideSection } from "./LeftSideSection";
 import { RightSideSection } from "./RightSideSection";
+import { Toaster } from "sonner";
 
 export const GlobalPageLayout = () => {
   const { pathname } = useLocation();
@@ -34,6 +35,7 @@ export const GlobalPageLayout = () => {
         {/*  */}
       </main>
       <GeneralFooterLayout />
+      <Toaster closeButton={true} richColors />
     </div>
   );
 };

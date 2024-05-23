@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { GeneralFooterLayout } from "../components/Global/Layout/GeneralFooterLayout";
 import { GeneralHeaderLayout } from "../components/Global/Layout/GeneralHeaderLayout";
 import { UserInfoLeftSideSection } from "./UserInfoLeftSideSection";
+import { Toaster } from "sonner";
 
 export const GeneralUserInfoLayout = () => {
   return (
@@ -16,6 +17,7 @@ export const GeneralUserInfoLayout = () => {
         </div>
       </main>
       <GeneralFooterLayout />
+      <Toaster closeButton={true} richColors />
     </div>
   );
 };

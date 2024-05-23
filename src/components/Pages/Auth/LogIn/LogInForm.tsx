@@ -3,19 +3,47 @@ import { IAuthInputs } from "../../../base/interface/IAuthInputs";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../../../Global/FormContent/Input";
 import { Button } from "../../../Global/FormContent/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logInFormValidator } from "./logInFormValidator";
+import { useMutation } from "@tanstack/react-query";
+import supabase from "../../../../config/superBaseClient";
+import { toast } from "sonner";
+
+type ILogIn = Omit<IAuthInputs, "user_name" | "date_of_birth">;
 
 export const LogInForm = () => {
-  const methods = useForm<Omit<IAuthInputs, "email" | "date_of_birth">>({
+  const redirect = useNavigate();
+
+  const methods = useForm<ILogIn>({
     resolver: yupResolver(logInFormValidator),
   });
 
+  const { mutate } = useMutation({
+    mutationFn: async (data: ILogIn) => {
+      const response = await supabase.auth.signInWithPassword({
+        email: data.email,
+        password: data.password,
+      });
+      if (response.error) {
+        throw new Error(response.error.message);
+      }
+      return response;
+    },
+
+    onError: (error: any) => {
+      toast.error(error.message);
+    },
+
+    onSuccess: () => {
+      methods.reset();
+      redirect("/");
+    },
+  });
+
   const handleLogIn = (data: any) => {
-    console.log(data);
-    methods.reset();
+    mutate(data);
   };
-  
+
   return (
     <FormProvider {...methods}>
       <form
@@ -25,19 +53,19 @@ export const LogInForm = () => {
         <p className="text-center uppercase text-xl">log in</p>
         {/*  */}
         <div>
-          <label className=" capitalize text-zinc-0" htmlFor="user_name">
-            user name
+          <label className=" capitalize text-zinc-0" htmlFor="email">
+            email
           </label>
           <Input
-            name="user_name"
+            name="email"
             type="text"
-            placeholder="user name"
-            id="user_name"
+            placeholder="email"
+            id="email"
             extraStyle="mobile:w-[36vh] tablet:w-[300px]"
           />
-          {methods.formState.errors.user_name && (
+          {methods.formState.errors.email && (
             <p className="text-right mt-1 mobile:text-[12px] tablet:text-sm text-rose-5">
-              {methods.formState.errors?.user_name.message}
+              {methods.formState.errors?.email.message}
             </p>
           )}
         </div>

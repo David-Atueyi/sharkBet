@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAccountBalanceVisibility } from "../../base/store/useAccountBalanceVisibility";
 import { useUserInfoDropDownVisibility } from "../../base/store/useUserInfoDropDownVisibility";
 import { ChevronRight } from "../Icons/ChevronRight";
@@ -7,15 +7,22 @@ import { EyeOpenIcon } from "../Icons/EyeOpenIcon";
 import { GoodShield } from "../Icons/GoodShield";
 import { XIcon } from "../Icons/XIcon";
 import { useAccountBalance } from "../../base/store/useAccountBalance";
+import supabase from "../../../config/superBaseClient";
+import { useUserIsActive } from "../../base/store/useUserIsActive";
+import { useEffect, useState } from "react";
+import { getAuthData } from "../../base/utility/getAuthData";
+import { toast } from "sonner";
 
 export const UserInfoContent = () => {
-  const {
-    accountBalanceVisibility,
-    setAccountBalanceVisibility,
-  } = useAccountBalanceVisibility((state) => ({
-    accountBalanceVisibility: state.accountBalanceVisibility,
-    setAccountBalanceVisibility: state.setAccountBalanceVisibility,
-  }));
+  const redirect = useNavigate();
+
+  const [ username, setUserName ] = useState<string>();
+
+  const { accountBalanceVisibility, setAccountBalanceVisibility } =
+    useAccountBalanceVisibility((state) => ({
+      accountBalanceVisibility: state.accountBalanceVisibility,
+      setAccountBalanceVisibility: state.setAccountBalanceVisibility,
+    }));
 
   const { isVisible, setIsVisible } = useUserInfoDropDownVisibility(
     (state) => ({
@@ -24,9 +31,32 @@ export const UserInfoContent = () => {
     })
   );
 
-    const { accountBalance } = useAccountBalance((state) => ({
-      accountBalance: state.accountBalance,
-    }));
+  const { setUserIsActive } = useUserIsActive((state) => ({
+    setUserIsActive: state.setUserIsActive,
+  }));
+
+  const { accountBalance } = useAccountBalance((state) => ({
+    accountBalance: state.accountBalance,
+  }));
+
+  const handleLogOut = async () => {
+    setIsVisible(false, true);
+    await supabase.auth.signOut();
+    toast.success("You have been logged out successfully");
+    redirect("/auth/log-in");
+    setUserIsActive(false);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getAuthData();
+      if (data?.user.user_metadata.username) {
+        setUserName(data?.user.user_metadata.username);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="relative">
@@ -44,7 +74,7 @@ export const UserInfoContent = () => {
                 className="flex gap-1 capitalize w-full items-center "
               >
                 <p>hi,</p>
-                <p>david</p>
+                <p>{username}</p>
                 <GoodShield extraStyle="pc:hidden" />
                 <ChevronRight extraStyle="text-[12px] pc:hidden" />
               </Link>
@@ -131,7 +161,7 @@ export const UserInfoContent = () => {
           </div>
           <div className="px-[13px] pb-7 pc:pb-0 pc:px-0">
             <button
-              onClick={() => setIsVisible(false, true)}
+              onClick={handleLogOut}
               className="capitalize font-bold h-[40px] pc:h-[45px] w-full border-2 pc:border-0 pc:border-t-4  border-blue-7 pc:border-zinc-3 text-blue-6 pc:text-zinc-9 rounded-full pc:rounded-none"
             >
               log out

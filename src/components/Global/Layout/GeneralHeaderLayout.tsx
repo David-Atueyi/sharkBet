@@ -2,8 +2,27 @@ import { NavLink } from "react-router-dom";
 import { MenuDropDown } from "../DropDown/MenuDropDown";
 import { LogInFormPcView } from "../../Pages/Auth/LogIn/LogInFormPcView";
 import { UserInfoDropDown } from "../DropDown/UserInfoDropDown";
+import { useEffect } from "react";
+import { getAuthData } from "../../base/utility/getAuthData";
+import { useUserIsActive } from "../../base/store/useUserIsActive";
 
 export const GeneralHeaderLayout = () => {
+  const { userIsActive, setUserIsActive } = useUserIsActive((state) => ({
+    userIsActive: state.userIsActive,
+    setUserIsActive: state.setUserIsActive,
+  }));
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getAuthData();
+      if (data) {
+        setUserIsActive(true);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="flex items-center justify-between mt-4">
       <div className="pc:hidden">
@@ -20,15 +39,19 @@ export const GeneralHeaderLayout = () => {
       </div>
       <div className="flex items-center">
         <UserInfoDropDown />
-        <div className="flex capitalize items-center mobile:gap-2 tablet:gap-3 mobile:hidden">
-          <LogInFormPcView />
-          <NavLink
-            to={"/auth/sign-up"}
-            className="h-[30px] text-xs bg-blue-6 p-[11px] text-zinc-0 font-bold rounded-md mobile:p-[6px] pc:px-[13px] pc:py-[7px]"
+        {!userIsActive && (
+          <div
+            className={`flex capitalize items-center mobile:gap-2 tablet:gap-3`}
           >
-            sign up
-          </NavLink>
-        </div>
+            <LogInFormPcView />
+            <NavLink
+              to={"/auth/sign-up"}
+              className="h-[30px] text-xs bg-blue-6 p-[11px] text-zinc-0 font-bold rounded-md mobile:p-[6px] pc:px-[13px] pc:py-[7px]"
+            >
+              sign up
+            </NavLink>
+          </div>
+        )}
       </div>
     </div>
   );

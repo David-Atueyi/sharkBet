@@ -1,42 +1,62 @@
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { Input } from "../../../Global/FormContent/Input";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LockReset } from "../../../Global/Icons/LockReset";
 import { ChevronRight } from "../../../Global/Icons/ChevronRight";
 import { changePasswordValidator } from "./changePasswordValidator";
-import { useToggleUserInfoForms } from "../../../base/store/useToggleUserInfoForms";
+import { useToggleUserDateOfBirth } from "../../../base/store/useToggleUserDateOfBirth";
+import { toast } from "sonner";
+import supabase from "../../../../config/superBaseClient";
+import { useMutation } from "@tanstack/react-query";
 
 interface FormData {
-  old_password: string;
   new_password: string;
   confirm_new_password: string;
 }
 
 export const ChangePassword = () => {
+
   const methods = useForm<FormData>({
     resolver: yupResolver(changePasswordValidator),
   });
-  
-  const { toggleUserInfoForms, setToggleUserInfoForms } =
-    useToggleUserInfoForms((state) => ({
-      toggleUserInfoForms: state.toggleUserInfoForms,
-      setToggleUserInfoForms: state.setToggleUserInfoForms,
-    }));
-  
-  const isFormOpen = toggleUserInfoForms.password;
 
-  const handleSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data);
-    methods.reset();
+  const { toggleUserDateOfBirth, setToggleUserDateOfBirth } =
+    useToggleUserDateOfBirth((state) => ({
+      toggleUserDateOfBirth: state.toggleUserDateOfBirth,
+      setToggleUserDateOfBirth: state.setToggleUserDateOfBirth,
+    }));
+
+  const { mutate } = useMutation({
+    mutationFn: async (data: FormData) => {
+      const response = await supabase.auth.updateUser({
+        password: data.confirm_new_password,
+      });
+
+      if (response.error) {
+        throw new Error(response.error.message);
+      }
+      return response;
+    },
+
+    onError: (error: any) => {
+      toast.error(error.message);
+    },
+
+    onSuccess: () => {
+      toast.success("password changed successfully");
+      methods.reset();
+    },
+  });
+
+  const handleSubmit = async (data: FormData) => {
+    mutate(data);
   };
 
-   const toggleForm = () => {
-     setToggleUserInfoForms({
-       user_name: false,
-       password: !isFormOpen,
-       date_of_birth: false,
-     });
-   };
+  const toggleForm = () => {
+    !toggleUserDateOfBirth
+      ? setToggleUserDateOfBirth(true)
+      : setToggleUserDateOfBirth(false);
+  };
 
   return (
     <>
@@ -54,7 +74,7 @@ export const ChangePassword = () => {
           <p>Edit</p>{" "}
           <ChevronRight
             extraStyle={`text-[12px] ${
-              isFormOpen
+              toggleUserDateOfBirth
                 ? "rotate-90 transition-all duration-200 ease-linear delay-50"
                 : "rotate-0 transition-all duration-200 ease-linear delay-50"
             }`}
@@ -65,37 +85,14 @@ export const ChangePassword = () => {
         <form
           onSubmit={methods.handleSubmit(handleSubmit)}
           className={`flex flex-col gap-2 rounded-b-lg border-zinc-6 ${
-            isFormOpen
+            toggleUserDateOfBirth
               ? " max-h-screen transition-all duration-700 ease-linear delay-150 border-b-2 border-x-2"
               : " max-h-0 transition-all duration-500 ease-linear delay-50  overflow-hidden"
           }`}
         >
           <div
-            className={`px-3 pt-2 ${
-              isFormOpen
-                ? "visible transition-all duration-300 ease delay-500"
-                : "invisible transition-all duration-200 ease delay-300"
-            }`}
-          >
-            <label className="capitalize text-zinc-0" htmlFor="old_password">
-              old password
-            </label>
-            <Input
-              name="old_password"
-              type="text"
-              placeholder="old password"
-              id="old_password"
-              extraStyle="w-[100%]"
-            />
-            {methods.formState.errors.old_password && (
-              <p className="text-right mt-1 mobile:text-[12px] tablet:text-sm text-rose-5">
-                {methods.formState.errors?.old_password.message}
-              </p>
-            )}
-          </div>
-          <div
             className={`px-3 ${
-              isFormOpen
+              toggleUserDateOfBirth
                 ? "visible transition-all duration-300 ease delay-500"
                 : "invisible transition-all duration-200 ease delay-300"
             }`}
@@ -118,7 +115,7 @@ export const ChangePassword = () => {
           </div>
           <div
             className={`px-3 ${
-              isFormOpen
+              toggleUserDateOfBirth
                 ? "visible transition-all duration-300 ease delay-500"
                 : "invisible transition-all duration-200 ease delay-300"
             }`}
@@ -144,7 +141,7 @@ export const ChangePassword = () => {
           </div>
           <button
             className={`bg-blue-7 p-2 mx-3 mb-2 capitalize font-bold mobile:w-[40%] tablet:w-[19%] rounded place-self-end ${
-              isFormOpen
+              toggleUserDateOfBirth
                 ? "visible transition-all duration-300 ease delay-500"
                 : "invisible transition-all duration-300 ease delay-500"
             }`}

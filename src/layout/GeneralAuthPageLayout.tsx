@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Footer } from "../components/Pages/Auth/Layout/Footer";
 import { Header } from "../components/Pages/Auth/Layout/Header";
+import { Toaster } from "sonner";
 
 export const GeneralAuthPageLayout = () => {
   return (
@@ -10,6 +11,7 @@ export const GeneralAuthPageLayout = () => {
         <Outlet />
       </main>
       <Footer />
+      <Toaster closeButton={true} richColors />
     </div>
   );
 };
