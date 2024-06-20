@@ -42,69 +42,69 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
           onClick={() =>
             handleClick(
               gameOdds.id,
-              gameOdds.teams.home.name,
-              gameOdds.teams.away.name,
-              gameOdds.teams.home.market.homeWin.odd,
-              gameOdds.teams.home.market.homeWin.marketType,
-              gameOdds.teams.home.market.homeWin.oddName,
-              gameOdds.matchDate.date,
-              gameOdds.matchDate.time
+              gameOdds.homeTeamName,
+              gameOdds.awayTeamName,
+              gameOdds.market[0].teamsOdds[0].homeOdd1x2,
+              gameOdds.market[0].teamsOdds[0].homeMarketType1x2,
+              gameOdds.market[0].teamsOdds[0].homeOddName1x2,
+              gameOdds.matchDate,
+              gameOdds.matchTime
             )
           }
           extraStyle="mobile:w-[79px] pc:w-[77px] h-[25px] ml-[4px] text-[12px] px-[8px] rounded-[4px] pt-1"
           contentOne="1"
-          contentTwo={gameOdds.teams?.home.market.homeWin.odd}
+          contentTwo={gameOdds.market[0].teamsOdds[0].homeOdd1x2}
           isClicked={isButtonClicked(
-            gameOdds.teams.home.name,
-            gameOdds.teams.away.name,
-            gameOdds.teams.home.market.homeWin.oddName,
-            gameOdds.teams.home.market.homeWin.marketType
+            gameOdds.homeTeamName,
+            gameOdds.awayTeamName,
+            gameOdds.market[0].teamsOdds[0].homeOddName1x2,
+            gameOdds.market[0].teamsOdds[0].homeMarketType1x2
           )}
         />
         <OddsButton
           onClick={() =>
             handleClick(
               gameOdds.id,
-              gameOdds.teams.home.name,
-              gameOdds.teams.away.name,
-              gameOdds.generalMarkets.fullTimeDraw.odd,
-              gameOdds.generalMarkets.fullTimeDraw.marketType,
-              gameOdds.generalMarkets.fullTimeDraw.oddName,
-              gameOdds.matchDate.date,
-              gameOdds.matchDate.time
+              gameOdds.homeTeamName,
+              gameOdds.awayTeamName,
+              gameOdds.market[0].generalMarket[0].fullTimeResult[0].fullTimeDrawOdd,
+              gameOdds.market[0].generalMarket[0].fullTimeResult[0].fullTimeDrawMarketType,
+              gameOdds.market[0].generalMarket[0].fullTimeResult[0].fullTimeDrawOddName,
+              gameOdds.matchDate,
+              gameOdds.matchTime
             )
           }
           extraStyle="mobile:w-[79px] pc:w-[77px] h-[25px] ml-[4px] text-[12px] px-[8px] rounded-[4px] pt-1"
           contentOne="X"
-          contentTwo={gameOdds.generalMarkets?.fullTimeDraw.odd}
+          contentTwo={gameOdds.market[0].generalMarket[0].fullTimeResult[0].fullTimeDrawOdd}
           isClicked={isButtonClicked(
-            gameOdds.teams.home.name,
-            gameOdds.teams.away.name,
-            gameOdds.generalMarkets.fullTimeDraw.oddName,
-            gameOdds.generalMarkets.fullTimeDraw.marketType
+            gameOdds.homeTeamName,
+            gameOdds.awayTeamName,
+            gameOdds.market[0].generalMarket[0].fullTimeResult[0].fullTimeDrawOddName,
+            gameOdds.market[0].generalMarket[0].fullTimeResult[0].fullTimeDrawMarketType
           )}
         />
         <OddsButton
           onClick={() =>
             handleClick(
               gameOdds.id,
-              gameOdds.teams.home.name,
-              gameOdds.teams.away.name,
-              gameOdds.teams.away.market.awayWin.odd,
-              gameOdds.teams.away.market.awayWin.marketType,
-              gameOdds.teams.away.market.awayWin.oddName,
-              gameOdds.matchDate.date,
-              gameOdds.matchDate.time
+              gameOdds.homeTeamName,
+              gameOdds.awayTeamName,
+              gameOdds.market[0].teamsOdds[0].awayOdd1x2,
+              gameOdds.market[0].teamsOdds[0].awayMarketType1x2,
+              gameOdds.market[0].teamsOdds[0].awayOddName1x2,
+              gameOdds.matchDate,
+              gameOdds.matchTime
             )
           }
           extraStyle="mobile:w-[79px] pc:w-[77px] h-[25px] ml-[4px] text-[12px] px-[8px] rounded-[4px] pt-1"
           contentOne="2"
-          contentTwo={gameOdds.teams?.away.market.awayWin.odd}
+          contentTwo={gameOdds.market[0].teamsOdds[0].awayOdd1x2}
           isClicked={isButtonClicked(
-            gameOdds.teams.home.name,
-            gameOdds.teams.away.name,
-            gameOdds.teams.away.market.awayWin.oddName,
-            gameOdds.teams.away.market.awayWin.marketType
+            gameOdds.homeTeamName,
+            gameOdds.awayTeamName,
+            gameOdds.market[0].teamsOdds[0].awayOddName1x2,
+            gameOdds.market[0].teamsOdds[0].awayMarketType1x2
           )}
         />
       </div>

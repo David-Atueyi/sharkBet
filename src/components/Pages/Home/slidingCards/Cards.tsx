@@ -1,16 +1,22 @@
-import All from "../../../base/dummyDatas/allMatches.json";
-import { createContext, useState } from "react";
+import {  useEffect, useState } from "react";
 import { HeadingForPc } from "./HeadingForPc";
 import leagues from "../../../base/dummyDatas/leagueLogo.json";
-import { ILeagueMatch } from "../../../base/interface/ILeagueMatch";
 import { Card } from "./Card";
 import { useCardUtilities } from "../../../base/store/useCardUtilities";
 import { LeagueTabs } from "./LeagueTabs";
-
-export const cardContext = createContext<any>({});
+import { getMatchesFromDatabase } from "../../../base/funcs/getMatchesFromDatabase";
+import { Match, useMatchesFromDataBase } from "../../../base/store/useMatchesFromDataBase";
 
 export const Cards = () => {
-  const [allLeague, setAllLeague] = useState<ILeagueMatch[]>(All);
+  const { matchesFromDataBase } = useMatchesFromDataBase((state) => ({
+    matchesFromDataBase: state.matchesFromDataBase,
+  }));
+
+  useEffect(() => {
+    getMatchesFromDatabase();
+  }, []);
+
+  const [allLeague, setAllLeague] = useState<Match[]>([]);
   const { updateHover, resetHover, setActiveIndex } = useCardUtilities(
     (state) => ({
       updateHover: state.updateHover,
@@ -19,14 +25,18 @@ export const Cards = () => {
     })
   );
 
+  useEffect(() => {
+    setAllLeague(matchesFromDataBase);
+  }, [matchesFromDataBase]);
+
+ 
   const handleLeagueClicked = (index: number) => {
     setActiveIndex(index);
-    //
-    const filteredMatches = All.filter(
+    const filteredMatches = matchesFromDataBase.filter(
       (match) => match.country === leagues[index].country
     );
     leagues[index].country === "All"
-      ? setAllLeague(All)
+      ? setAllLeague(matchesFromDataBase)
       : setAllLeague(filteredMatches);
   };
 
@@ -36,12 +46,8 @@ export const Cards = () => {
       onMouseEnter={updateHover}
       onMouseLeave={resetHover}
     >
-      {/*  */}
       <LeagueTabs handleLeagueClicked={handleLeagueClicked} />
-      {/*  */}
       <HeadingForPc />
-      {/*  */}
-
       <Card datas={allLeague} />
     </div>
   );

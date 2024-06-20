@@ -3,6 +3,7 @@ import { Cards } from "./slidingCards/Cards";
 import { HeroImageSlider } from "./HeroImageSlider";
 
 export const HomePage = () => {
+  
   return (
     <div>
       <div>
@@ -14,6 +15,8 @@ export const HomePage = () => {
       <div>
         <Games />
       </div>
+     
     </div>
   );
 };
+// matchesFromDataBase && matchesFromDataBase.length > 0
