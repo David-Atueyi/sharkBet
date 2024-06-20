@@ -1,12 +1,15 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { HeadingForPc } from "./HeadingForPc";
 import leagues from "../../../base/dummyDatas/leagueLogo.json";
 import { Card } from "./Card";
 import { useCardUtilities } from "../../../base/store/useCardUtilities";
 import { LeagueTabs } from "./LeagueTabs";
 import { getMatchesFromDatabase } from "../../../base/funcs/getMatchesFromDatabase";
-import { Match, useMatchesFromDataBase } from "../../../base/store/useMatchesFromDataBase";
-import { LoadingSkeletons } from "./SlideCardLoadingSkeleting";
+import {
+  Match,
+  useMatchesFromDataBase,
+} from "../../../base/store/useMatchesFromDataBase";
+import { SlideCardLoadingSkeletons } from "./SlideCardLoadingSkeletons";
 
 export const Cards = () => {
   const { matchesFromDataBase } = useMatchesFromDataBase((state) => ({
@@ -30,7 +33,6 @@ export const Cards = () => {
     setAllLeague(matchesFromDataBase);
   }, [matchesFromDataBase]);
 
- 
   const handleLeagueClicked = (index: number) => {
     setActiveIndex(index);
     const filteredMatches = matchesFromDataBase.filter(
@@ -50,7 +52,7 @@ export const Cards = () => {
       <LeagueTabs handleLeagueClicked={handleLeagueClicked} />
       <HeadingForPc />
       <Card datas={allLeague} />
-      <LoadingSkeletons/>
+      <SlideCardLoadingSkeletons />
     </div>
   );
 };
