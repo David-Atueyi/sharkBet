@@ -1,11 +1,11 @@
 // IBetStore.ts
 export interface SelectedBet {
-  id:number
+  id:string
   homeClub: string;
   awayClub: string;
-  odd: number;
-  marketType: string;
-  oddName: string;
+  odd: number|undefined;
+  marketType: string|undefined;
+  oddName: string|undefined;
   date:string;
   time: string;
 }
@@ -13,12 +13,12 @@ export interface SelectedBet {
 export interface IBetStore {
   selectedBetsArray: SelectedBet[];
   setSelectedBet: (
-    id:number,
+    id:string,
     homeClub: string,
     awayClub: string,
-    odd: number,
-    marketType: string,
-    oddName: string,
+    odd: number|undefined,
+    marketType: string|undefined,
+    oddName: string|undefined,
     date: string,
     time: string,
   ) => void;

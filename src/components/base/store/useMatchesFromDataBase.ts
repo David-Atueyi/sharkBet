@@ -87,18 +87,19 @@ interface TeamsOdds {
 
 interface Market {
   teamsOdds: TeamsOdds[];
-  generalMarket: GeneralMarket[];
+  generalMarkets: GeneralMarket[];
 }
 
 export interface Match {
   id: string;
   createdAt: string;
   hotMatch: boolean;
+  popularity: number;
   game: string;
   country: string;
   league: string;
-  matchDate: string;
-  matchTime: string;
+  date: string;
+  time: string;
   homeTeamLogo: string;
   homeTeamName: string;
   awayTeamLogo: string;

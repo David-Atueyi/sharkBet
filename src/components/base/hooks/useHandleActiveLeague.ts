@@ -1,11 +1,14 @@
-import { useState } from "react";
-import { ILeagueMatch } from "../interface/ILeagueMatch";
+import { useEffect, useState } from "react";
 import { leagues } from "../../Global/Games/leagues";
 import { useGamesUtilities } from "../store/useGamesUtilities";
-import All from "../../base/dummyDatas/allMatches.json";
+import { Match, useMatchesFromDataBase } from "../store/useMatchesFromDataBase";
 
 export const useHandleActiveLeague = () => {
-  const [allLeague, setAllLeague] = useState<ILeagueMatch[]>(All);
+  const { matchesFromDataBase } = useMatchesFromDataBase((state) => ({
+    matchesFromDataBase: state.matchesFromDataBase,
+  }));
+
+  const [allLeague, setAllLeague] = useState<Match[]>(matchesFromDataBase);
   const [leagueTitle, setLeagueTitle] = useState<{
     country: string;
     leagueName: string;
@@ -16,6 +19,10 @@ export const useHandleActiveLeague = () => {
   const { setActiveLeagueIndex } = useGamesUtilities((state) => ({
     setActiveLeagueIndex: state.setActiveLeagueIndex,
   }));
+
+  useEffect(() => {
+    setAllLeague(matchesFromDataBase);
+  }, [matchesFromDataBase]);
 
   const handleButtonClick = (
     index: number,
@@ -29,11 +36,11 @@ export const useHandleActiveLeague = () => {
       leagueName: title.leagueName,
     });
     //
-    const filteredMatches = All.filter(
+    const filteredMatches = matchesFromDataBase.filter(
       (match) => match.country === leagues[index].country
     );
     leagues[index].country === "All"
-      ? setAllLeague(All)
+      ? setAllLeague(matchesFromDataBase)
       : setAllLeague(filteredMatches);
   };
 

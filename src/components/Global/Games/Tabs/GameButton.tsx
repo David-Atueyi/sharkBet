@@ -4,7 +4,7 @@ export const GameButton = ({
   onClick,
   isClicked,
 }: {
-  buttonName: number | string;
+  buttonName: number | undefined;
   extraStyle?: string;
   onClick: () => void;
   isClicked?: boolean;

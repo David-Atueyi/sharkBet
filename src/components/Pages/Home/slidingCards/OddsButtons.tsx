@@ -10,8 +10,8 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
   const isButtonClicked = (
     homeClub: string,
     awayClub: string,
-    oddName: string,
-    marketType: string
+    oddName: string | undefined,
+    marketType: string | undefined
   ) => {
     return selectedBetsArray.some(
       (bet) =>
@@ -23,16 +23,25 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
   };
 
   const handleClick = (
-    id:number,
+    id: string,
     homeClub: string,
     awayClub: string,
-    odd: number,
-    marketType: string,
-    oddName: string,
+    odd: number | undefined,
+    marketType: string | undefined,
+    oddName: string | undefined,
     date: string,
     time: string
   ) => {
-    setSelectedBet(id,homeClub, awayClub, odd, marketType, oddName, date, time);
+    setSelectedBet(
+      id,
+      homeClub,
+      awayClub,
+      odd,
+      marketType,
+      oddName,
+      date,
+      time
+    );
   };
 
   return (
@@ -47,8 +56,8 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
               gameOdds.market[0].teamsOdds[0].homeOdd1x2,
               gameOdds.market[0].teamsOdds[0].homeMarketType1x2,
               gameOdds.market[0].teamsOdds[0].homeOddName1x2,
-              gameOdds.matchDate,
-              gameOdds.matchTime
+              gameOdds.date,
+              gameOdds.time
             )
           }
           extraStyle="mobile:w-[79px] pc:w-[77px] h-[25px] ml-[4px] text-[12px] px-[8px] rounded-[4px] pt-1"
@@ -67,21 +76,29 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
               gameOdds.id,
               gameOdds.homeTeamName,
               gameOdds.awayTeamName,
-              gameOdds.market[0].generalMarket[0].fullTimeResult[0].fullTimeDrawOdd,
-              gameOdds.market[0].generalMarket[0].fullTimeResult[0].fullTimeDrawMarketType,
-              gameOdds.market[0].generalMarket[0].fullTimeResult[0].fullTimeDrawOddName,
-              gameOdds.matchDate,
-              gameOdds.matchTime
+              gameOdds.market[0].generalMarkets[0].fullTimeResult[0]
+                .fullTimeDrawOdd,
+              gameOdds.market[0].generalMarkets[0].fullTimeResult[0]
+                .fullTimeDrawMarketType,
+              gameOdds.market[0].generalMarkets[0].fullTimeResult[0]
+                .fullTimeDrawOddName,
+              gameOdds.date,
+              gameOdds.time
             )
           }
           extraStyle="mobile:w-[79px] pc:w-[77px] h-[25px] ml-[4px] text-[12px] px-[8px] rounded-[4px] pt-1"
           contentOne="X"
-          contentTwo={gameOdds.market[0].generalMarket[0].fullTimeResult[0].fullTimeDrawOdd}
+          contentTwo={
+            gameOdds.market[0].generalMarkets[0].fullTimeResult[0]
+              .fullTimeDrawOdd
+          }
           isClicked={isButtonClicked(
             gameOdds.homeTeamName,
             gameOdds.awayTeamName,
-            gameOdds.market[0].generalMarket[0].fullTimeResult[0].fullTimeDrawOddName,
-            gameOdds.market[0].generalMarket[0].fullTimeResult[0].fullTimeDrawMarketType
+            gameOdds.market[0].generalMarkets[0].fullTimeResult[0]
+              .fullTimeDrawOddName,
+            gameOdds.market[0].generalMarkets[0].fullTimeResult[0]
+              .fullTimeDrawMarketType
           )}
         />
         <OddsButton
@@ -93,8 +110,8 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
               gameOdds.market[0].teamsOdds[0].awayOdd1x2,
               gameOdds.market[0].teamsOdds[0].awayMarketType1x2,
               gameOdds.market[0].teamsOdds[0].awayOddName1x2,
-              gameOdds.matchDate,
-              gameOdds.matchTime
+              gameOdds.date,
+              gameOdds.time
             )
           }
           extraStyle="mobile:w-[79px] pc:w-[77px] h-[25px] ml-[4px] text-[12px] px-[8px] rounded-[4px] pt-1"

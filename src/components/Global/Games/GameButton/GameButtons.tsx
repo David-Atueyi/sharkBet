@@ -1,116 +1,82 @@
-import { ILeagueMatch } from "../../../base/interface/ILeagueMatch";
-import { useBetStore } from "../../../base/store/useBetStore";
+import { useHandleGamesButtonsUtilities } from "../../../base/hooks/useHandleGamesButtonsUtilities";
+import { Match } from "../../../base/store/useMatchesFromDataBase";
 import { GameButton } from "../Tabs/GameButton";
 
-export const GameButtons = ({ data }:{data: ILeagueMatch}) => {
-      const { setSelectedBet, selectedBetsArray } = useBetStore((state) => ({
-        setSelectedBet: state.setSelectedBet,
-        selectedBetsArray: state.selectedBetsArray,
-      }));
-
-      const isButtonClicked = (
-        homeClub: string,
-        awayClub: string,
-        oddName: string,
-        marketType: string
-      ) => {
-        return selectedBetsArray.some(
-          (bet) =>
-            bet.homeClub === homeClub &&
-            bet.awayClub === awayClub &&
-            bet.oddName === oddName &&
-            bet.marketType === marketType
-        );
-      };
-
-  const handleClick = (
-        id:number,
-        homeClub: string,
-        awayClub: string,
-        odd: number,
-        marketType: string,
-        oddName: string,
-        date: string,
-        time: string
-      ) => {
-        setSelectedBet(
-          id,
-          homeClub,
-          awayClub,
-          odd,
-          marketType,
-          oddName,
-          date,
-          time
-        );
-      };
-    
+export const GameButtons = ({ data }: { data: Match }) => {
+  const { isButtonClicked, handleClick } = useHandleGamesButtonsUtilities();
   return (
     <div className="flex justify-between text-center gap-3 items-center text-blue-6 text-[12px]">
       <div className="flex gap-[3px]">
         <GameButton
-          buttonName={data.teams.home.market.homeWin.odd}
+          buttonName={data.market[0].teamsOdds[0].homeOdd1x2}
           onClick={() =>
             handleClick(
               data.id,
-              data.teams.home.name,
-              data.teams.away.name,
-              data.teams.home.market.homeWin.odd,
-              data.teams.home.market.homeWin.marketType,
-              data.teams.home.market.homeWin.oddName,
-              data.matchDate.date,
-              data.matchDate.time
+              data.homeTeamName,
+              data.awayTeamName,
+              data.market[0].teamsOdds[0].homeOdd1x2,
+              data.market[0].teamsOdds[0].homeMarketType1x2,
+              data.market[0].teamsOdds[0].homeOddName1x2,
+              data.date,
+              data.time
             )
           }
           isClicked={isButtonClicked(
-            data.teams.home.name,
-            data.teams.away.name,
-            data.teams.home.market.homeWin.oddName,
-            data.teams.home.market.homeWin.marketType
+            data.homeTeamName,
+            data.awayTeamName,
+            data.market[0].teamsOdds[0].homeOddName1x2,
+            data.market[0].teamsOdds[0].homeMarketType1x2
           )}
         />
         {/*  */}
         <GameButton
-          buttonName={data.generalMarkets.fullTimeDraw.odd}
+          buttonName={
+            data.market[0].generalMarkets[0].fullTimeResult[0].fullTimeDrawOdd
+          }
           onClick={() =>
             handleClick(
               data.id,
-              data.teams.home.name,
-              data.teams.away.name,
-              data.generalMarkets.fullTimeDraw.odd,
-              data.generalMarkets.fullTimeDraw.marketType,
-              data.generalMarkets.fullTimeDraw.oddName,
-              data.matchDate.date,
-              data.matchDate.time
+              data.homeTeamName,
+              data.awayTeamName,
+              data.market[0].generalMarkets[0].fullTimeResult[0]
+                .fullTimeDrawOdd,
+              data.market[0].generalMarkets[0].fullTimeResult[0]
+                .fullTimeDrawMarketType,
+              data.market[0].generalMarkets[0].fullTimeResult[0]
+                .fullTimeDrawOddName,
+              data.date,
+              data.time
             )
           }
           isClicked={isButtonClicked(
-            data.teams.home.name,
-            data.teams.away.name,
-            data.generalMarkets.fullTimeDraw.oddName,
-            data.generalMarkets.fullTimeDraw.marketType
+            data.homeTeamName,
+            data.awayTeamName,
+            data.market[0].generalMarkets[0].fullTimeResult[0]
+              .fullTimeDrawOddName,
+            data.market[0].generalMarkets[0].fullTimeResult[0]
+              .fullTimeDrawMarketType
           )}
         />
         {/*  */}
         <GameButton
-          buttonName={data.teams.away.market.awayWin.odd}
+          buttonName={data.market[0].teamsOdds[0].awayOdd1x2}
           onClick={() =>
             handleClick(
               data.id,
-              data.teams.home.name,
-              data.teams.away.name,
-              data.teams.away.market.awayWin.odd,
-              data.teams.away.market.awayWin.marketType,
-              data.teams.away.market.awayWin.oddName,
-              data.matchDate.date,
-              data.matchDate.time
+              data.homeTeamName,
+              data.awayTeamName,
+              data.market[0].teamsOdds[0].awayOdd1x2,
+              data.market[0].teamsOdds[0].awayMarketType1x2,
+              data.market[0].teamsOdds[0].awayOddName1x2,
+              data.date,
+              data.time
             )
           }
           isClicked={isButtonClicked(
-            data.teams.home.name,
-            data.teams.away.name,
-            data.teams.away.market.awayWin.oddName,
-            data.teams.away.market.awayWin.marketType
+            data.homeTeamName,
+            data.awayTeamName,
+            data.market[0].teamsOdds[0].awayOddName1x2,
+            data.market[0].teamsOdds[0].awayMarketType1x2
           )}
         />
       </div>
@@ -120,50 +86,61 @@ export const GameButtons = ({ data }:{data: ILeagueMatch}) => {
         </button>
         {/*  */}
         <GameButton
-          buttonName={data.generalMarkets.overAndUnder.overGoals["0.5"].odd}
+          buttonName={
+            data.market[0].generalMarkets[0].overs[0].overZeroPointFiveOdd
+          }
           onClick={() =>
             handleClick(
               data.id,
-              data.teams.home.name,
-              data.teams.away.name,
-              data.generalMarkets.overAndUnder.overGoals["0.5"].odd,
-              data.generalMarkets.overAndUnder.overGoals["0.5"].marketType,
-              data.generalMarkets.overAndUnder.overGoals["0.5"].oddName,
-              data.matchDate.date,
-              data.matchDate.time
+              data.homeTeamName,
+              data.awayTeamName,
+              data.market[0].generalMarkets[0].overs[0].overZeroPointFiveOdd,
+              data.market[0].generalMarkets[0].overs[0]
+                .overZeroPointFiveMarketType,
+              data.market[0].generalMarkets[0].overs[0]
+                .overZeroPointFiveOddName,
+              data.date,
+              data.time
             )
           }
           isClicked={isButtonClicked(
-            data.teams.home.name,
-            data.teams.away.name,
-            data.generalMarkets.overAndUnder.overGoals["0.5"].oddName,
-            data.generalMarkets.overAndUnder.overGoals["0.5"].marketType
+            data.homeTeamName,
+            data.awayTeamName,
+            data.market[0].generalMarkets[0].overs[0].overZeroPointFiveOddName,
+            data.market[0].generalMarkets[0].overs[0]
+              .overZeroPointFiveMarketType
           )}
         />
         {/*  */}
         <GameButton
-          buttonName={data.generalMarkets.overAndUnder.underGoals["0.5"].odd}
+          buttonName={
+            data.market[0].generalMarkets[0].unders[0].underZeroPointFiveOdd
+          }
           onClick={() =>
             handleClick(
               data.id,
-              data.teams.home.name,
-              data.teams.away.name,
-              data.generalMarkets.overAndUnder.underGoals["0.5"].odd,
-              data.generalMarkets.overAndUnder.underGoals["0.5"].marketType,
-              data.generalMarkets.overAndUnder.underGoals["0.5"].oddName,
-              data.matchDate.date,
-              data.matchDate.time
+              data.homeTeamName,
+              data.awayTeamName,
+              data.market[0].generalMarkets[0].unders[0].underZeroPointFiveOdd,
+              data.market[0].generalMarkets[0].unders[0]
+                .underZeroPointFiveMarketType,
+              data.market[0].generalMarkets[0].unders[0]
+                .underZeroPointFiveOddName,
+              data.date,
+              data.time
             )
           }
           isClicked={isButtonClicked(
-            data.teams.home.name,
-            data.teams.away.name,
-            data.generalMarkets.overAndUnder.underGoals["0.5"].oddName,
-            data.generalMarkets.overAndUnder.underGoals["0.5"].marketType
+            data.homeTeamName,
+            data.awayTeamName,
+            data.market[0].generalMarkets[0].unders[0]
+              .underZeroPointFiveOddName,
+            data.market[0].generalMarkets[0].unders[0]
+              .underZeroPointFiveMarketType
           )}
         />
         {/*  */}
       </div>
     </div>
   );
-}
+};

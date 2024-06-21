@@ -1,15 +1,15 @@
-import { ILeagueMatch } from "../../base/interface/ILeagueMatch";
 import { Link } from "react-router-dom";
 import { ILeague } from "./leagues";
 import { GameSubHeader } from "./GameSubHeader";
 import { GameButtons } from "./GameButton/GameButtons";
+import { Match } from "../../base/store/useMatchesFromDataBase";
 
 export const Game = ({
   leagueTitle,
   allLeague,
 }: {
   leagueTitle?: ILeague;
-  allLeague: ILeagueMatch[];
+  allLeague: Match[];
 }) => {
   const renderedCountries: (string | undefined)[] = [];
 
@@ -22,7 +22,7 @@ export const Game = ({
       >
         {leagueTitle?.country} - {leagueTitle?.leagueName}
       </p>
-      {allLeague.map((data: ILeagueMatch, index: number) => (
+      {allLeague.map((data: Match, index: number) => (
         <div
           className=" bg-zinc-8 pb-[6px] border-b-2 border-zinc-10"
           key={index}
@@ -37,19 +37,19 @@ export const Game = ({
           <div className="px-[15px] pt-2">
             <div className="flex gap-4 text-[10px] text-zinc-4 mb-1">
               <p>
-                {data.matchDate?.time} / {data.matchDate?.date}
+                {data.time} / {data.date}
               </p>
             </div>
             <div className="flex justify-between">
               <Link
-                to={`/FullMatch/homeTeam=${data.teams?.home.name}&awayTeam=${data.teams?.away.name}&?gameId=${data.id}`}
+                to={`/FullMatch/homeTeam=${data.homeTeamName}&awayTeam=${data.awayTeamName}&?gameId=${data.id}`}
                 className="text-[14px] w-full"
               >
                 <p className="w-[100px] truncate tablet:w-[180px] pc:w-[100px]">
-                  {data.teams?.home.name}
+                  {data.homeTeamName}
                 </p>
                 <p className="w-[100px] truncate tablet:w-[180px] pc:w-[100px]">
-                  {data.teams?.away.name}
+                  {data.awayTeamName}
                 </p>
               </Link>
               <GameButtons data={data} />

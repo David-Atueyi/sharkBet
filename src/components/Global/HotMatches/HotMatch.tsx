@@ -1,16 +1,23 @@
 import { BallIcon } from "../Icons/BallIcon";
-import All from "../../base/dummyDatas/allMatches.json";
 import { Link } from "react-router-dom";
+import { useMatchesFromDataBase } from "../../base/store/useMatchesFromDataBase";
 
 export const HotMatch = () => {
-  const hotMatches = All.filter((hotMatch) => hotMatch.hotMatch);
+  const { matchesFromDataBase } = useMatchesFromDataBase((state) => ({
+    matchesFromDataBase: state.matchesFromDataBase,
+  }));
+
+  const hotMatches = matchesFromDataBase.filter(
+    (hotMatch) => hotMatch.hotMatch
+  );
+
   return (
     <>
       {hotMatches.length > 0 && (
         <>
           {hotMatches.map((hotMatch, index) => (
             <Link
-              to={`/FullMatch/homeTeam=${hotMatch.teams?.home.name}&awayTeam=${hotMatch.teams?.away.name}&?gameId=${hotMatch.id}`}
+              to={`/FullMatch/homeTeam=${hotMatch.homeTeamName}&awayTeam=${hotMatch.awayTeamName}&?gameId=${hotMatch.id}`}
               key={index}
               className={`px-[10px] pt-[10px] pb-[8px] h-[62px] flex justify-between mx-[1px] ${
                 index === hotMatches.length - 1
@@ -30,11 +37,11 @@ export const HotMatch = () => {
                 </div>
                 <div className="flex gap-2 text-[14px] capitalize text-zinc-2">
                   <p className="max-w-[40.1235%] truncate">
-                    {hotMatch.teams.home.name}
+                    {hotMatch.homeTeamName}
                   </p>
                   <p className="lowercase text-zinc-4">vs</p>
                   <p className="max-w-[40.1235%] truncate">
-                    {hotMatch.teams.away.name}
+                    {hotMatch.awayTeamName}
                   </p>
                 </div>
               </div>

@@ -67,8 +67,8 @@ export const Card = ({ datas }: { datas: Match[] }) => {
                 </div>
               </div>
               <div className="text-[8px] text-right">
-                <p className="text-[20px] font-bold">{data.matchTime}</p>
-                <p>{data.matchDate}</p>
+                <p className="text-[20px] font-bold">{data.time}</p>
+                <p>{data.date}</p>
               </div>
             </div>
             <div className="flex justify-between items-center w-[247px] text-center text-[12px] mobile:hidden pc:flex">
@@ -85,8 +85,8 @@ export const Card = ({ datas }: { datas: Match[] }) => {
                 </p>
               </div>
               <div>
-                <p className="text-[24px] font-bold">{data.matchTime}</p>
-                <p>{data.matchDate}</p>
+                <p className="text-[24px] font-bold">{data.time}</p>
+                <p>{data.date}</p>
               </div>
               <div className="w-[80px] h-[60] flex flex-col items-center">
                 <div className="w-[40px] h-[40px]">

@@ -9,7 +9,7 @@ export const getMatchesFromDatabase = async () => {
       *,
       market:market!matchId(
         teamsOdds:teamsOdds!marketId(*),
-        generalMarket:generalMarket!marketId(
+        generalMarkets:generalMarkets!marketId(
           fullTimeResult:fullTimeResult!generalMarketsId(*),
           overs:overs!generalMarketsId(*),
           unders:unders!generalMarketsId(*),
@@ -25,5 +25,3 @@ export const getMatchesFromDatabase = async () => {
     setMatchesFromDataBase(matches);
   }
 };
-
-getMatchesFromDatabase();
