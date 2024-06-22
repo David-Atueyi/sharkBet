@@ -32,7 +32,7 @@ export const DoubleChance = () => {
   };
 
   const handleClick = (
-    id:number,
+    id:string,
     homeClub: string,
     awayClub: string,
     odd: number,
@@ -66,24 +66,24 @@ export const DoubleChance = () => {
           onClick={() =>
             handleClick(
               fullMatchDetailsFound.id,
-              fullMatchDetailsFound.teams.home.name,
-              fullMatchDetailsFound.teams.away.name,
-              fullMatchDetailsFound.teams.home.market.homeOrDraw.odd,
-              fullMatchDetailsFound.teams.home.market.homeOrDraw.marketType,
-              fullMatchDetailsFound.teams.home.market.homeOrDraw.oddName,
-              fullMatchDetailsFound.matchDate.date,
-              fullMatchDetailsFound.matchDate.time
+              fullMatchDetailsFound.homeTeamName,
+              fullMatchDetailsFound.awayTeamName,
+              fullMatchDetailsFound.market[0].teamsOdds[0].homeOddDoubleChance,
+              fullMatchDetailsFound.market[0].teamsOdds[0].homeMarketTypeDoubleChance,
+              fullMatchDetailsFound.market[0].teamsOdds[0].homeOddNameDoubleChance,
+              fullMatchDetailsFound.date,
+              fullMatchDetailsFound.time
             )
           }
           contentOne={
-            fullMatchDetailsFound.teams.home.market.homeOrDraw.oddName
+            fullMatchDetailsFound.market[0].teamsOdds[0].homeOddNameDoubleChance
           }
-          contentTwo={fullMatchDetailsFound.teams.home.market.homeOrDraw.odd}
+          contentTwo={fullMatchDetailsFound.market[0].teamsOdds[0].homeOddDoubleChance}
           isClicked={isButtonClicked(
-            fullMatchDetailsFound.teams.home.name,
-            fullMatchDetailsFound.teams.away.name,
-            fullMatchDetailsFound.teams.home.market.homeOrDraw.oddName,
-            fullMatchDetailsFound.teams.home.market.homeOrDraw.marketType
+            fullMatchDetailsFound.homeTeamName,
+            fullMatchDetailsFound.awayTeamName,
+            fullMatchDetailsFound.market[0].teamsOdds[0].homeOddNameDoubleChance,
+            fullMatchDetailsFound.market[0].teamsOdds[0].homeMarketTypeDoubleChance
           )}
           extraStyle="w-[200px]"
         />
@@ -91,24 +91,24 @@ export const DoubleChance = () => {
           onClick={() =>
             handleClick(
               fullMatchDetailsFound.id,
-              fullMatchDetailsFound.teams.home.name,
-              fullMatchDetailsFound.teams.away.name,
-              fullMatchDetailsFound.generalMarkets.anyTeamToWin.odd,
-              fullMatchDetailsFound.generalMarkets.anyTeamToWin.marketType,
-              fullMatchDetailsFound.generalMarkets.anyTeamToWin.oddName,
-              fullMatchDetailsFound.matchDate.date,
-              fullMatchDetailsFound.matchDate.time
+              fullMatchDetailsFound.homeTeamName,
+              fullMatchDetailsFound.awayTeamName,
+              fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].anyTeamToWinOdd,
+              fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].anyTeamToWinMarketType,
+              fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].anyTeamToWinOddName,
+              fullMatchDetailsFound.date,
+              fullMatchDetailsFound.time
             )
           }
           contentOne={
-            fullMatchDetailsFound?.generalMarkets.anyTeamToWin.oddName
+            fullMatchDetailsFound?.market[0].generalMarkets[0].fullTimeResult[0].anyTeamToWinOddName
           }
-          contentTwo={fullMatchDetailsFound.generalMarkets.anyTeamToWin.odd}
+          contentTwo={fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].anyTeamToWinOdd}
           isClicked={isButtonClicked(
-            fullMatchDetailsFound.teams.home.name,
-            fullMatchDetailsFound.teams.away.name,
-            fullMatchDetailsFound.generalMarkets.anyTeamToWin.oddName,
-            fullMatchDetailsFound.generalMarkets.anyTeamToWin.marketType
+            fullMatchDetailsFound.homeTeamName,
+            fullMatchDetailsFound.awayTeamName,
+            fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].anyTeamToWinOddName,
+            fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].anyTeamToWinMarketType
           )}
           extraStyle="w-[200px]"
         />
@@ -116,22 +116,22 @@ export const DoubleChance = () => {
           onClick={() =>
             handleClick(
               fullMatchDetailsFound.id,
-              fullMatchDetailsFound.teams.home.name,
-              fullMatchDetailsFound.teams.away.name,
-              fullMatchDetailsFound.teams.away.market.drawOrWin.odd,
-              fullMatchDetailsFound.teams.away.market.drawOrWin.marketType,
-              fullMatchDetailsFound.teams.away.market.drawOrWin.oddName,
-              fullMatchDetailsFound.matchDate.date,
-              fullMatchDetailsFound.matchDate.time
+              fullMatchDetailsFound.homeTeamName,
+              fullMatchDetailsFound.awayTeamName,
+              fullMatchDetailsFound.market[0].teamsOdds[0].awayOddDoubleChance,
+              fullMatchDetailsFound.market[0].teamsOdds[0].awayMarketTypeDoubleChance,
+              fullMatchDetailsFound.market[0].teamsOdds[0].awayOddNameDoubleChance,
+              fullMatchDetailsFound.date,
+              fullMatchDetailsFound.time
             )
           }
-          contentOne={fullMatchDetailsFound.teams.away.market.drawOrWin.oddName}
-          contentTwo={fullMatchDetailsFound.teams.away.market.drawOrWin.odd}
+          contentOne={fullMatchDetailsFound.market[0].teamsOdds[0].awayOddNameDoubleChance}
+          contentTwo={fullMatchDetailsFound.market[0].teamsOdds[0].awayOddDoubleChance}
           isClicked={isButtonClicked(
-            fullMatchDetailsFound.teams.home.name,
-            fullMatchDetailsFound.teams.away.name,
-            fullMatchDetailsFound.teams.away.market.drawOrWin.oddName,
-            fullMatchDetailsFound.teams.away.market.drawOrWin.marketType
+            fullMatchDetailsFound.homeTeamName,
+            fullMatchDetailsFound.awayTeamName,
+            fullMatchDetailsFound.market[0].teamsOdds[0].awayOddNameDoubleChance,
+            fullMatchDetailsFound.market[0].teamsOdds[0].awayMarketTypeDoubleChance
           )}
           extraStyle="w-[200px]"
         />

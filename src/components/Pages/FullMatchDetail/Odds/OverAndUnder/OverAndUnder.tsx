@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { CaretDown } from "../../../../Global/Icons/CaretDown";
 import {  OverUnderButtons } from "./OverUnderButtons";
+import { useFullMatchDetailsStore } from "../../../../base/store/useFullMatchDetailsStore";
 
 export const OverAndUnder = () => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
+
+  const { fullMatchDetailsFound } = useFullMatchDetailsStore((state) => ({
+    fullMatchDetailsFound: state.fullMatchDetailsFound,
+  }));
 
   return (
     <div className={`flex gap-2 flex-col border-b-2 border-zinc-5 pb-4`}>
@@ -29,10 +34,10 @@ export const OverAndUnder = () => {
           <p className="w-[200px] ">Under</p>
         </div>
         <div className="flex gap-2 flex-col">
-          <OverUnderButtons oddType="0.5" />
-          <OverUnderButtons oddType="1.5" />
-          <OverUnderButtons oddType="2.5" />
-          <OverUnderButtons oddType="3.5" />
+          <OverUnderButtons marketType="Over/Under" oddName="0.5" underOddName={fullMatchDetailsFound.market[0].generalMarkets[0].unders[0].underZeroPointFiveOddName} overOddName={fullMatchDetailsFound.market[0].generalMarkets[0].overs[0].overZeroPointFiveOddName} overOdd={fullMatchDetailsFound.market[0].generalMarkets[0].overs[0].overZeroPointFiveOdd} underOdd={fullMatchDetailsFound.market[0].generalMarkets[0].unders[0].underZeroPointFiveOdd} />
+          <OverUnderButtons marketType="Over/Under" oddName="1.5" underOddName={fullMatchDetailsFound.market[0].generalMarkets[0].unders[0].underOnePointFiveOddName} overOddName={fullMatchDetailsFound.market[0].generalMarkets[0].overs[0].overOnePointFiveOddName} overOdd={fullMatchDetailsFound.market[0].generalMarkets[0].overs[0].overOnePointFiveOdd} underOdd={fullMatchDetailsFound.market[0].generalMarkets[0].unders[0].underOnePointFiveOdd} />
+          <OverUnderButtons marketType="Over/Under" oddName="2.5" underOddName={fullMatchDetailsFound.market[0].generalMarkets[0].unders[0].underTwoPointFiveOddName} overOddName={fullMatchDetailsFound.market[0].generalMarkets[0].overs[0].overTwoPointFiveOddName} overOdd={fullMatchDetailsFound.market[0].generalMarkets[0].overs[0].overTwoPointFiveOdd} underOdd={fullMatchDetailsFound.market[0].generalMarkets[0].unders[0].underTwoPointFiveOdd} />
+          <OverUnderButtons marketType="Over/Under" oddName="3.5" underOddName={fullMatchDetailsFound.market[0].generalMarkets[0].unders[0].underThreePointFiveOddName} overOddName={fullMatchDetailsFound.market[0].generalMarkets[0].overs[0].overThreePointFiveOddName} overOdd={fullMatchDetailsFound.market[0].generalMarkets[0].overs[0].overThreePointFiveOdd} underOdd={fullMatchDetailsFound.market[0].generalMarkets[0].unders[0].underThreePointFiveOdd} />
         </div>
       </div>
     </div>

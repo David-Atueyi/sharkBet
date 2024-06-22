@@ -4,7 +4,7 @@ export const OverUnderButton = ({
   extraStyle,
   isClicked,
 }: {
-  content: string | number;
+  content: number | undefined;
   onClick?: () => void;
   extraStyle?: string;
   isClicked?: boolean;

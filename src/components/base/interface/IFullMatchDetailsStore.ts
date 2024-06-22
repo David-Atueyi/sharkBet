@@ -1,7 +1,7 @@
-import { ILeagueMatch } from "./ILeagueMatch";
+import { Match } from "../store/useMatchesFromDataBase";
 
 export interface IFullMatchDetailsStore {
-  fullMatchDetailsFound: ILeagueMatch;
+  fullMatchDetailsFound: Match ;
 
-  setFullMatchDetailsFound: (matchFound: ILeagueMatch) => void;
+  setFullMatchDetailsFound: (matchFound: Match) => void;
 }

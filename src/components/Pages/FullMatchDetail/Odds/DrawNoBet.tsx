@@ -32,7 +32,7 @@ export const DrawNoBet = () => {
       };
 
   const handleClick = (
-        id:number,
+        id:string,
         homeClub: string,
         awayClub: string,
         odd: number,
@@ -76,24 +76,24 @@ export const DrawNoBet = () => {
           onClick={() =>
             handleClick(
               fullMatchDetailsFound.id,
-              fullMatchDetailsFound.teams.home.name,
-              fullMatchDetailsFound.teams.away.name,
-              fullMatchDetailsFound.teams.home.market.homeDrawNoBet.odd,
-              fullMatchDetailsFound.teams.home.market.homeDrawNoBet.marketType,
-              fullMatchDetailsFound.teams.home.market.homeDrawNoBet.oddName,
-              fullMatchDetailsFound.matchDate.date,
-              fullMatchDetailsFound.matchDate.time
+              fullMatchDetailsFound.homeTeamName,
+              fullMatchDetailsFound.awayTeamName,
+              fullMatchDetailsFound.market[0].teamsOdds[0].homeOddDnb,
+              fullMatchDetailsFound.market[0].teamsOdds[0].homeMarketTypeDnb,
+              fullMatchDetailsFound.market[0].teamsOdds[0].homeOddNameDnb,
+              fullMatchDetailsFound.date,
+              fullMatchDetailsFound.time
             )
           }
           contentOne={
-            fullMatchDetailsFound?.teams.home.market.homeDrawNoBet.oddName
+            fullMatchDetailsFound?.market[0].teamsOdds[0].homeOddNameDnb
           }
-          contentTwo={fullMatchDetailsFound.teams.home.market.homeDrawNoBet.odd}
+          contentTwo={fullMatchDetailsFound.market[0].teamsOdds[0].homeOddDnb}
           isClicked={isButtonClicked(
-            fullMatchDetailsFound.teams.home.name,
-            fullMatchDetailsFound.teams.away.name,
-            fullMatchDetailsFound.teams.home.market.homeDrawNoBet.oddName,
-            fullMatchDetailsFound.teams.home.market.homeDrawNoBet.marketType
+            fullMatchDetailsFound.homeTeamName,
+            fullMatchDetailsFound.awayTeamName,
+            fullMatchDetailsFound.market[0].teamsOdds[0].homeOddNameDnb,
+            fullMatchDetailsFound.market[0].teamsOdds[0].homeMarketTypeDnb
           )}
           extraStyle="w-[318px]"
         />
@@ -101,24 +101,24 @@ export const DrawNoBet = () => {
           onClick={() =>
             handleClick(
               fullMatchDetailsFound.id,
-              fullMatchDetailsFound.teams.home.name,
-              fullMatchDetailsFound.teams.away.name,
-              fullMatchDetailsFound.teams.away.market.awayDrawNoBet.odd,
-              fullMatchDetailsFound.teams.away.market.awayDrawNoBet.marketType,
-              fullMatchDetailsFound.teams.away.market.awayDrawNoBet.oddName,
-              fullMatchDetailsFound.matchDate.date,
-              fullMatchDetailsFound.matchDate.time
+              fullMatchDetailsFound.homeTeamName,
+              fullMatchDetailsFound.awayTeamName,
+              fullMatchDetailsFound.market[0].teamsOdds[0].awayOddDnb,
+              fullMatchDetailsFound.market[0].teamsOdds[0].awayMarketTypeDnb,
+              fullMatchDetailsFound.market[0].teamsOdds[0].awayOddNameDnb,
+              fullMatchDetailsFound.date,
+              fullMatchDetailsFound.time
             )
           }
           contentOne={
-            fullMatchDetailsFound.teams.away.market.awayDrawNoBet.oddName
+            fullMatchDetailsFound.market[0].teamsOdds[0].awayOddNameDnb
           }
-          contentTwo={fullMatchDetailsFound.teams.away.market.awayDrawNoBet.odd}
+          contentTwo={fullMatchDetailsFound.market[0].teamsOdds[0].awayOddDnb}
           isClicked={isButtonClicked(
-            fullMatchDetailsFound.teams.home.name,
-            fullMatchDetailsFound.teams.away.name,
-            fullMatchDetailsFound.teams.away.market.awayDrawNoBet.oddName,
-            fullMatchDetailsFound.teams.away.market.awayDrawNoBet.marketType
+            fullMatchDetailsFound.homeTeamName,
+            fullMatchDetailsFound.awayTeamName,
+            fullMatchDetailsFound.market[0].teamsOdds[0].awayOddNameDnb,
+            fullMatchDetailsFound.market[0].teamsOdds[0].awayMarketTypeDnb
           )}
           extraStyle="w-[318px]"
         />

@@ -2,7 +2,21 @@ import { useFullMatchDetailsStore } from "../../../../base/store/useFullMatchDet
 import { useBetStore } from "../../../../base/store/useBetStore";
 import { OverUnderButton } from "./OverUnderButton";
 
-export const OverUnderButtons = ({ oddType }: { oddType:string }) => {
+export const OverUnderButtons = ({
+  oddName,
+  overOddName,
+  underOddName,
+  marketType,
+  overOdd,
+  underOdd,
+}: {
+  oddName: string;
+  overOddName: string | undefined;
+  underOddName: string | undefined;
+  marketType: string;
+  overOdd: number | undefined;
+  underOdd: number | undefined;
+}) => {
   const { fullMatchDetailsFound } = useFullMatchDetailsStore((state) => ({
     fullMatchDetailsFound: state.fullMatchDetailsFound,
   }));
@@ -15,8 +29,8 @@ export const OverUnderButtons = ({ oddType }: { oddType:string }) => {
   const isButtonClicked = (
     homeClub: string,
     awayClub: string,
-    oddName: string,
-    marketType: string
+    oddName: string | undefined,
+    marketType: string | undefined
   ) => {
     return selectedBetsArray.some(
       (bet) =>
@@ -28,85 +42,72 @@ export const OverUnderButtons = ({ oddType }: { oddType:string }) => {
   };
 
   const handleClick = (
-    id:number,
+    id: string,
     homeClub: string,
     awayClub: string,
-    odd: number,
-    marketType: string,
-    oddName: string,
+    odd: number | undefined,
+    marketType: string | undefined,
+    oddName: string | undefined,
     date: string,
     time: string
   ) => {
-    setSelectedBet(id,homeClub, awayClub, odd, marketType, oddName, date, time);
+    setSelectedBet(
+      id,
+      homeClub,
+      awayClub,
+      odd,
+      marketType,
+      oddName,
+      date,
+      time
+    );
   };
 
   return (
     <div className="flex justify-between gap-2">
       <button className="capitalize w-[200px] px-[10px] mobile:min-h-[35px] pc:min-h-[40px] rounded-[8px] bg-zinc-3 text-zinc-9">
-        {oddType}
+        {oddName}
       </button>
       <OverUnderButton
         onClick={() =>
           handleClick(
             fullMatchDetailsFound.id,
-            fullMatchDetailsFound.teams.home.name,
-            fullMatchDetailsFound.teams.away.name,
-            fullMatchDetailsFound?.generalMarkets.overAndUnder.overGoals[
-              oddType
-            ].odd,
-            fullMatchDetailsFound?.generalMarkets.overAndUnder.overGoals[
-              oddType
-            ].marketType,
-            fullMatchDetailsFound?.generalMarkets.overAndUnder.overGoals[
-              oddType
-            ].oddName,
-            fullMatchDetailsFound.matchDate.date,
-            fullMatchDetailsFound.matchDate.time
+            fullMatchDetailsFound.homeTeamName,
+            fullMatchDetailsFound.awayTeamName,
+            overOdd,
+            marketType,
+            overOddName,
+            fullMatchDetailsFound.date,
+            fullMatchDetailsFound.time
           )
         }
-        content={
-          fullMatchDetailsFound?.generalMarkets.overAndUnder.overGoals[oddType]
-            .odd
-        }
+        content={overOdd}
         isClicked={isButtonClicked(
-          fullMatchDetailsFound.teams.home.name,
-          fullMatchDetailsFound.teams.away.name,
-          fullMatchDetailsFound?.generalMarkets.overAndUnder.overGoals[oddType]
-            .oddName,
-          fullMatchDetailsFound?.generalMarkets.overAndUnder.overGoals[oddType]
-            .marketType
+          fullMatchDetailsFound.homeTeamName,
+          fullMatchDetailsFound.awayTeamName,
+          overOddName,
+          marketType
         )}
       />
       <OverUnderButton
         onClick={() =>
           handleClick(
             fullMatchDetailsFound.id,
-            fullMatchDetailsFound.teams.home.name,
-            fullMatchDetailsFound.teams.away.name,
-            fullMatchDetailsFound?.generalMarkets.overAndUnder.underGoals[
-              oddType
-            ].odd,
-            fullMatchDetailsFound?.generalMarkets.overAndUnder.underGoals[
-              oddType
-            ].marketType,
-            fullMatchDetailsFound?.generalMarkets.overAndUnder.underGoals[
-              oddType
-            ].oddName,
-            fullMatchDetailsFound.matchDate.date,
-            fullMatchDetailsFound.matchDate.time
+            fullMatchDetailsFound.homeTeamName,
+            fullMatchDetailsFound.awayTeamName,
+            underOdd,
+            marketType,
+            underOddName,
+            fullMatchDetailsFound.date,
+            fullMatchDetailsFound.time
           )
         }
-        content={
-          fullMatchDetailsFound?.generalMarkets.overAndUnder.underGoals[oddType]
-            .odd
-        }
+        content={underOdd}
         isClicked={isButtonClicked(
-          fullMatchDetailsFound.teams.home.name,
-          fullMatchDetailsFound.teams.away.name,
-          fullMatchDetailsFound?.generalMarkets.overAndUnder.underGoals[oddType]
-            .oddName,
-          fullMatchDetailsFound?.generalMarkets.overAndUnder.underGoals[oddType]
-            .marketType
+          fullMatchDetailsFound.homeTeamName,
+          fullMatchDetailsFound.awayTeamName,
+          underOddName,
+          marketType
         )}
       />
     </div>

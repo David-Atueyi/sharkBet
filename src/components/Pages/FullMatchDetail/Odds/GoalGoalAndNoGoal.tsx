@@ -32,7 +32,7 @@ export const GoalGoalAndNoGoal = () => {
   };
 
   const handleClick = (
-    id: number,
+    id: string,
     homeClub: string,
     awayClub: string,
     odd: number,
@@ -41,7 +41,16 @@ export const GoalGoalAndNoGoal = () => {
     date: string,
     time: string
   ) => {
-    setSelectedBet(id,homeClub, awayClub, odd, marketType, oddName, date, time);
+    setSelectedBet(
+      id,
+      homeClub,
+      awayClub,
+      odd,
+      marketType,
+      oddName,
+      date,
+      time
+    );
   };
 
   return (
@@ -66,27 +75,33 @@ export const GoalGoalAndNoGoal = () => {
           onClick={() =>
             handleClick(
               fullMatchDetailsFound.id,
-              fullMatchDetailsFound.teams.home.name,
-              fullMatchDetailsFound.teams.away.name,
-              fullMatchDetailsFound.generalMarkets.bothTeamsToScore.Yes.odd,
-              fullMatchDetailsFound.generalMarkets.bothTeamsToScore.Yes
-                .marketType,
-              fullMatchDetailsFound.generalMarkets.bothTeamsToScore.Yes.oddName,
-              fullMatchDetailsFound.matchDate.date,
-              fullMatchDetailsFound.matchDate.time
+              fullMatchDetailsFound.homeTeamName,
+              fullMatchDetailsFound.awayTeamName,
+              fullMatchDetailsFound.market[0].generalMarkets[0]
+                .bothTeamsToScore[0].yesOdd,
+              fullMatchDetailsFound.market[0].generalMarkets[0]
+                .bothTeamsToScore[0].yesMarketType,
+              fullMatchDetailsFound.market[0].generalMarkets[0]
+                .bothTeamsToScore[0].yesOddName,
+              fullMatchDetailsFound.date,
+              fullMatchDetailsFound.time
             )
           }
           contentOne={
-            fullMatchDetailsFound?.generalMarkets.bothTeamsToScore.Yes.oddName
+            fullMatchDetailsFound?.market[0].generalMarkets[0]
+              .bothTeamsToScore[0].yesOddName
           }
           contentTwo={
-            fullMatchDetailsFound.generalMarkets.bothTeamsToScore.Yes.odd
+            fullMatchDetailsFound.market[0].generalMarkets[0]
+              .bothTeamsToScore[0].yesOdd
           }
           isClicked={isButtonClicked(
-            fullMatchDetailsFound.teams.home.name,
-            fullMatchDetailsFound.teams.away.name,
-            fullMatchDetailsFound.generalMarkets.bothTeamsToScore.Yes.oddName,
-            fullMatchDetailsFound.generalMarkets.bothTeamsToScore.Yes.marketType
+            fullMatchDetailsFound.homeTeamName,
+            fullMatchDetailsFound.awayTeamName,
+            fullMatchDetailsFound.market[0].generalMarkets[0]
+              .bothTeamsToScore[0].yesOddName,
+            fullMatchDetailsFound.market[0].generalMarkets[0]
+              .bothTeamsToScore[0].yesMarketType
           )}
           extraStyle="w-[318px]"
         />
@@ -94,27 +109,33 @@ export const GoalGoalAndNoGoal = () => {
           onClick={() =>
             handleClick(
               fullMatchDetailsFound.id,
-              fullMatchDetailsFound.teams.home.name,
-              fullMatchDetailsFound.teams.away.name,
-              fullMatchDetailsFound.generalMarkets.bothTeamsToScore.No.odd,
-              fullMatchDetailsFound.generalMarkets.bothTeamsToScore.No
-                .marketType,
-              fullMatchDetailsFound.generalMarkets.bothTeamsToScore.No.oddName,
-              fullMatchDetailsFound.matchDate.date,
-              fullMatchDetailsFound.matchDate.time
+              fullMatchDetailsFound.homeTeamName,
+              fullMatchDetailsFound.awayTeamName,
+              fullMatchDetailsFound.market[0].generalMarkets[0]
+                .bothTeamsToScore[0].noOdd,
+              fullMatchDetailsFound.market[0].generalMarkets[0]
+                .bothTeamsToScore[0].noMarketType,
+              fullMatchDetailsFound.market[0].generalMarkets[0]
+                .bothTeamsToScore[0].noOddName,
+              fullMatchDetailsFound.date,
+              fullMatchDetailsFound.time
             )
           }
           contentOne={
-            fullMatchDetailsFound.generalMarkets.bothTeamsToScore.No.oddName
+            fullMatchDetailsFound.market[0].generalMarkets[0]
+              .bothTeamsToScore[0].noOddName
           }
           contentTwo={
-            fullMatchDetailsFound.generalMarkets.bothTeamsToScore.No.odd
+            fullMatchDetailsFound.market[0].generalMarkets[0]
+              .bothTeamsToScore[0].noOdd
           }
           isClicked={isButtonClicked(
-            fullMatchDetailsFound.teams.home.name,
-            fullMatchDetailsFound.teams.away.name,
-            fullMatchDetailsFound.generalMarkets.bothTeamsToScore.No.oddName,
-            fullMatchDetailsFound.generalMarkets.bothTeamsToScore.No.marketType
+            fullMatchDetailsFound.homeTeamName,
+            fullMatchDetailsFound.awayTeamName,
+            fullMatchDetailsFound.market[0].generalMarkets[0]
+              .bothTeamsToScore[0].noOddName,
+            fullMatchDetailsFound.market[0].generalMarkets[0]
+              .bothTeamsToScore[0].noMarketType
           )}
           extraStyle="w-[318px]"
         />

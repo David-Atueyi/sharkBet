@@ -32,7 +32,7 @@ export const OneXTwo = () => {
   };
 
   const handleClick = (
-    id:number,
+    id:string,
     homeClub: string,
     awayClub: string,
     odd: number,
@@ -66,22 +66,22 @@ export const OneXTwo = () => {
           onClick={() =>
             handleClick(
               fullMatchDetailsFound.id,
-              fullMatchDetailsFound.teams.home.name,
-              fullMatchDetailsFound.teams.away.name,
-              fullMatchDetailsFound.teams.home.market.homeWin.odd,
-              fullMatchDetailsFound.teams.home.market.homeWin.marketType,
-              fullMatchDetailsFound.teams.home.market.homeWin.oddName,
-              fullMatchDetailsFound.matchDate.date,
-              fullMatchDetailsFound.matchDate.time
+              fullMatchDetailsFound.homeTeamName,
+              fullMatchDetailsFound.awayTeamName,
+              fullMatchDetailsFound.market[0].teamsOdds[0].homeOdd1x2,
+              fullMatchDetailsFound.market[0].teamsOdds[0].homeMarketType1x2,
+              fullMatchDetailsFound.market[0].teamsOdds[0].homeOddName1x2,
+              fullMatchDetailsFound.date,
+              fullMatchDetailsFound.time
             )
           }
-          contentOne={fullMatchDetailsFound.teams.home.market.homeWin.oddName}
-          contentTwo={fullMatchDetailsFound.teams.home.market.homeWin.odd}
+          contentOne={fullMatchDetailsFound.market[0].teamsOdds[0].homeOddName1x2}
+          contentTwo={fullMatchDetailsFound.market[0].teamsOdds[0].homeOdd1x2}
           isClicked={isButtonClicked(
-            fullMatchDetailsFound.teams.home.name,
-            fullMatchDetailsFound.teams.away.name,
-            fullMatchDetailsFound.teams.home.market.homeWin.oddName,
-            fullMatchDetailsFound.teams.home.market.homeWin.marketType
+            fullMatchDetailsFound.homeTeamName,
+            fullMatchDetailsFound.awayTeamName,
+            fullMatchDetailsFound.market[0].teamsOdds[0].homeOddName1x2,
+            fullMatchDetailsFound.market[0].teamsOdds[0].homeMarketType1x2
           )}
           extraStyle="w-[200px]"
         />
@@ -89,24 +89,24 @@ export const OneXTwo = () => {
           onClick={() =>
             handleClick(
               fullMatchDetailsFound.id,
-              fullMatchDetailsFound.teams.home.name,
-              fullMatchDetailsFound.teams.away.name,
-              fullMatchDetailsFound.generalMarkets.fullTimeDraw.odd,
-              fullMatchDetailsFound.generalMarkets.fullTimeDraw.marketType,
-              fullMatchDetailsFound.generalMarkets.fullTimeDraw.oddName,
-              fullMatchDetailsFound.matchDate.date,
-              fullMatchDetailsFound.matchDate.time
+              fullMatchDetailsFound.homeTeamName,
+              fullMatchDetailsFound.awayTeamName,
+              fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].fullTimeDrawOdd,
+              fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].fullTimeDrawMarketType,
+              fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].fullTimeDrawOddName,
+              fullMatchDetailsFound.date,
+              fullMatchDetailsFound.time
             )
           }
           contentOne={
-            fullMatchDetailsFound?.generalMarkets.fullTimeDraw.oddName
+            fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].fullTimeDrawOddName
           }
-          contentTwo={fullMatchDetailsFound.generalMarkets.fullTimeDraw.odd}
+          contentTwo={fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].fullTimeDrawOdd}
           isClicked={isButtonClicked(
-            fullMatchDetailsFound.teams.home.name,
-            fullMatchDetailsFound.teams.away.name,
-            fullMatchDetailsFound.generalMarkets.fullTimeDraw.oddName,
-            fullMatchDetailsFound.generalMarkets.fullTimeDraw.marketType
+            fullMatchDetailsFound.homeTeamName,
+            fullMatchDetailsFound.awayTeamName,
+            fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].fullTimeDrawOddName,
+            fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].fullTimeDrawMarketType
           )}
           extraStyle="w-[200px]"
         />
@@ -114,22 +114,22 @@ export const OneXTwo = () => {
           onClick={() =>
             handleClick(
               fullMatchDetailsFound.id,
-              fullMatchDetailsFound.teams.home.name,
-              fullMatchDetailsFound.teams.away.name,
-              fullMatchDetailsFound.teams.away.market.awayWin.odd,
-              fullMatchDetailsFound.teams.away.market.awayWin.marketType,
-              fullMatchDetailsFound.teams.away.market.awayWin.oddName,
-              fullMatchDetailsFound.matchDate.date,
-              fullMatchDetailsFound.matchDate.time
+              fullMatchDetailsFound.homeTeamName,
+              fullMatchDetailsFound.awayTeamName,
+              fullMatchDetailsFound.market[0].teamsOdds[0].awayOdd1x2,
+              fullMatchDetailsFound.market[0].teamsOdds[0].awayMarketType1x2,
+              fullMatchDetailsFound.market[0].teamsOdds[0].awayOddName1x2,
+              fullMatchDetailsFound.date,
+              fullMatchDetailsFound.time
             )
           }
-          contentOne={fullMatchDetailsFound.teams.away.market.awayWin.oddName}
-          contentTwo={fullMatchDetailsFound.teams.away.market.awayWin.odd}
+          contentOne={fullMatchDetailsFound.market[0].teamsOdds[0].awayOddName1x2}
+          contentTwo={fullMatchDetailsFound.market[0].teamsOdds[0].awayOdd1x2}
           isClicked={isButtonClicked(
-            fullMatchDetailsFound.teams.home.name,
-            fullMatchDetailsFound.teams.away.name,
-            fullMatchDetailsFound.teams.away.market.awayWin.oddName,
-            fullMatchDetailsFound.teams.away.market.awayWin.marketType
+            fullMatchDetailsFound.homeTeamName,
+            fullMatchDetailsFound.awayTeamName,
+            fullMatchDetailsFound.market[0].teamsOdds[0].awayOddName1x2,
+            fullMatchDetailsFound.market[0].teamsOdds[0].awayMarketType1x2
           )}
           extraStyle="w-[200px]"
         />

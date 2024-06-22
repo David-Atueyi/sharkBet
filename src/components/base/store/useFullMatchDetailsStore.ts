@@ -1,117 +1,119 @@
 import { create } from "zustand";
 import { IFullMatchDetailsStore } from "../interface/IFullMatchDetailsStore";
-import { ILeagueMatch } from "../interface/ILeagueMatch";
+import { Match } from "./useMatchesFromDataBase";
 
 const initialState = {
   fullMatchDetailsFound: {
-    id: 0,
+    id: "",
+    createdAt: "",
     hotMatch: false,
+    popularity: 0,
     game: "",
     country: "",
     league: "",
-    matchDate: {
-      date: "",
-      time: "",
-    },
-    teams: {
-      home: {
-        logo: "",
-        name: "",
-        market: {
-          homeWin: { oddName: "", odd: 0, marketType: "" },
-          homeOrDraw: {
-            oddName: "",
-            odd: 1.14,
-            marketType: "",
+    date: "",
+    time: "",
+    homeTeamLogo: "",
+    homeTeamName: "",
+    awayTeamLogo: "",
+    awayTeamName: "",
+    market: [
+      {
+        teamsOdds: [
+          {
+            id: "",
+            marketId: "",
+            awayOdd1x2: 0,
+            awayOddDnb: 0,
+            created_at: "",
+            homeOdd1x2: 0,
+            homeOddDnb: 0,
+            awayOddName1x2: "",
+            awayOddNameDnb: "",
+            homeOddName1x2: "",
+            homeOddNameDnb: "",
+            awayMarketType1x2: "",
+            awayMarketTypeDnb: "",
+            homeMarketType1x2: "",
+            homeMarketTypeDnb: "",
+            awayOddDoubleChance: 0,
+            homeOddDoubleChance: 0,
+            awayOddNameDoubleChance: "",
+            homeOddNameDoubleChance: "",
+            awayMarketTypeDoubleChance: "",
+            homeMarketTypeDoubleChance: "",
           },
-          homeDrawNoBet: {
-            oddName: "",
-            odd: 0,
-            marketType: "",
+        ],
+        generalMarkets: [
+          {
+            overs: [
+              {
+                id: "",
+                created_at: "",
+                generalMarketsId: "",
+                overOnePointFiveOdd: 0,
+                overTwoPointFiveOdd: 0,
+                overZeroPointFiveOdd: 0,
+                overThreePointFiveOdd: 0,
+                overOnePointFiveOddName: "",
+                overTwoPointFiveOddName: "",
+                overZeroPointFiveOddName: "",
+                overThreePointFiveOddName: "",
+                overOnePointFiveMarketType: "",
+                overTwoPointFiveMarketType: "",
+                overZeroPointFiveMarketType: "",
+                overThreePointFiveMarketType: "",
+              },
+            ],
+            unders: [
+              {
+                id: "",
+                created_at: "",
+                generalMarketsId: "",
+                underOnePointFiveOdd: 0,
+                underTwoPointFiveOdd: 0,
+                underZeroPointFiveOdd: 0,
+                underThreePointFiveOdd: 0,
+                underOnePointFiveOddName: "",
+                underTwoPointFiveOddName: "",
+                underZeroPointFiveOddName: "",
+                underThreePointFiveOddName: "",
+                underOnePointFiveMarketType: "",
+                underTwoPointFiveMarketType: "",
+                underZeroPointFiveMarketType: "",
+                underThreePointFiveMarketType: "",
+              },
+            ],
+            fullTimeResult: [
+              {
+                id: "",
+                created_at: "",
+                anyTeamToWinOdd: 0,
+                fullTimeDrawOdd: 0,
+                generalMarketsId: "",
+                anyTeamToWinOddName: "",
+                fullTimeDrawOddName: "",
+                anyTeamToWinMarketType: "",
+                fullTimeDrawMarketType: "",
+              },
+            ],
+            bothTeamsToScore: [
+              {
+                id: "",
+                noOdd: 0,
+                yesOdd: 0,
+                noOddName: "",
+                created_at: "",
+                yesOddName: "",
+                noMarketType: "",
+                yesMarketType: "",
+                generalMarketsId: "",
+              },
+            ],
           },
-        },
+        ],
       },
-      away: {
-        logo: "",
-        name: "",
-        market: {
-          awayWin: { oddName: "", odd: 0, marketType: "" },
-          drawOrWin: {
-            oddName: "",
-            odd: 1.65,
-            marketType: "",
-          },
-          awayDrawNoBet: {
-            oddName: "",
-            odd: 0,
-            marketType: "",
-          },
-        },
-      },
-    },
-
-    generalMarkets: {
-      fullTimeDraw: {
-        oddName: "",
-        odd: 0,
-        marketType: "",
-      },
-      anyTeamToWin: {
-        oddName: "",
-        odd: 0,
-        marketType: "",
-      },
-      overAndUnder: {
-        overGoals: {
-          "0.5": {
-            oddName: "",
-            odd: 0,
-            marketType: "",
-          },
-          "1.5": {
-            oddName: "",
-            odd: 0,
-            marketType: "",
-          },
-          "2.5": {
-            oddName: "",
-            odd: 0,
-            marketType: "",
-          },
-          "3.5": {
-            oddName: "",
-            odd: 0,
-            marketType: "",
-          },
-        },
-        underGoals: {
-          "0.5": {
-            oddName: "",
-            odd: 0,
-            marketType: "",
-          },
-          "1.5": {
-            oddName: "",
-            odd: 0,
-            marketType: "",
-          },
-          "2.5": {
-            oddName: "",
-            odd: 0,
-            marketType: "",
-          },
-          "3.5": {
-            oddName: "",
-            odd: 0,
-            marketType: "",
-          },
-        },
-      },
-      bothTeamsToScore: {
-        Yes: { oddName: "", odd: 0, marketType: "" },
-        No: { oddName: "", odd: 0, marketType: "" },
-      },
-    },
+    ],
   },
 };
 
@@ -119,7 +121,7 @@ export const useFullMatchDetailsStore = create<IFullMatchDetailsStore>(
   (set) => ({
     ...initialState,
 
-    setFullMatchDetailsFound: (matchFound: ILeagueMatch) =>
+    setFullMatchDetailsFound: (matchFound: Match) =>
       set((state) => ({
         ...state,
         fullMatchDetailsFound: matchFound,

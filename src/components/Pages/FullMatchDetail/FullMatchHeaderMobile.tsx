@@ -19,7 +19,7 @@ export const FullMatchHeaderMobile = () => {
       </div>
       <div className="flex flex-col items-center px-[15px] py-[15px] gap-[18px]">
         <div className="text-[11px] flex gap-2">
-          <span>{fullMatchDetailsFound?.country}</span>
+          <span>{fullMatchDetailsFound.country}</span>
           <span>-</span>
           <Link
             to={`/Games/&?identifier=${fullMatchDetailsFound.country}`}
@@ -30,16 +30,16 @@ export const FullMatchHeaderMobile = () => {
         </div>
         <div className="flex gap-2 items-center">
           <span className="max-w-[120px] truncate">
-            {fullMatchDetailsFound.teams.home.name}
+            {fullMatchDetailsFound.homeTeamName}
           </span>
           <span className="text-[10px] text-zinc-4 lowercase">vs</span>
           <span className="max-w-[120px] truncate">
-            {fullMatchDetailsFound.teams.away.name}
+            {fullMatchDetailsFound.awayTeamName}
           </span>
         </div>
         <div className="flex gap-2 text-[12px] text-zinc-4">
-          <span>{fullMatchDetailsFound.matchDate.time}</span>
-          <span>{fullMatchDetailsFound.matchDate.date}</span>
+          <span>{fullMatchDetailsFound.time}</span>
+          <span>{fullMatchDetailsFound.date}</span>
         </div>
       </div>
     </div>
