@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { leagues } from "../../Global/Games/leagues";
 import { useGamesUtilities } from "../store/useGamesUtilities";
-import { Match, useMatchesFromDataBase } from "../store/useMatchesFromDataBase";
+import { Match } from "../interface/IMatch";
+import { getMatchesFromDatabase } from "../utility/getMatchesFromDatabase";
 
 export const useHandleActiveLeague = () => {
-  const { matchesFromDataBase } = useMatchesFromDataBase((state) => ({
-    matchesFromDataBase: state.matchesFromDataBase,
-  }));
+  const { data: matchesFromDataBase = [] } = getMatchesFromDatabase(); 
 
   const [allLeague, setAllLeague] = useState<Match[]>(matchesFromDataBase);
   const [leagueTitle, setLeagueTitle] = useState<{

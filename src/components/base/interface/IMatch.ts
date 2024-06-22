@@ -1,5 +1,3 @@
-import { create } from "zustand";
-
 interface BothTeamsToScore {
   id: string;
   noOdd: number;
@@ -106,17 +104,3 @@ export interface Match {
   awayTeamName: string;
   market: Market[];
 }
-
-interface IMatchesFromDataBase {
-  matchesFromDataBase: Match[];
-  setMatchesFromDataBase: (data: Match[]) => void;
-}
-
-export const useMatchesFromDataBase = create<IMatchesFromDataBase>((set) => ({
-  matchesFromDataBase: [],
-
-  setMatchesFromDataBase: (data) =>
-    set({
-      matchesFromDataBase: data,
-    }),
-}));

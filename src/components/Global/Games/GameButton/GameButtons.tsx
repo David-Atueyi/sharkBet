@@ -1,5 +1,5 @@
 import { useHandleGamesButtonsUtilities } from "../../../base/hooks/useHandleGamesButtonsUtilities";
-import { Match } from "../../../base/store/useMatchesFromDataBase";
+import { Match } from "../../../base/interface/IMatch";
 import { GameButton } from "../Tabs/GameButton";
 
 export const GameButtons = ({ data }: { data: Match }) => {

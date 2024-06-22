@@ -39,16 +39,19 @@ export const useHandleBetslip = () => {
     setActiveBets: state.setActiveBets,
   }));
 
-  const totalOdds = selectedBetsArray
-    .reduce((sum, bet) => sum + bet.odd, 0)
-    .toFixed(2);
+  const totalOdds = selectedBetsArray.length > 0
+    ? selectedBetsArray
+        .filter(bet => typeof bet.odd === 'number') 
+        .reduce((sum, bet) => sum + (bet.odd || 0), 0)
+        .toFixed(2)
+    : '0.00';
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setBetAmount(value);
     setError(
       value === ""
-        ? "input an amount to be staked"
+        ? "Input an amount to be staked"
         : parseInt(value) < 10 || parseInt(value) > 3000000
         ? `Amount must be between 10 to 3000000`
         : ""
@@ -64,12 +67,12 @@ export const useHandleBetslip = () => {
     const balance = Number(accountBalance);
     !userIsActive
       ? toast.error(
-          "You are not signed in,create an account if you don't have an account"
+          "You are not signed in. Create an account if you don't have one."
         )
       : bet < 10 || bet > 3000000
       ? setError("Amount must be between 10 to 3000000")
       : bet > balance
-      ? setError("Insufficient balance. Top up")
+      ? setError("Insufficient balance. Top up.")
       : (setAccountBalance(balance - bet),
         setBetAmount(""),
         clearSelectedBets(),

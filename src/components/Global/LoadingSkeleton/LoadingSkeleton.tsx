@@ -1,4 +1,4 @@
-import { useMatchesFromDataBase } from "../../base/store/useMatchesFromDataBase";
+import { getMatchesFromDatabase } from "../../base/utility/getMatchesFromDatabase";
 
 export const LoadingSkeleton = ({
   LodingSkeletonTemplate,extraStyleOne,extraStyleTwo
@@ -7,9 +7,7 @@ export const LoadingSkeleton = ({
   extraStyleOne?:string;
   extraStyleTwo?:string;
 }) => {
-  const { matchesFromDataBase } = useMatchesFromDataBase((state) => ({
-    matchesFromDataBase: state.matchesFromDataBase,
-  }));
+  const { data: matchesFromDataBase = [] } = getMatchesFromDatabase(); 
 
   return (
     <div className={`${extraStyleOne} ${matchesFromDataBase.length > 0 ? "hidden" : "block"}`}>

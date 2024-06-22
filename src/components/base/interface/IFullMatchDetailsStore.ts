@@ -1,4 +1,4 @@
-import { Match } from "../store/useMatchesFromDataBase";
+import { Match } from "./IMatch";
 
 export interface IFullMatchDetailsStore {
   fullMatchDetailsFound: Match ;

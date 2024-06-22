@@ -1,11 +1,9 @@
 import { BallIcon } from "../Icons/BallIcon";
 import { Link } from "react-router-dom";
-import { useMatchesFromDataBase } from "../../base/store/useMatchesFromDataBase";
+import { getMatchesFromDatabase } from "../../base/utility/getMatchesFromDatabase";
 
 export const HotMatch = () => {
-  const { matchesFromDataBase } = useMatchesFromDataBase((state) => ({
-    matchesFromDataBase: state.matchesFromDataBase,
-  }));
+  const { data: matchesFromDataBase = [] } = getMatchesFromDatabase(); 
 
   const hotMatches = matchesFromDataBase.filter(
     (hotMatch) => hotMatch.hotMatch

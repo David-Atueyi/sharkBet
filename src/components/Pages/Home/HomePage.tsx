@@ -19,4 +19,3 @@ export const HomePage = () => {
     </div>
   );
 };
-// matchesFromDataBase && matchesFromDataBase.length > 0

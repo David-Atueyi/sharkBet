@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { IFullMatchDetailsStore } from "../interface/IFullMatchDetailsStore";
-import { Match } from "./useMatchesFromDataBase";
+import { Match } from "../interface/IMatch";
 
 const initialState = {
   fullMatchDetailsFound: {

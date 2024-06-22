@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ILeague } from "./leagues";
 import { GameSubHeader } from "./GameSubHeader";
 import { GameButtons } from "./GameButton/GameButtons";
-import { Match } from "../../base/store/useMatchesFromDataBase";
+import { Match } from "../../base/interface/IMatch";
 
 export const Game = ({
   leagueTitle,

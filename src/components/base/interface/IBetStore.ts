@@ -1,4 +1,3 @@
-// IBetStore.ts
 export interface SelectedBet {
   id:string
   homeClub: string;

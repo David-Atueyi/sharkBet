@@ -4,15 +4,13 @@ import { FullMatchHeaderMobile } from "./FullMatchHeaderMobile";
 import { Odds } from "./Odds";
 import { useFullMatchDetailsStore } from "../../base/store/useFullMatchDetailsStore";
 import { useEffect } from "react";
-import { useMatchesFromDataBase } from "../../base/store/useMatchesFromDataBase";
+import { getMatchesFromDatabase } from "../../base/utility/getMatchesFromDatabase";
 
 export const FullMatchDetails = () => {
   const [query] = useSearchParams();
   const gameId = query.get("gameId");
 
-  const { matchesFromDataBase } = useMatchesFromDataBase((state) => ({
-    matchesFromDataBase: state.matchesFromDataBase,
-  }));
+  const { data: matchesFromDataBase = [] } = getMatchesFromDatabase(); 
 
   const selectedMatch = matchesFromDataBase.find((game) => game.id === gameId);
 

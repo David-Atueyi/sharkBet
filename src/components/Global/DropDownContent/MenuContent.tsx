@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import { BallIcon } from "../Icons/BallIcon";
-import { useMatchesFromDataBase } from "../../base/store/useMatchesFromDataBase";
+import { getMatchesFromDatabase } from "../../base/utility/getMatchesFromDatabase";
 
 
 export const MenuContent = ({ onClick }: { onClick? :()=>void}) => {
-  const { matchesFromDataBase } = useMatchesFromDataBase((state) => ({
-    matchesFromDataBase: state.matchesFromDataBase,
-  }));
+  const { data: matchesFromDataBase = [] } = getMatchesFromDatabase(); 
 
   const getMatchesCountByCountry = (countryData: string) => {
     return matchesFromDataBase.filter((match) => match.country === countryData).length;

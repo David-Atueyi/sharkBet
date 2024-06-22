@@ -1,13 +1,11 @@
 import { useSearchParams } from "react-router-dom";
 import { Game } from "../../Global/Games/Game";
-import { useMatchesFromDataBase } from "../../base/store/useMatchesFromDataBase";
 import { LoadingSkeleton } from "../../Global/LoadingSkeleton/LoadingSkeleton";
 import { GamesLodingSkeletonTemplate } from "../../Global/Games/GamesLodingSkeletonTemplate";
+import { getMatchesFromDatabase } from "../../base/utility/getMatchesFromDatabase";
 
 export const Games = () => {
-  const { matchesFromDataBase } = useMatchesFromDataBase((state) => ({
-    matchesFromDataBase: state.matchesFromDataBase,
-  }));
+  const { data: matchesFromDataBase = [] } = getMatchesFromDatabase(); 
 
   const [query] = useSearchParams();
   const identifier = query.get("identifier");

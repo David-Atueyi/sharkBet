@@ -5,9 +5,12 @@ const { selectedBetsArray } = useBetStore((state) => ({
   selectedBetsArray: state.selectedBetsArray,
 }));
   
-  const totalOdds = selectedBetsArray
-    .reduce((sum, bet) => sum + bet.odd, 0)
-    .toFixed(2);
+    const totalOdds = selectedBetsArray.length > 0
+    ? selectedBetsArray
+        .filter(bet => typeof bet.odd === 'number') 
+        .reduce((sum, bet) => sum + (bet.odd || 0), 0)
+        .toFixed(2)
+    : '0.00';
 
   return (
     <div className="flex justify-between p-5 text-sm capitalize items-center text-zinc-8 bg-slate-100 rounded-t-2xl">

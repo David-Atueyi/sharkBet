@@ -5,7 +5,7 @@ import { useMoveBetCards } from "../../../base/hooks/useMoveBetCards";
 import { useCardUtilities } from "../../../base/store/useCardUtilities";
 import { FireIcon } from "../../../Global/Icons/FireIcon";
 import { ChevronRight } from "../../../Global/Icons/ChevronRight";
-import { Match } from "../../../base/store/useMatchesFromDataBase";
+import { Match } from "../../../base/interface/IMatch";
 
 export const Card = ({ datas }: { datas: Match[] }) => {
   const { cardContainerRef, slideLeft, slideRight } = useMoveBetCards();

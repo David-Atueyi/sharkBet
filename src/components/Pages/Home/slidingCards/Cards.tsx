@@ -4,19 +4,14 @@ import leagues from "../../../base/dummyDatas/leagueLogo.json";
 import { Card } from "./Card";
 import { useCardUtilities } from "../../../base/store/useCardUtilities";
 import { LeagueTabs } from "./LeagueTabs";
-import {
-  Match,
-  useMatchesFromDataBase,
-} from "../../../base/store/useMatchesFromDataBase";
 import { LoadingSkeleton } from "../../../Global/LoadingSkeleton/LoadingSkeleton";
 import { SlideCardLoadingSkeletonTemplate } from "./SlideCardLoadingSkeletonTemplate";
+import { Match } from "../../../base/interface/IMatch";
+import { getMatchesFromDatabase } from "../../../base/utility/getMatchesFromDatabase";
 
 export const Cards = () => {
-  const { matchesFromDataBase } = useMatchesFromDataBase((state) => ({
-    matchesFromDataBase: state.matchesFromDataBase,
-  }));
-
-  const [allLeague, setAllLeague] = useState<Match[]>([]);
+  const { data: matchesFromDataBase = [] } = getMatchesFromDatabase(); 
+  const [allLeague, setAllLeague] = useState<Match[]>(matchesFromDataBase);
   const { updateHover, resetHover, setActiveIndex } = useCardUtilities(
     (state) => ({
       updateHover: state.updateHover,
