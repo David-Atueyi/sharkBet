@@ -1,6 +1,8 @@
 import { useLocation } from "react-router-dom";
 import { HotMatch } from "./HotMatch";
 import { HotMatchesHeader } from "./HotMatchesHeader";
+import { HotMatchLoadingSkeletonTemplate } from "./HotMatchLoadingSkeletonTemplate";
+import { LoadingSkeleton } from "../LoadingSkeleton/LoadingSkeleton";
 
 export const HotMatches = () => {
   const { pathname } = useLocation();
@@ -13,6 +15,7 @@ export const HotMatches = () => {
     >
       <HotMatchesHeader />
       <HotMatch />
+      <LoadingSkeleton LodingSkeletonTemplate={HotMatchLoadingSkeletonTemplate}/>
     </div>
   );
 };

@@ -3,7 +3,8 @@ import { GamesHeader } from "./GamesHeader";
 import { leagues } from "./leagues";
 import { Game } from "./Game";
 import { useHandleActiveLeague } from "../../base/hooks/useHandleActiveLeague";
-import { GameLoadingSkeleton } from "./GameLoadingSkeleton";
+import { LoadingSkeleton } from "../LoadingSkeleton/LoadingSkeleton";
+import { GamesLodingSkeletonTemplate } from "./GamesLodingSkeletonTemplate";
 
 export const Games = () => {
  const {allLeague,leagueTitle,handleButtonClick}=useHandleActiveLeague()
@@ -15,7 +16,7 @@ export const Games = () => {
       {/*  */}
       <Game allLeague={allLeague} leagueTitle={leagueTitle} />
       {/*  */}
-      <GameLoadingSkeleton/>
+      <LoadingSkeleton LodingSkeletonTemplate={GamesLodingSkeletonTemplate}/>
     </div>
   );
 };

@@ -4,12 +4,13 @@ import leagues from "../../../base/dummyDatas/leagueLogo.json";
 import { Card } from "./Card";
 import { useCardUtilities } from "../../../base/store/useCardUtilities";
 import { LeagueTabs } from "./LeagueTabs";
-import { getMatchesFromDatabase } from "../../../base/funcs/getMatchesFromDatabase";
+import { getMatchesFromDatabase } from "../../../base/utility/getMatchesFromDatabase";
 import {
   Match,
   useMatchesFromDataBase,
 } from "../../../base/store/useMatchesFromDataBase";
-import { SlideCardLoadingSkeletons } from "./SlideCardLoadingSkeletons";
+import { LoadingSkeleton } from "../../../Global/LoadingSkeleton/LoadingSkeleton";
+import { SlideCardLoadingSkeletonTemplate } from "./SlideCardLoadingSkeletonTemplate";
 
 export const Cards = () => {
   const { matchesFromDataBase } = useMatchesFromDataBase((state) => ({
@@ -52,7 +53,11 @@ export const Cards = () => {
       <LeagueTabs handleLeagueClicked={handleLeagueClicked} />
       <HeadingForPc />
       <Card datas={allLeague} />
-      <SlideCardLoadingSkeletons />
+      <LoadingSkeleton
+        LodingSkeletonTemplate={SlideCardLoadingSkeletonTemplate}
+        extraStyleOne="overflow-hidden"
+        extraStyleTwo="grid grid-cols-4 w-[1150px]"
+      />
     </div>
   );
 };
