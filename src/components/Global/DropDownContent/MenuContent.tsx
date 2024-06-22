@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import { BallIcon } from "../Icons/BallIcon";
-import All from "../../base/dummyDatas/allMatches.json";
+import { useMatchesFromDataBase } from "../../base/store/useMatchesFromDataBase";
 
 
 export const MenuContent = ({ onClick }: { onClick? :()=>void}) => {
+  const { matchesFromDataBase } = useMatchesFromDataBase((state) => ({
+    matchesFromDataBase: state.matchesFromDataBase,
+  }));
+
   const getMatchesCountByCountry = (countryData: string) => {
-    return All.filter((match) => match.country === countryData).length;
+    return matchesFromDataBase.filter((match) => match.country === countryData).length;
   };
 
   return (
@@ -57,7 +61,7 @@ export const MenuContent = ({ onClick }: { onClick? :()=>void}) => {
               className="py-3 pl-8 hover:text-blue-7 flex justify-between pr-2"
             >
               <span>top league</span>
-              <span>{All.length}</span>
+              <span>{matchesFromDataBase.length}</span>
             </Link>
           </div>
           <div className="pr-2">

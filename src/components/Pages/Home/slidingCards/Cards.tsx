@@ -4,7 +4,6 @@ import leagues from "../../../base/dummyDatas/leagueLogo.json";
 import { Card } from "./Card";
 import { useCardUtilities } from "../../../base/store/useCardUtilities";
 import { LeagueTabs } from "./LeagueTabs";
-import { getMatchesFromDatabase } from "../../../base/utility/getMatchesFromDatabase";
 import {
   Match,
   useMatchesFromDataBase,
@@ -16,10 +15,6 @@ export const Cards = () => {
   const { matchesFromDataBase } = useMatchesFromDataBase((state) => ({
     matchesFromDataBase: state.matchesFromDataBase,
   }));
-
-  useEffect(() => {
-    getMatchesFromDatabase();
-  }, []);
 
   const [allLeague, setAllLeague] = useState<Match[]>([]);
   const { updateHover, resetHover, setActiveIndex } = useCardUtilities(

@@ -2,10 +2,11 @@ import { Outlet, useLocation } from "react-router-dom";
 import { GeneralHeaderLayout } from "../components/Global/Layout/GeneralHeaderLayout";
 import { GeneralFooterLayout } from "../components/Global/Layout/GeneralFooterLayout";
 import { BetSlipMobileAndTabletView } from "../components/Global/BetSlip/BetSlipMobileAndTabletView";
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { LeftSideSection } from "./LeftSideSection";
 import { RightSideSection } from "./RightSideSection";
 import { Toaster } from "sonner";
+import { getMatchesFromDatabase } from "../components/base/utility/getMatchesFromDatabase";
 
 export const GlobalPageLayout = () => {
   const { pathname } = useLocation();
@@ -17,6 +18,10 @@ export const GlobalPageLayout = () => {
       behavior: "smooth",
     });
   }, [pathname]);
+
+  useEffect(() => {
+    getMatchesFromDatabase();
+  }, []);
 
   return (
     <div className="min-w-[320px] flex flex-col font-sharkBetFont max-w-[1200px] m-auto px-3">
