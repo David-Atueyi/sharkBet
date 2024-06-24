@@ -1,32 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ChevronRight } from "../components/Global/Icons/ChevronRight";
 import { useAccountBalance } from "../components/base/store/useAccountBalance";
-import { useEffect, useState } from "react";
-import { getAuthData } from "../components/base/utility/getAuthData";
+import { useGetUserInfo } from "../components/base/store/useGetUserInfo";
 
 export const UserInfoLeftSideSection = () => {
- const { accountBalance } = useAccountBalance((state) => ({
-   accountBalance: state.accountBalance,
- }));
-  
-  const [username, setUserName] = useState<string>();
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getAuthData();
-      if (data?.user.user_metadata.username) {
-        setUserName(data?.user.user_metadata.username);
-      }
-    };
+  const { pathname } = useLocation();
 
-    fetchData();
-  }, []);
+  const { accountBalance } = useAccountBalance((state) => ({
+    accountBalance: state.accountBalance,
+  }));
+
+  const { userInfo } = useGetUserInfo((state) => ({
+    userInfo: state.userInfo,
+  }));
 
   return (
     <div className="w-[20%] hidden pc:block rounded-[20px] bg-zinc-1 text-zinc-9 capitalize pb-2 h-fit">
       <div className="bg-blue-6 h-[50px] rounded-t-[20px] flex items-center px-6 gap-1">
         <p className="uppercase font-black text-[23px]">hi,</p>
-        <p className="font-bold">{username}</p>
+        <p className="font-bold">{userInfo.username}</p>
       </div>
       <div className="px-4">
         <p>my balance</p>
@@ -39,7 +31,11 @@ export const UserInfoLeftSideSection = () => {
       </div>
       <Link
         to={"/me/deposit"}
-        className="flex justify-between px-4 py-2 border-y-8 border-zinc-3 focus:bg-blue-7/45 focus:font-bold focus:border-l-4 focus:border-l-blue-7"
+        className={`flex justify-between px-4 py-2 border-y-8 border-zinc-3 ${
+          pathname === "/me/deposit"
+            ? "bg-blue-7/45 font-bold border-l-4 border-l-blue-7"
+            : "bg-zinc-1"
+        }`}
       >
         <p>deposit</p>
         <ChevronRight />
@@ -47,14 +43,22 @@ export const UserInfoLeftSideSection = () => {
       <div className="bg-zinc-3 flex flex-col gap-1">
         <Link
           to={"/me/my-bets"}
-          className="flex justify-between px-4 py-2 bg-zinc-1 focus:bg-blue-7/45 focus:font-bold focus:border-l-4 focus:border-l-blue-7"
+          className={`flex justify-between px-4 py-2 ${
+            pathname === "/me/my-bets"
+              ? "bg-blue-7/45 font-bold border-l-4 border-l-blue-7"
+              : "bg-zinc-1"
+          }`}
         >
           <p>my bets</p>
           <ChevronRight />
         </Link>
         <Link
           to={"/me/transaction-history"}
-          className="flex justify-between px-4 py-2 bg-zinc-1 focus:bg-blue-7/45 focus:font-bold focus:border-l-4 focus:border-l-blue-7"
+          className={`flex justify-between px-4 py-2 ${
+            pathname === "/me/transaction-history"
+              ? "bg-blue-7/45 font-bold border-l-4 border-l-blue-7"
+              : "bg-zinc-1"
+          }`}
         >
           <p>my transaction</p>
           <ChevronRight />
@@ -62,7 +66,11 @@ export const UserInfoLeftSideSection = () => {
       </div>
       <Link
         to={"/me/account-info"}
-        className="flex justify-between px-4 py-2 border-t-8 border-zinc-3 focus:bg-blue-7/45 focus:font-bold focus:border-l-4 focus:border-l-blue-7 rounded-b-[8px]"
+        className={`flex justify-between px-4 py-2 border-t-8 border-zinc-3 rounded-b-[8px] ${
+          pathname === "/me/account-info"
+            ? "bg-blue-7/45 font-bold border-l-4 border-l-blue-7"
+            : "bg-zinc-1"
+        }`}
       >
         <p>my account info</p>
         <ChevronRight />

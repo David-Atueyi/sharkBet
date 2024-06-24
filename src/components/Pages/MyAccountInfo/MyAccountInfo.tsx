@@ -1,33 +1,14 @@
-import { useEffect, useState } from "react";
 import { Email } from "../../Global/Icons/Email";
 import { GoodShield } from "../../Global/Icons/GoodShield";
 import { ChangePassword } from "./ChangePassword/ChangePassword";
-import { getAuthData } from "../../base/utility/getAuthData";
 import { Calendar } from "../../Global/Icons/Calendar";
 import { UserIcon } from "../../Global/Icons/UserIcon";
+import { useGetUserInfo } from "../../base/store/useGetUserInfo";
 
 export const MyAccountInfo = () => {
-const [userData, setUserData] = useState<{
-  username: string;
-  email: string;
-  dob: string;
-}>();
-
-useEffect(() => {
-  const fetchData = async () => {
-    const data = await getAuthData();
-    if (data) {
-      setUserData({
-        username: data?.user.user_metadata.username,
-        email: data?.user.user_metadata.email,
-        dob: data?.user.user_metadata.dob,
-      });
-    }
-  };
-
-  fetchData();
-}, []);
-
+  const { userInfo } = useGetUserInfo((state) => ({
+    userInfo: state.userInfo,
+  }));
 
   return (
     <div className="px-3 pt-3">
@@ -41,21 +22,21 @@ useEffect(() => {
               <Email extraStyle="fill-blue-7" />
               <p className="text-[15px]">email</p>
             </div>
-            <p className="text-zinc-3">{userData?.email}</p>
+            <p className="text-zinc-3">{userInfo.email}</p>
           </div>
           <div className="flex justify-between items-center border-b-2 border-b-zinc-6 pb-3">
             <div className="flex items-center gap-1 capitalize">
               <UserIcon />
               <p className="text-[15px]">User Name</p>
             </div>
-            <p className="text-zinc-3">{userData?.username}</p>
+            <p className="text-zinc-3">{userInfo.username}</p>
           </div>
           <div className="flex justify-between items-center border-b-2 border-b-zinc-6 pb-3">
             <div className="flex items-center gap-1 capitalize">
               <Calendar extraStyle="fill-blue-6" />
               <p className="text-[15px]">Date Of Birth</p>
             </div>
-            <p className="text-zinc-3">{userData?.dob}</p>
+            <p className="text-zinc-3">{userInfo.dob}</p>
           </div>
         </div>
         <div>

@@ -2,13 +2,18 @@ import { Outlet, useLocation } from "react-router-dom";
 import { GeneralHeaderLayout } from "../components/Global/Layout/GeneralHeaderLayout";
 import { GeneralFooterLayout } from "../components/Global/Layout/GeneralFooterLayout";
 import { BetSlipMobileAndTabletView } from "../components/Global/BetSlip/BetSlipMobileAndTabletView";
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { LeftSideSection } from "./LeftSideSection";
 import { RightSideSection } from "./RightSideSection";
 import { Toaster } from "sonner";
+import { useGetUserInfo } from "../components/base/store/useGetUserInfo";
 
 export const GlobalPageLayout = () => {
   const { pathname } = useLocation();
+
+  const { setUserInfo } = useGetUserInfo((state) => ({
+    setUserInfo: state.setUserInfo,
+  }));
 
   useLayoutEffect(() => {
     console.log({ pathname });
@@ -18,6 +23,9 @@ export const GlobalPageLayout = () => {
     });
   }, [pathname]);
 
+  useEffect(() => {
+    setUserInfo();
+  }, [setUserInfo]);
 
   return (
     <div className="min-w-[320px] flex flex-col font-sharkBetFont max-w-[1200px] m-auto px-3">

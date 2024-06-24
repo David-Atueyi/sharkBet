@@ -9,14 +9,15 @@ import { XIcon } from "../Icons/XIcon";
 import { useAccountBalance } from "../../base/store/useAccountBalance";
 import supabase from "../../../config/superBaseClient";
 import { useUserIsActive } from "../../base/store/useUserIsActive";
-import { useEffect, useState } from "react";
-import { getAuthData } from "../../base/utility/getAuthData";
 import { toast } from "sonner";
+import { useGetUserInfo } from "../../base/store/useGetUserInfo";
 
 export const UserInfoContent = () => {
   const redirect = useNavigate();
 
-  const [ username, setUserName ] = useState<string>();
+  const { userInfo } = useGetUserInfo((state) => ({
+    userInfo: state.userInfo,
+  }));
 
   const { accountBalanceVisibility, setAccountBalanceVisibility } =
     useAccountBalanceVisibility((state) => ({
@@ -47,17 +48,6 @@ export const UserInfoContent = () => {
     setUserIsActive(false);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getAuthData();
-      if (data?.user.user_metadata.username) {
-        setUserName(data?.user.user_metadata.username);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <div className="relative">
       <div className={`${isVisible ? "block" : "hidden"}`}>
@@ -74,7 +64,7 @@ export const UserInfoContent = () => {
                 className="flex gap-1 capitalize w-full items-center "
               >
                 <p>hi,</p>
-                <p>{username}</p>
+                <p>{userInfo.username}</p>
                 <GoodShield extraStyle="pc:hidden" />
                 <ChevronRight extraStyle="text-[12px] pc:hidden" />
               </Link>

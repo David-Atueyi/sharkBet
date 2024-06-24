@@ -11,5 +11,9 @@ export const logInFormValidator = yup.object({
     ),
   password: yup
     .string()
-    .required("Password is required"),
+    .required("Password is required")
+    .min(5, "Password must be at least 5 characters")
+    .matches(/[a-z]/, "Password must contain at least one lowercase letter")
+    .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .matches(/\d/, "Password must contain at least one number"),
 });

@@ -5,10 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { depositValidator } from "./depositValidator";
 import { IDepositInputs } from "../../base/interface/IDepositInputs";
 import { useAccountBalance } from "../../base/store/useAccountBalance";
-import { useTransactionHistoryStore } from "../../base/store/useTransactionHistoryStore";
-import { formattedTime } from "../../base/funcs/time";
-import { formattedDate } from "../../base/funcs/date";
-
+import { insertTransactionsDatas } from "../../base/utility/transactionUtilities/insertTransactionsDatas";
+import { useGetUserInfo } from "../../base/store/useGetUserInfo";
 
 export const Deposit = () => {
   const methods = useForm<IDepositInputs>({
@@ -20,20 +18,20 @@ export const Deposit = () => {
     setAccountBalance: state.setAccountBalance,
   }));
 
-  const { setTransactionHistory } =
-    useTransactionHistoryStore((state) => ({
-      setTransactionHistory: state.setTransactionHistory,
-    }));
-  
-  const submitFunction = (data: any) => {
+  const { userInfo } = useGetUserInfo((state) => ({
+    userInfo: state.userInfo,
+  }));
+
+  const submitFunction = async (data: any) => {
     setAccountBalance(Number(accountBalance) + Number(data.top_up));
-    setTransactionHistory(
-      data.top_up,
-      "Deposits - Transfer",
-      formattedDate,
-      formattedTime,
-      "successful"
-    );
+
+    insertTransactionsDatas({
+      transactionType: "Deposits - Transfer",
+      amount: data.top_up,
+      transactionStatus: "successful",
+      userId: userInfo.userId,
+    });
+
     methods.reset();
   };
 

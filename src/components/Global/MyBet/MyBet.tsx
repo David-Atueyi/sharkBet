@@ -1,12 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import { useActiveBetsStore } from "../../base/store/useActiveBetsStore";
 import { useAccountBalance } from "../../base/store/useAccountBalance";
-import { formattedDate } from "../../base/funcs/date";
-import { formattedTime } from "../../base/funcs/time";
-import { useTransactionHistoryStore } from "../../base/store/useTransactionHistoryStore";
+import { insertTransactionsDatas } from "../../base/utility/transactionUtilities/insertTransactionsDatas";
+import { useGetUserInfo } from "../../base/store/useGetUserInfo";
 
 export const MyBet = () => {
-const { pathname } = useLocation();
+  const { pathname } = useLocation();
 
   const { activeBets, removeActiveBet } = useActiveBetsStore((state) => ({
     activeBets: state.activeBets,
@@ -18,21 +17,21 @@ const { pathname } = useLocation();
     setAccountBalance: state.setAccountBalance,
   }));
 
-  const { setTransactionHistory } = useTransactionHistoryStore((state) => ({
-    setTransactionHistory: state.setTransactionHistory,
+  const { userInfo } = useGetUserInfo((state) => ({
+    userInfo: state.userInfo,
   }));
 
   const handleCashOut = (amount: number, date: string, time: string) => {
     const reducedAmount = amount * 0.7;
     setAccountBalance(Number(accountBalance) + reducedAmount);
     removeActiveBet(date, time, amount.toString());
-    setTransactionHistory(
-      `+${reducedAmount}`,
-      "Cash Out",
-      formattedDate,
-      formattedTime,
-      "successful"
-    );
+
+    insertTransactionsDatas({
+      transactionType: "Cash Out",
+      amount: `+${reducedAmount}`,
+      transactionStatus: "successful",
+      userId: userInfo.userId,
+    });
   };
 
   return (

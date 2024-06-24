@@ -28,10 +28,10 @@ export const SignUpFormContent = ({
             type="text"
             placeholder="email"
             id="email"
-            extraStyle="mobile:w-[36vh] tablet:w-[300px]"
+            extraStyle="mobile:w-[30vh] tablet:w-[300px]"
           />
           {methods.formState.errors.email && (
-            <p className="text-right mt-1 mobile:text-[12px] tablet:text-sm text-rose-5">
+            <p className="text-right mt-1 mobile:text-[11px] tablet:text-sm text-rose-5">
               {methods.formState.errors?.email.message}
             </p>
           )}
@@ -46,10 +46,10 @@ export const SignUpFormContent = ({
             type="text"
             placeholder="user name"
             id="user_name"
-            extraStyle="mobile:w-[36vh] tablet:w-[300px]"
+            extraStyle="mobile:w-[30vh] tablet:w-[300px]"
           />
           {methods.formState.errors.user_name && (
-            <p className="text-right mt-1 mobile:text-[12px] tablet:text-sm text-rose-5">
+            <p className="text-right mt-1 mobile:text-[11px] tablet:text-sm text-rose-5">
               {methods.formState.errors?.user_name.message}
             </p>
           )}
@@ -64,10 +64,10 @@ export const SignUpFormContent = ({
             type="password"
             placeholder="password"
             id="password"
-            extraStyle="mobile:w-[36vh] tablet:w-[300px]"
+            extraStyle="mobile:w-[30vh] tablet:w-[300px]"
           />
           {methods.formState.errors.password && (
-            <p className="text-right mt-1 mobile:text-[12px] tablet:mobile:text-[12px] tablet:text-sm text-sm text-rose-5">
+            <p className="text-right mt-1 mobile:text-[11px] tablet:text-[12px] tablet:text-sm text-sm text-rose-5">
               {methods.formState.errors?.password.message}
             </p>
           )}
@@ -81,10 +81,10 @@ export const SignUpFormContent = ({
             name="date_of_birth"
             type="date"
             id="date_of_birth"
-            extraStyle="mobile:w-[36vh] tablet:w-[300px]"
+            extraStyle="mobile:w-[30vh] tablet:w-[300px]"
           />
           {methods.formState.errors.date_of_birth && (
-            <p className="text-right mt-1 mobile:text-[12px] tablet:text-sm text-rose-5">
+            <p className="text-right mt-1 mobile:text-[11px] tablet:text-sm text-rose-5">
               {methods.formState.errors?.date_of_birth.message}
             </p>
           )}

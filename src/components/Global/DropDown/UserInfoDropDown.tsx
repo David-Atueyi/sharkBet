@@ -37,7 +37,6 @@ export const UserInfoDropDown = () => {
     userIsActive: state.userIsActive,
   }));
 
-  console.log(userIsActive);
   
 
   return (

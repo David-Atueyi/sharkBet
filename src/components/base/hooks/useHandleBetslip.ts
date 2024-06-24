@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useBetStore } from "../store/useBetStore";
 import { useAccountBalance } from "../store/useAccountBalance";
-import { useTransactionHistoryStore } from "../store/useTransactionHistoryStore";
-import { formattedDate } from "../funcs/date";
-import { formattedTime } from "../funcs/time";
 import { useActiveBetsStore } from "../store/useActiveBetsStore";
 import { useUserIsActive } from "../store/useUserIsActive";
 import { toast } from "sonner";
+import { insertTransactionsDatas } from "../utility/transactionUtilities/insertTransactionsDatas";
+import { formattedDate } from "../funcs/date";
+import { formattedTime } from "../funcs/time";
+import { useGetUserInfo } from "../store/useGetUserInfo";
 
 export const useHandleBetslip = () => {
   const [betTabs, setBetTabs] = useState<{ tabOne: boolean; tabTwo: boolean }>({
@@ -31,20 +32,21 @@ export const useHandleBetslip = () => {
     setAccountBalance: state.setAccountBalance,
   }));
 
-  const { setTransactionHistory } = useTransactionHistoryStore((state) => ({
-    setTransactionHistory: state.setTransactionHistory,
-  }));
-
   const { setActiveBets } = useActiveBetsStore((state) => ({
     setActiveBets: state.setActiveBets,
   }));
 
-  const totalOdds = selectedBetsArray.length > 0
-    ? selectedBetsArray
-        .filter(bet => typeof bet.odd === 'number') 
-        .reduce((sum, bet) => sum + (bet.odd || 0), 0)
-        .toFixed(2)
-    : '0.00';
+  const { userInfo } = useGetUserInfo((state) => ({
+    userInfo: state.userInfo,
+  }));
+
+  const totalOdds =
+    selectedBetsArray.length > 0
+      ? selectedBetsArray
+          .filter((bet) => typeof bet.odd === "number")
+          .reduce((sum, bet) => sum + (bet.odd || 0), 0)
+          .toFixed(2)
+      : "0.00";
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -76,13 +78,12 @@ export const useHandleBetslip = () => {
       : (setAccountBalance(balance - bet),
         setBetAmount(""),
         clearSelectedBets(),
-        setTransactionHistory(
-          `-${betAmount}`,
-          "Bet Placed",
-          formattedDate,
-          formattedTime,
-          "successful"
-        ),
+        insertTransactionsDatas({
+          transactionType: "Bet Placed",
+          amount: `-${betAmount}`,
+          transactionStatus: "successful",
+          userId: userInfo.userId,
+        }),
         setActiveBets(
           selectedBetsArray,
           formattedDate,
