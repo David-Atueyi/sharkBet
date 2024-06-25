@@ -25,7 +25,7 @@ export const UserInfoLeftSideSection = () => {
         <p>my balance</p>
         <p className="font-extrabold text-[18px] flex gap-2">
           <span>NGN</span>
-          <span className="w-[100%] truncate">{balance.toLocaleString()}</span>
+          <span className="w-[100%] truncate">{Number(balance).toLocaleString()}</span>
         </p>
       </div>
       <Link

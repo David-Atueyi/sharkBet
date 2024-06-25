@@ -81,7 +81,7 @@ export const UserInfoDropDown = () => {
             <p>NGN</p>
             <p>
               {accountBalanceVisibility
-                ? balance.toLocaleString()
+                ? Number(balance).toLocaleString()
                 : "******"}
             </p>
             <EyeOpenIcon

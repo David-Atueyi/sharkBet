@@ -97,7 +97,7 @@ export const UserInfoContent = () => {
                 </div>
                 <p className={`max-w-[70px] truncate`}>
                   {accountBalanceVisibility
-                    ? balance.toLocaleString()
+                    ? Number(balance).toLocaleString()
                     : "******"}
                 </p>
               </div>
@@ -105,7 +105,7 @@ export const UserInfoContent = () => {
                 <p>NGN</p>
                 <p className="max-w-[90px] truncate">
                   {accountBalanceVisibility
-                    ? balance.toLocaleString()
+                    ? Number(balance).toLocaleString()
                     : "******"}
                 </p>
                 <EyeOpenIcon
