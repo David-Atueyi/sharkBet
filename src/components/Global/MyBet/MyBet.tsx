@@ -1,8 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import { useActiveBetsStore } from "../../base/store/useActiveBetsStore";
-import { useAccountBalance } from "../../base/store/useAccountBalance";
 import { insertTransactionsDatas } from "../../base/utility/transactionUtilities/insertTransactionsDatas";
 import { useGetUserInfo } from "../../base/store/useGetUserInfo";
+import { useUpdateAccountBalance } from "../../base/utility/accountBalance/updateAccountBalance";
+import { getAccountBalance } from "../../base/utility/accountBalance/getAccountBalance";
+import { useHandleAccountBalance } from "../../base/store/useHandleAccountBalance";
 
 export const MyBet = () => {
   const { pathname } = useLocation();
@@ -12,18 +14,34 @@ export const MyBet = () => {
     removeActiveBet: state.removeActiveBet,
   }));
 
-  const { accountBalance, setAccountBalance } = useAccountBalance((state) => ({
-    accountBalance: state.accountBalance,
-    setAccountBalance: state.setAccountBalance,
-  }));
+  const { mutate: updateAccountBalance } = useUpdateAccountBalance();
+  const { data: accountBalance } = getAccountBalance();
 
   const { userInfo } = useGetUserInfo((state) => ({
     userInfo: state.userInfo,
   }));
 
+  const { setBalance } = useHandleAccountBalance((state) => ({
+    balance: state.balance,
+    setBalance: state.setBalance,
+  }));
+
   const handleCashOut = (amount: number, date: string, time: string) => {
     const reducedAmount = amount * 0.7;
-    setAccountBalance(Number(accountBalance) + reducedAmount);
+
+    const currentBalance =
+      accountBalance && accountBalance[0]
+        ? parseFloat(accountBalance[0].balance)
+        : 0.0;
+
+    if (isNaN(currentBalance) || isNaN(reducedAmount)) {
+      console.error("Invalid account balance or top-up amount");
+      return;
+    }
+
+    const newBalance = (currentBalance + reducedAmount).toFixed(2);
+
+    updateAccountBalance(newBalance);
     removeActiveBet(date, time, amount.toString());
 
     insertTransactionsDatas({
@@ -32,6 +50,8 @@ export const MyBet = () => {
       transactionStatus: "successful",
       userId: userInfo.userId,
     });
+
+    setBalance(newBalance); 
   };
 
   return (

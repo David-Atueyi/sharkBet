@@ -4,33 +4,53 @@ import { Button } from "../../Global/FormContent/Button";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { depositValidator } from "./depositValidator";
 import { IDepositInputs } from "../../base/interface/IDepositInputs";
-import { useAccountBalance } from "../../base/store/useAccountBalance";
 import { insertTransactionsDatas } from "../../base/utility/transactionUtilities/insertTransactionsDatas";
 import { useGetUserInfo } from "../../base/store/useGetUserInfo";
+import { useUpdateAccountBalance } from "../../base/utility/accountBalance/updateAccountBalance";
+import { getAccountBalance } from "../../base/utility/accountBalance/getAccountBalance";
+import { useHandleAccountBalance } from "../../base/store/useHandleAccountBalance";
 
 export const Deposit = () => {
   const methods = useForm<IDepositInputs>({
     resolver: yupResolver(depositValidator),
   });
 
-  const { accountBalance, setAccountBalance } = useAccountBalance((state) => ({
-    accountBalance: state.accountBalance,
-    setAccountBalance: state.setAccountBalance,
-  }));
-
   const { userInfo } = useGetUserInfo((state) => ({
     userInfo: state.userInfo,
   }));
 
+  const { setBalance } = useHandleAccountBalance((state) => ({
+    balance: state.balance,
+    setBalance: state.setBalance,
+  }));
+
+  const { mutate: updateAccountBalance } = useUpdateAccountBalance();
+  const { data: accountBalance = [] } = getAccountBalance();
+
   const submitFunction = async (data: any) => {
-    setAccountBalance(Number(accountBalance) + Number(data.top_up));
+    const currentBalance =
+      accountBalance && accountBalance[0]
+        ? parseFloat(accountBalance[0].balance)
+        : 0.0;
+    const topUpAmount = parseFloat(data.top_up);
+
+    if (isNaN(currentBalance) || isNaN(topUpAmount)) {
+      console.error("Invalid account balance or top-up amount");
+      return;
+    }
+
+    const newBalance = (currentBalance + topUpAmount).toFixed(2);
+
+    updateAccountBalance(newBalance);
 
     insertTransactionsDatas({
       transactionType: "Deposits - Transfer",
-      amount: data.top_up,
+      amount: topUpAmount.toString(),
       transactionStatus: "successful",
       userId: userInfo.userId,
     });
+
+    setBalance(newBalance); 
 
     methods.reset();
   };
@@ -67,7 +87,6 @@ export const Deposit = () => {
                   )}
                 </div>
                 <div className="flex gap-3 justify-between">
-                  {/*  */}
                   <div className="w-fit relative">
                     <Input
                       name="expiry_date"
@@ -83,7 +102,6 @@ export const Deposit = () => {
                       </p>
                     )}
                   </div>
-                  {/*  */}
                   <div className="w-fit relative">
                     <Input
                       name="cvv"
@@ -99,7 +117,6 @@ export const Deposit = () => {
                       </p>
                     )}
                   </div>
-                  {/*  */}
                 </div>
               </div>
             </div>
@@ -135,3 +152,4 @@ export const Deposit = () => {
     </div>
   );
 };
+

@@ -7,9 +7,9 @@ import { ChevronUp } from "../Icons/ChevronUp";
 import { UserInfoContent } from "../DropDownContent/UserInfoContent";
 import { useUserInfoDropDownVisibility } from "../../base/store/useUserInfoDropDownVisibility";
 import { useAccountBalanceVisibility } from "../../base/store/useAccountBalanceVisibility";
-import { useAccountBalance } from "../../base/store/useAccountBalance";
 import { useActiveBetsStore } from "../../base/store/useActiveBetsStore";
 import { useUserIsActive } from "../../base/store/useUserIsActive";
+import { useHandleAccountBalance } from "../../base/store/useHandleAccountBalance";
 
 export const UserInfoDropDown = () => {
   const { accountBalanceVisibility, setAccountBalanceVisibility } =
@@ -25,19 +25,18 @@ export const UserInfoDropDown = () => {
     })
   );
 
-  const { activeBets } = useActiveBetsStore((state) => ({
-    activeBets: state.activeBets,
+  const { balance } = useHandleAccountBalance((state) => ({
+    balance: state.balance,
+    setBalance: state.setBalance,
   }));
 
-  const { accountBalance } = useAccountBalance((state) => ({
-    accountBalance: state.accountBalance,
+  const { activeBets } = useActiveBetsStore((state) => ({
+    activeBets: state.activeBets,
   }));
 
   const { userIsActive } = useUserIsActive((state) => ({
     userIsActive: state.userIsActive,
   }));
-
-  
 
   return (
     <>
@@ -65,7 +64,7 @@ export const UserInfoDropDown = () => {
             >
               <UserIcon />
               <p className="leading-4 truncate w-[48px] tablet:w-[100px]">
-                <span>&#x20A6;</span> <span>{accountBalance}</span>
+                <span>&#x20A6;</span> <span>{balance}</span>
               </p>
             </button>
             <UserInfoContent />
@@ -82,7 +81,7 @@ export const UserInfoDropDown = () => {
             <p>NGN</p>
             <p>
               {accountBalanceVisibility
-                ? accountBalance.toLocaleString()
+                ? balance.toLocaleString()
                 : "******"}
             </p>
             <EyeOpenIcon

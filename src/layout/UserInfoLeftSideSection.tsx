@@ -1,17 +1,18 @@
 import { Link, useLocation } from "react-router-dom";
 import { ChevronRight } from "../components/Global/Icons/ChevronRight";
-import { useAccountBalance } from "../components/base/store/useAccountBalance";
 import { useGetUserInfo } from "../components/base/store/useGetUserInfo";
+import { useHandleAccountBalance } from "../components/base/store/useHandleAccountBalance";
 
 export const UserInfoLeftSideSection = () => {
   const { pathname } = useLocation();
 
-  const { accountBalance } = useAccountBalance((state) => ({
-    accountBalance: state.accountBalance,
-  }));
-
   const { userInfo } = useGetUserInfo((state) => ({
     userInfo: state.userInfo,
+  }));
+
+  const { balance } = useHandleAccountBalance((state) => ({
+    balance: state.balance,
+    setBalance: state.setBalance,
   }));
 
   return (
@@ -24,9 +25,7 @@ export const UserInfoLeftSideSection = () => {
         <p>my balance</p>
         <p className="font-extrabold text-[18px] flex gap-2">
           <span>NGN</span>
-          <span className="w-[100%] truncate">
-            {accountBalance.toLocaleString()}
-          </span>
+          <span className="w-[100%] truncate">{balance.toLocaleString()}</span>
         </p>
       </div>
       <Link

@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { IAuthInputs } from "../../../base/interface/IAuthInputs";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,6 +7,7 @@ import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
 import { SignUpFormContent } from "./SignUpFormContent";
 import { useForm } from "react-hook-form";
+import { insertAccountBalanceData } from "../../../base/utility/accountBalance/insertAccountBalanceData";
 
 export const SignUpForm = () => {
   const redirect = useNavigate();
@@ -35,9 +35,14 @@ export const SignUpForm = () => {
       toast.error(error.message);
     },
 
-    onSuccess: () => {
+    onSuccess: async (response) => {
       methods.reset();
       redirect("/");
+
+      const userId = response.data.user?.id;
+      if (userId) {
+        await insertAccountBalanceData(userId);
+      }
     },
   });
 

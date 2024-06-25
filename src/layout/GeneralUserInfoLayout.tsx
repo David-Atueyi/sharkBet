@@ -5,18 +5,32 @@ import { UserInfoLeftSideSection } from "./UserInfoLeftSideSection";
 import { Toaster } from "sonner";
 import { useEffect } from "react";
 import { useGetUserInfo } from "../components/base/store/useGetUserInfo";
+import { useHandleAccountBalance } from "../components/base/store/useHandleAccountBalance";
+import { getAccountBalance } from "../components/base/utility/accountBalance/getAccountBalance";
 
 export const GeneralUserInfoLayout = () => {
+  const { data: accountBalance = [] } = getAccountBalance();
+
   const { setUserInfo } = useGetUserInfo((state) => ({
     setUserInfo: state.setUserInfo,
     userInfo: state.userInfo,
+  }));
+
+  const { setBalance } = useHandleAccountBalance((state) => ({
+    balance: state.balance,
+    setBalance: state.setBalance,
   }));
 
   useEffect(() => {
     setUserInfo();
   }, [setUserInfo]);
 
-  
+  useEffect(() => {
+    if (accountBalance && accountBalance[0] && accountBalance[0].balance) {
+      setBalance(accountBalance[0].balance);
+    }
+  }, [accountBalance, setBalance]);
+
   return (
     <div className="min-w-[320px] flex flex-col font-sharkBetFont max-w-[1200px] m-auto px-3">
       <GeneralHeaderLayout />

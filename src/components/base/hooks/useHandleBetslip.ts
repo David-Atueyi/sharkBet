@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useBetStore } from "../store/useBetStore";
-import { useAccountBalance } from "../store/useAccountBalance";
 import { useActiveBetsStore } from "../store/useActiveBetsStore";
 import { useUserIsActive } from "../store/useUserIsActive";
 import { toast } from "sonner";
@@ -8,6 +7,9 @@ import { insertTransactionsDatas } from "../utility/transactionUtilities/insertT
 import { formattedDate } from "../funcs/date";
 import { formattedTime } from "../funcs/time";
 import { useGetUserInfo } from "../store/useGetUserInfo";
+import { useUpdateAccountBalance } from "../utility/accountBalance/updateAccountBalance";
+import { getAccountBalance } from "../utility/accountBalance/getAccountBalance";
+import { useHandleAccountBalance } from "../store/useHandleAccountBalance";
 
 export const useHandleBetslip = () => {
   const [betTabs, setBetTabs] = useState<{ tabOne: boolean; tabTwo: boolean }>({
@@ -27,10 +29,7 @@ export const useHandleBetslip = () => {
     userIsActive: state.userIsActive,
   }));
 
-  const { accountBalance, setAccountBalance } = useAccountBalance((state) => ({
-    accountBalance: state.accountBalance,
-    setAccountBalance: state.setAccountBalance,
-  }));
+  const { data: accountBalance } = getAccountBalance();
 
   const { setActiveBets } = useActiveBetsStore((state) => ({
     setActiveBets: state.setActiveBets,
@@ -39,6 +38,13 @@ export const useHandleBetslip = () => {
   const { userInfo } = useGetUserInfo((state) => ({
     userInfo: state.userInfo,
   }));
+
+  const { setBalance } = useHandleAccountBalance((state) => ({
+    balance: state.balance,
+    setBalance: state.setBalance,
+  }));
+
+  const { mutate: updateAccountBalance } = useUpdateAccountBalance();
 
   const totalOdds =
     selectedBetsArray.length > 0
@@ -66,31 +72,39 @@ export const useHandleBetslip = () => {
 
   const placeBet = () => {
     const bet = Number(betAmount);
-    const balance = Number(accountBalance);
-    !userIsActive
-      ? toast.error(
-          "You are not signed in. Create an account if you don't have one."
-        )
-      : bet < 10 || bet > 3000000
-      ? setError("Amount must be between 10 to 3000000")
-      : bet > balance
-      ? setError("Insufficient balance. Top up.")
-      : (setAccountBalance(balance - bet),
-        setBetAmount(""),
-        clearSelectedBets(),
-        insertTransactionsDatas({
-          transactionType: "Bet Placed",
-          amount: `-${betAmount}`,
-          transactionStatus: "successful",
-          userId: userInfo.userId,
-        }),
-        setActiveBets(
-          selectedBetsArray,
-          formattedDate,
-          formattedTime,
-          betAmount,
-          Number(potentialReturn).toLocaleString()
-        ));
+    const balance =
+      accountBalance && accountBalance[0]
+        ? Number(accountBalance[0].balance)
+        : 0.0;
+    const newBalance = balance - bet;
+
+    if (!userIsActive) {
+      toast.error(
+        "You are not signed in. Create an account if you don't have one."
+      );
+    } else if (bet < 10 || bet > 3000000) {
+      setError("Amount must be between 10 to 3000000");
+    } else if (bet > balance) {
+      setError("Insufficient balance. Top up.");
+    } else {
+      updateAccountBalance(newBalance.toString());
+      setBetAmount("");
+      clearSelectedBets();
+      insertTransactionsDatas({
+        transactionType: "Bet Placed",
+        amount: `-${betAmount}`,
+        transactionStatus: "successful",
+        userId: userInfo.userId,
+      });
+      setActiveBets(
+        selectedBetsArray,
+        formattedDate,
+        formattedTime,
+        betAmount,
+        Number(potentialReturn).toLocaleString()
+      );
+      setBalance(newBalance.toString());
+    }
   };
 
   return {

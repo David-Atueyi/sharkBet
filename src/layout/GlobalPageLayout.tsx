@@ -7,6 +7,8 @@ import { LeftSideSection } from "./LeftSideSection";
 import { RightSideSection } from "./RightSideSection";
 import { Toaster } from "sonner";
 import { useGetUserInfo } from "../components/base/store/useGetUserInfo";
+import { useHandleAccountBalance } from "../components/base/store/useHandleAccountBalance";
+import { getAccountBalance } from "../components/base/utility/accountBalance/getAccountBalance";
 
 export const GlobalPageLayout = () => {
   const { pathname } = useLocation();
@@ -14,6 +16,13 @@ export const GlobalPageLayout = () => {
   const { setUserInfo } = useGetUserInfo((state) => ({
     setUserInfo: state.setUserInfo,
   }));
+
+  const { setBalance } = useHandleAccountBalance((state) => ({
+    balance: state.balance,
+    setBalance: state.setBalance,
+  }));
+
+  const { data: accountBalance = [] } = getAccountBalance();
 
   useLayoutEffect(() => {
     console.log({ pathname });
@@ -27,11 +36,16 @@ export const GlobalPageLayout = () => {
     setUserInfo();
   }, [setUserInfo]);
 
+  useEffect(() => {
+    if (accountBalance && accountBalance[0] && accountBalance[0].balance) {
+      setBalance(accountBalance[0].balance);
+    }
+  }, [accountBalance, setBalance]);
+
   return (
     <div className="min-w-[320px] flex flex-col font-sharkBetFont max-w-[1200px] m-auto px-3">
       <GeneralHeaderLayout />
       <main className="flex-1 relative">
-        {/*  */}
         <div className="flex mt-4 gap-3 mobile:justify-center relative">
           <LeftSideSection />
           <div className="w-[57%] mobile:w-full tablet:w-[81%] pc:w-[57%]">
@@ -39,9 +53,7 @@ export const GlobalPageLayout = () => {
           </div>
           <RightSideSection />
         </div>
-        {/*  */}
         <BetSlipMobileAndTabletView />
-        {/*  */}
       </main>
       <GeneralFooterLayout />
       <Toaster closeButton={true} richColors />

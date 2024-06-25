@@ -6,11 +6,11 @@ import { EyeCloseIcon } from "../Icons/EyeCloseIcon";
 import { EyeOpenIcon } from "../Icons/EyeOpenIcon";
 import { GoodShield } from "../Icons/GoodShield";
 import { XIcon } from "../Icons/XIcon";
-import { useAccountBalance } from "../../base/store/useAccountBalance";
 import supabase from "../../../config/superBaseClient";
 import { useUserIsActive } from "../../base/store/useUserIsActive";
 import { toast } from "sonner";
 import { useGetUserInfo } from "../../base/store/useGetUserInfo";
+import { useHandleAccountBalance } from "../../base/store/useHandleAccountBalance";
 
 export const UserInfoContent = () => {
   const redirect = useNavigate();
@@ -36,8 +36,9 @@ export const UserInfoContent = () => {
     setUserIsActive: state.setUserIsActive,
   }));
 
-  const { accountBalance } = useAccountBalance((state) => ({
-    accountBalance: state.accountBalance,
+  const { balance } = useHandleAccountBalance((state) => ({
+    balance: state.balance,
+    setBalance: state.setBalance,
   }));
 
   const handleLogOut = async () => {
@@ -96,7 +97,7 @@ export const UserInfoContent = () => {
                 </div>
                 <p className={`max-w-[70px] truncate`}>
                   {accountBalanceVisibility
-                    ? accountBalance.toLocaleString()
+                    ? balance.toLocaleString()
                     : "******"}
                 </p>
               </div>
@@ -104,7 +105,7 @@ export const UserInfoContent = () => {
                 <p>NGN</p>
                 <p className="max-w-[90px] truncate">
                   {accountBalanceVisibility
-                    ? accountBalance.toLocaleString()
+                    ? balance.toLocaleString()
                     : "******"}
                 </p>
                 <EyeOpenIcon
