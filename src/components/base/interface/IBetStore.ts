@@ -1,5 +1,4 @@
 export interface SelectedBet {
-  id:string
   homeClub: string;
   awayClub: string;
   odd: number|undefined;
@@ -12,7 +11,6 @@ export interface SelectedBet {
 export interface IBetStore {
   selectedBetsArray: SelectedBet[];
   setSelectedBet: (
-    id:string,
     homeClub: string,
     awayClub: string,
     odd: number|undefined,

@@ -1,15 +1,22 @@
+import { useBetStore } from "../../base/store/useBetStore";
+import { deleteBetSlip } from "../../base/utility/betSlip/deleteBetSlip";
+
 interface IConfirmClearBetSlip {
   confirmClearBet: boolean;
-  clearSelectedBets: () => void;
-  setConfirmClearBet: (state:boolean) => void;
+  setConfirmClearBet: (state: boolean) => void;
 }
-
 
 export const ConfirmClearBetSlip = ({
   confirmClearBet,
-  clearSelectedBets,
   setConfirmClearBet,
 }: IConfirmClearBetSlip) => {
+  const { clearSelectedBets } = useBetStore((state) => ({
+    clearSelectedBets: state.clearSelectedBets,
+  }));
+
+  const { mutate: deleteSelectedBet } = deleteBetSlip();
+ 
+
   return (
     <div className={`${!confirmClearBet ? "hidden" : "block"}`}>
       <div className="bg-zinc-10/25 absolute w-full h-full z-[8] top-0"></div>
@@ -17,7 +24,11 @@ export const ConfirmClearBetSlip = ({
         <p className="pb-1">are you sure you want to clear</p>
         <div className="flex gap-1 px-1">
           <button
-            onClick={() => (clearSelectedBets(), setConfirmClearBet(false))}
+            onClick={() => (
+              clearSelectedBets(),
+              deleteSelectedBet(null),
+              setConfirmClearBet(false)
+            )}
             className="w-full text-zinc-2 capitalize font-bold py-1 rounded-md bg-rose-6"
           >
             yes

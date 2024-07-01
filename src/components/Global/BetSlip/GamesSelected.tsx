@@ -1,19 +1,38 @@
 import { useBetStore } from "../../base/store/useBetStore";
+import { deleteBetSlip } from "../../base/utility/betSlip/deleteBetSlip";
 import { BallIcon } from "../Icons/BallIcon";
 import { XIcon } from "../Icons/XIcon";
 
 export const GamesSelected = () => {
-  const { selectedBetsArray, removeSelectedBet } =
-    useBetStore((state) => ({
-      selectedBetsArray: state.selectedBetsArray,
-      clearSelectedBets: state.clearSelectedBets,
-      removeSelectedBet: state.removeSelectedBet,
-    }));
-  
-   const handleRemoveBet = (index: number) => {
-     removeSelectedBet(index);
-   };
-  
+  const { selectedBetsArray, removeSelectedBet } = useBetStore((state) => ({
+    selectedBetsArray: state.selectedBetsArray,
+    removeSelectedBet: state.removeSelectedBet,
+  }));
+
+  const { mutate: deleteSelectedBet } = deleteBetSlip();
+
+  const handleRemoveBet = (
+    index: number,
+    homeClub: string,
+    awayClub: string,
+    odd: number | undefined,
+    marketType: string | undefined,
+    oddName: string | undefined,
+    date: string,
+    time: string
+  ) => {
+    removeSelectedBet(index);
+    deleteSelectedBet({
+      homeClub,
+      awayClub,
+      odd,
+      marketType,
+      oddName,
+      date,
+      time,
+    });
+  };
+
   return (
     <div>
       {selectedBetsArray.map((selectedBet, index) => (
@@ -22,7 +41,18 @@ export const GamesSelected = () => {
           <div className="flex gap-2">
             <div className="self-center">
               <XIcon
-                handleClick={() => handleRemoveBet(index)}
+                handleClick={() =>
+                  handleRemoveBet(
+                    index,
+                    selectedBet.homeClub,
+                    selectedBet.awayClub,
+                    selectedBet.odd,
+                    selectedBet.marketType,
+                    selectedBet.oddName,
+                    selectedBet.date,
+                    selectedBet.time
+                  )
+                }
                 extraStyle=" w-[20px] h-[20px] stroke-zinc-4 pc:hover:stroke-zinc-7 pc:cursor-pointer"
               />
             </div>
@@ -53,3 +83,4 @@ export const GamesSelected = () => {
     </div>
   );
 };
+

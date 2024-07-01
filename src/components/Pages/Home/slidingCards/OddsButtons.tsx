@@ -1,48 +1,8 @@
-import { useBetStore } from "../../../base/store/useBetStore";
+import { useHandleGamesButtonsUtilities } from "../../../base/hooks/useHandleGamesButtonsUtilities";
 import { OddsButton } from "../../../Global/OddsButton/OddsButton";
 
 export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
-  const { setSelectedBet, selectedBetsArray } = useBetStore((state) => ({
-    setSelectedBet: state.setSelectedBet,
-    selectedBetsArray: state.selectedBetsArray,
-  }));
-
-  const isButtonClicked = (
-    homeClub: string,
-    awayClub: string,
-    oddName: string | undefined,
-    marketType: string | undefined
-  ) => {
-    return selectedBetsArray.some(
-      (bet) =>
-        bet.homeClub === homeClub &&
-        bet.awayClub === awayClub &&
-        bet.oddName === oddName &&
-        bet.marketType === marketType
-    );
-  };
-
-  const handleClick = (
-    id: string,
-    homeClub: string,
-    awayClub: string,
-    odd: number | undefined,
-    marketType: string | undefined,
-    oddName: string | undefined,
-    date: string,
-    time: string
-  ) => {
-    setSelectedBet(
-      id,
-      homeClub,
-      awayClub,
-      odd,
-      marketType,
-      oddName,
-      date,
-      time
-    );
-  };
+  const { isButtonClicked, handleClick } = useHandleGamesButtonsUtilities();
 
   return (
     <div>
@@ -50,7 +10,6 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
         <OddsButton
           onClick={() =>
             handleClick(
-              gameOdds.id,
               gameOdds.homeTeamName,
               gameOdds.awayTeamName,
               gameOdds.market[0].teamsOdds[0].homeOdd1x2,
@@ -73,7 +32,6 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
         <OddsButton
           onClick={() =>
             handleClick(
-              gameOdds.id,
               gameOdds.homeTeamName,
               gameOdds.awayTeamName,
               gameOdds.market[0].generalMarkets[0].fullTimeResult[0]
@@ -104,7 +62,6 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
         <OddsButton
           onClick={() =>
             handleClick(
-              gameOdds.id,
               gameOdds.homeTeamName,
               gameOdds.awayTeamName,
               gameOdds.market[0].teamsOdds[0].awayOdd1x2,

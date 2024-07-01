@@ -9,6 +9,8 @@ import { Toaster } from "sonner";
 import { useGetUserInfo } from "../components/base/store/useGetUserInfo";
 import { useHandleAccountBalance } from "../components/base/store/useHandleAccountBalance";
 import { getAccountBalance } from "../components/base/utility/accountBalance/getAccountBalance";
+import { getBetSlip } from "../components/base/utility/betSlip/getBetSlip";
+import { useBetStore } from "../components/base/store/useBetStore";
 
 export const GlobalPageLayout = () => {
   const { pathname } = useLocation();
@@ -22,7 +24,13 @@ export const GlobalPageLayout = () => {
     setBalance: state.setBalance,
   }));
 
+  const { setSelectedBet } = useBetStore((state) => ({
+    setSelectedBet: state.setSelectedBet,
+  }));
+
   const { data: accountBalance = [] } = getAccountBalance();
+
+  const { data: betSlipData = [] } = getBetSlip();
 
   useLayoutEffect(() => {
     console.log({ pathname });
@@ -41,6 +49,22 @@ export const GlobalPageLayout = () => {
       setBalance(accountBalance[0].balance);
     }
   }, [accountBalance, setBalance]);
+
+  useEffect(() => {
+    if (betSlipData && betSlipData[0]) {
+      betSlipData.map((betSlip) =>
+        setSelectedBet(
+          betSlip.homeClub,
+          betSlip.awayClub,
+          betSlip.odd,
+          betSlip.marketType,
+          betSlip.oddName,
+          betSlip.date,
+          betSlip.time
+        )
+      );
+    }
+  }, [betSlipData, setSelectedBet]);
 
   return (
     <div className="min-w-[320px] flex flex-col font-sharkBetFont max-w-[1200px] m-auto px-3">

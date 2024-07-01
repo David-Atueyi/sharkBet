@@ -7,9 +7,10 @@ import { insertTransactionsDatas } from "../utility/transactionUtilities/insertT
 import { formattedDate } from "../funcs/date";
 import { formattedTime } from "../funcs/time";
 import { useGetUserInfo } from "../store/useGetUserInfo";
-import { useUpdateAccountBalance } from "../utility/accountBalance/updateAccountBalance";
+import { updateUserAccountBalance } from "../utility/accountBalance/updateUserAccountBalance";
 import { getAccountBalance } from "../utility/accountBalance/getAccountBalance";
 import { useHandleAccountBalance } from "../store/useHandleAccountBalance";
+import { deleteBetSlip } from "../utility/betSlip/deleteBetSlip";
 
 export const useHandleBetslip = () => {
   const [betTabs, setBetTabs] = useState<{ tabOne: boolean; tabTwo: boolean }>({
@@ -44,7 +45,9 @@ export const useHandleBetslip = () => {
     setBalance: state.setBalance,
   }));
 
-  const { mutate: updateAccountBalance } = useUpdateAccountBalance();
+  const { mutate: updateAccountBalance } = updateUserAccountBalance();
+
+  const { mutate: deleteSelectedBet } = deleteBetSlip();
 
   const totalOdds =
     selectedBetsArray.length > 0
@@ -90,6 +93,7 @@ export const useHandleBetslip = () => {
       updateAccountBalance(newBalance.toString());
       setBetAmount("");
       clearSelectedBets();
+      deleteSelectedBet(null);
       insertTransactionsDatas({
         transactionType: "Bet Placed",
         amount: `-${betAmount}`,

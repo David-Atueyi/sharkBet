@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import supabase from "../../../../config/superBaseClient";
 import { useGetUserInfo } from "../../store/useGetUserInfo";
 
-export const useUpdateAccountBalance = () => {
+export const updateUserAccountBalance = () => {
   const { userInfo } = useGetUserInfo((state) => ({
     userInfo: state.userInfo,
   }));

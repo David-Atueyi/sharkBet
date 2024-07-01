@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useBetStore } from "../../../base/store/useBetStore";
 import { useFullMatchDetailsStore } from "../../../base/store/useFullMatchDetailsStore";
 import { OddButton } from "./OddButton";
 import { CaretDown } from "../../../Global/Icons/CaretDown";
+import { useHandleGamesButtonsUtilities } from "../../../base/hooks/useHandleGamesButtonsUtilities";
 
 export const DoubleChance = () => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
@@ -11,38 +11,7 @@ export const DoubleChance = () => {
     fullMatchDetailsFound: state.fullMatchDetailsFound,
   }));
 
-  const { setSelectedBet, selectedBetsArray } = useBetStore((state) => ({
-    setSelectedBet: state.setSelectedBet,
-    selectedBetsArray: state.selectedBetsArray,
-  }));
-
-  const isButtonClicked = (
-    homeClub: string,
-    awayClub: string,
-    oddName: string,
-    marketType: string
-  ) => {
-    return selectedBetsArray.some(
-      (bet) =>
-        bet.homeClub === homeClub &&
-        bet.awayClub === awayClub &&
-        bet.oddName === oddName &&
-        bet.marketType === marketType
-    );
-  };
-
-  const handleClick = (
-    id:string,
-    homeClub: string,
-    awayClub: string,
-    odd: number,
-    marketType: string,
-    oddName: string,
-    date: string,
-    time: string
-  ) => {
-    setSelectedBet(id,homeClub, awayClub, odd, marketType, oddName, date, time);
-  };
+  const { isButtonClicked, handleClick } = useHandleGamesButtonsUtilities();
 
   return (
     <div className={`flex gap-2 flex-col border-b-2 border-zinc-5 pb-4`}>
@@ -65,12 +34,13 @@ export const DoubleChance = () => {
         <OddButton
           onClick={() =>
             handleClick(
-              fullMatchDetailsFound.id,
               fullMatchDetailsFound.homeTeamName,
               fullMatchDetailsFound.awayTeamName,
               fullMatchDetailsFound.market[0].teamsOdds[0].homeOddDoubleChance,
-              fullMatchDetailsFound.market[0].teamsOdds[0].homeMarketTypeDoubleChance,
-              fullMatchDetailsFound.market[0].teamsOdds[0].homeOddNameDoubleChance,
+              fullMatchDetailsFound.market[0].teamsOdds[0]
+                .homeMarketTypeDoubleChance,
+              fullMatchDetailsFound.market[0].teamsOdds[0]
+                .homeOddNameDoubleChance,
               fullMatchDetailsFound.date,
               fullMatchDetailsFound.time
             )
@@ -78,60 +48,79 @@ export const DoubleChance = () => {
           contentOne={
             fullMatchDetailsFound.market[0].teamsOdds[0].homeOddNameDoubleChance
           }
-          contentTwo={fullMatchDetailsFound.market[0].teamsOdds[0].homeOddDoubleChance}
+          contentTwo={
+            fullMatchDetailsFound.market[0].teamsOdds[0].homeOddDoubleChance
+          }
           isClicked={isButtonClicked(
             fullMatchDetailsFound.homeTeamName,
             fullMatchDetailsFound.awayTeamName,
-            fullMatchDetailsFound.market[0].teamsOdds[0].homeOddNameDoubleChance,
-            fullMatchDetailsFound.market[0].teamsOdds[0].homeMarketTypeDoubleChance
+            fullMatchDetailsFound.market[0].teamsOdds[0]
+              .homeOddNameDoubleChance,
+            fullMatchDetailsFound.market[0].teamsOdds[0]
+              .homeMarketTypeDoubleChance
           )}
           extraStyle="w-[200px]"
         />
         <OddButton
           onClick={() =>
             handleClick(
-              fullMatchDetailsFound.id,
               fullMatchDetailsFound.homeTeamName,
               fullMatchDetailsFound.awayTeamName,
-              fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].anyTeamToWinOdd,
-              fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].anyTeamToWinMarketType,
-              fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].anyTeamToWinOddName,
+              fullMatchDetailsFound.market[0].generalMarkets[0]
+                .fullTimeResult[0].anyTeamToWinOdd,
+              fullMatchDetailsFound.market[0].generalMarkets[0]
+                .fullTimeResult[0].anyTeamToWinMarketType,
+              fullMatchDetailsFound.market[0].generalMarkets[0]
+                .fullTimeResult[0].anyTeamToWinOddName,
               fullMatchDetailsFound.date,
               fullMatchDetailsFound.time
             )
           }
           contentOne={
-            fullMatchDetailsFound?.market[0].generalMarkets[0].fullTimeResult[0].anyTeamToWinOddName
+            fullMatchDetailsFound?.market[0].generalMarkets[0].fullTimeResult[0]
+              .anyTeamToWinOddName
           }
-          contentTwo={fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].anyTeamToWinOdd}
+          contentTwo={
+            fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0]
+              .anyTeamToWinOdd
+          }
           isClicked={isButtonClicked(
             fullMatchDetailsFound.homeTeamName,
             fullMatchDetailsFound.awayTeamName,
-            fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].anyTeamToWinOddName,
-            fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].anyTeamToWinMarketType
+            fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0]
+              .anyTeamToWinOddName,
+            fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0]
+              .anyTeamToWinMarketType
           )}
           extraStyle="w-[200px]"
         />
         <OddButton
           onClick={() =>
             handleClick(
-              fullMatchDetailsFound.id,
               fullMatchDetailsFound.homeTeamName,
               fullMatchDetailsFound.awayTeamName,
               fullMatchDetailsFound.market[0].teamsOdds[0].awayOddDoubleChance,
-              fullMatchDetailsFound.market[0].teamsOdds[0].awayMarketTypeDoubleChance,
-              fullMatchDetailsFound.market[0].teamsOdds[0].awayOddNameDoubleChance,
+              fullMatchDetailsFound.market[0].teamsOdds[0]
+                .awayMarketTypeDoubleChance,
+              fullMatchDetailsFound.market[0].teamsOdds[0]
+                .awayOddNameDoubleChance,
               fullMatchDetailsFound.date,
               fullMatchDetailsFound.time
             )
           }
-          contentOne={fullMatchDetailsFound.market[0].teamsOdds[0].awayOddNameDoubleChance}
-          contentTwo={fullMatchDetailsFound.market[0].teamsOdds[0].awayOddDoubleChance}
+          contentOne={
+            fullMatchDetailsFound.market[0].teamsOdds[0].awayOddNameDoubleChance
+          }
+          contentTwo={
+            fullMatchDetailsFound.market[0].teamsOdds[0].awayOddDoubleChance
+          }
           isClicked={isButtonClicked(
             fullMatchDetailsFound.homeTeamName,
             fullMatchDetailsFound.awayTeamName,
-            fullMatchDetailsFound.market[0].teamsOdds[0].awayOddNameDoubleChance,
-            fullMatchDetailsFound.market[0].teamsOdds[0].awayMarketTypeDoubleChance
+            fullMatchDetailsFound.market[0].teamsOdds[0]
+              .awayOddNameDoubleChance,
+            fullMatchDetailsFound.market[0].teamsOdds[0]
+              .awayMarketTypeDoubleChance
           )}
           extraStyle="w-[200px]"
         />

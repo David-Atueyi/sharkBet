@@ -1,46 +1,79 @@
-import { useBetStore } from '../store/useBetStore';
+import { useBetStore } from "../store/useBetStore";
+import { useGetUserInfo } from "../store/useGetUserInfo";
+import { deleteBetSlip } from "../utility/betSlip/deleteBetSlip";
+import { insertBetSlip } from "../utility/betSlip/insertBetSlip";
 
 export const useHandleGamesButtonsUtilities = () => {
-    const { setSelectedBet, selectedBetsArray } = useBetStore((state) => ({
-        setSelectedBet: state.setSelectedBet,
-        selectedBetsArray: state.selectedBetsArray,
-      }));
-    
-      const isButtonClicked = (
-        homeClub: string,
-        awayClub: string,
-        oddName: string | undefined,
-        marketType: string | undefined
-      ) => {
-        return selectedBetsArray.some(
-          (bet) =>
-            bet.homeClub === homeClub &&
-            bet.awayClub === awayClub &&
-            bet.oddName === oddName &&
-            bet.marketType === marketType
-        );
-      };
-    
-      const handleClick = (
-        id: string,
-        homeClub: string,
-        awayClub: string,
-        odd: number | undefined,
-        marketType: string | undefined,
-        oddName: string | undefined,
-        date: string,
-        time: string
-      ) => {
-        setSelectedBet(
-          id,
-          homeClub,
-          awayClub,
-          odd,
-          marketType,
-          oddName,
-          date,
-          time
-        );
-      };
-  return {isButtonClicked,handleClick}
-}
+  const { userInfo } = useGetUserInfo((state) => ({
+    userInfo: state.userInfo,
+  }));
+
+  const userId = userInfo?.userId;
+
+  const { setSelectedBet, selectedBetsArray } = useBetStore((state) => ({
+    setSelectedBet: state.setSelectedBet,
+    selectedBetsArray: state.selectedBetsArray,
+  }));
+
+  const { mutate: deleteSelectedBet } = deleteBetSlip();
+
+  const isButtonClicked = (
+    homeClub: string,
+    awayClub: string,
+    oddName: string | undefined,
+    marketType: string | undefined
+  ) => {
+    return selectedBetsArray.some(
+      (bet) =>
+        bet.homeClub === homeClub &&
+        bet.awayClub === awayClub &&
+        bet.oddName === oddName &&
+        bet.marketType === marketType
+    );
+  };
+
+  const handleClick = (
+    homeClub: string,
+    awayClub: string,
+    odd: number | undefined,
+    marketType: string | undefined,
+    oddName: string | undefined,
+    date: string,
+    time: string
+  ) => {
+    setSelectedBet(homeClub, awayClub, odd, marketType, oddName, date, time);
+
+    const betAlreadyInSlip = selectedBetsArray.some(
+      (bet) =>
+        bet.homeClub === homeClub &&
+        bet.awayClub === awayClub &&
+        bet.oddName === oddName &&
+        bet.marketType === marketType
+    );
+
+    if (betAlreadyInSlip) {
+      deleteSelectedBet({
+        homeClub,
+        awayClub,
+        odd,
+        marketType,
+        oddName,
+        date,
+        time,
+      });
+    } else {
+      insertBetSlip({
+        homeClub,
+        awayClub,
+        odd,
+        marketType,
+        oddName,
+        date,
+        time,
+        userId,
+      });
+    }
+  };
+
+  return { isButtonClicked, handleClick };
+};

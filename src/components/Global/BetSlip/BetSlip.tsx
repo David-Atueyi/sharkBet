@@ -20,9 +20,8 @@ export const BetSlip = () => {
     totalOdds,
   } = useHandleBetslip();
 
-  const { selectedBetsArray, clearSelectedBets } = useBetStore((state) => ({
+  const { selectedBetsArray } = useBetStore((state) => ({
     selectedBetsArray: state.selectedBetsArray,
-    clearSelectedBets: state.clearSelectedBets,
   }));
 
   
@@ -43,7 +42,6 @@ export const BetSlip = () => {
               <div>
                 <GamesSelected />
                 <ConfirmClearBetSlip
-                  clearSelectedBets={clearSelectedBets}
                   confirmClearBet={confirmClearBet}
                   setConfirmClearBet={setConfirmClearBet}
                 />

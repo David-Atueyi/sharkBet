@@ -6,7 +6,7 @@ import { depositValidator } from "./depositValidator";
 import { IDepositInputs } from "../../base/interface/IDepositInputs";
 import { insertTransactionsDatas } from "../../base/utility/transactionUtilities/insertTransactionsDatas";
 import { useGetUserInfo } from "../../base/store/useGetUserInfo";
-import { useUpdateAccountBalance } from "../../base/utility/accountBalance/updateAccountBalance";
+import { updateUserAccountBalance } from "../../base/utility/accountBalance/updateUserAccountBalance";
 import { getAccountBalance } from "../../base/utility/accountBalance/getAccountBalance";
 import { useHandleAccountBalance } from "../../base/store/useHandleAccountBalance";
 
@@ -24,7 +24,7 @@ export const Deposit = () => {
     setBalance: state.setBalance,
   }));
 
-  const { mutate: updateAccountBalance } = useUpdateAccountBalance();
+  const { mutate: updateAccountBalance } = updateUserAccountBalance();
   const { data: accountBalance = [] } = getAccountBalance();
 
   const submitFunction = async (data: any) => {
@@ -50,7 +50,7 @@ export const Deposit = () => {
       userId: userInfo.userId,
     });
 
-    setBalance(newBalance); 
+    setBalance(newBalance);
 
     methods.reset();
   };
@@ -152,4 +152,3 @@ export const Deposit = () => {
     </div>
   );
 };
-

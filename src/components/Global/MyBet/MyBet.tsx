@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useActiveBetsStore } from "../../base/store/useActiveBetsStore";
 import { insertTransactionsDatas } from "../../base/utility/transactionUtilities/insertTransactionsDatas";
 import { useGetUserInfo } from "../../base/store/useGetUserInfo";
-import { useUpdateAccountBalance } from "../../base/utility/accountBalance/updateAccountBalance";
+import { updateUserAccountBalance } from "../../base/utility/accountBalance/updateUserAccountBalance";
 import { getAccountBalance } from "../../base/utility/accountBalance/getAccountBalance";
 import { useHandleAccountBalance } from "../../base/store/useHandleAccountBalance";
 
@@ -14,7 +14,7 @@ export const MyBet = () => {
     removeActiveBet: state.removeActiveBet,
   }));
 
-  const { mutate: updateAccountBalance } = useUpdateAccountBalance();
+  const { mutate: updateAccountBalance } = updateUserAccountBalance();
   const { data: accountBalance } = getAccountBalance();
 
   const { userInfo } = useGetUserInfo((state) => ({
@@ -51,7 +51,7 @@ export const MyBet = () => {
       userId: userInfo.userId,
     });
 
-    setBalance(newBalance); 
+    setBalance(newBalance);
   };
 
   return (

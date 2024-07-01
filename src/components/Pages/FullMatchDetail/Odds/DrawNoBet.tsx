@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { CaretDown } from "../../../Global/Icons/CaretDown";
-import { useBetStore } from "../../../base/store/useBetStore";
 import { useFullMatchDetailsStore } from "../../../base/store/useFullMatchDetailsStore";
 import { OddButton } from "./OddButton";
+import { useHandleGamesButtonsUtilities } from "../../../base/hooks/useHandleGamesButtonsUtilities";
 
 export const DrawNoBet = () => {
       const [isClicked, setIsClicked] = useState<boolean>(false);
@@ -11,48 +11,7 @@ export const DrawNoBet = () => {
         fullMatchDetailsFound: state.fullMatchDetailsFound,
       }));
 
-      const { setSelectedBet, selectedBetsArray } = useBetStore((state) => ({
-        setSelectedBet: state.setSelectedBet,
-        selectedBetsArray: state.selectedBetsArray,
-      }));
-
-      const isButtonClicked = (
-        homeClub: string,
-        awayClub: string,
-        oddName: string,
-        marketType: string
-      ) => {
-        return selectedBetsArray.some(
-          (bet) =>
-            bet.homeClub === homeClub &&
-            bet.awayClub === awayClub &&
-            bet.oddName === oddName &&
-            bet.marketType === marketType
-        );
-      };
-
-  const handleClick = (
-        id:string,
-        homeClub: string,
-        awayClub: string,
-        odd: number,
-        marketType: string,
-        oddName: string,
-        date: string,
-        time: string
-      ) => {
-        setSelectedBet(
-          id,
-          homeClub,
-          awayClub,
-          odd,
-          marketType,
-          oddName,
-          date,
-          time
-        );
-      };
-
+      const { isButtonClicked, handleClick } = useHandleGamesButtonsUtilities();
 
   return (
     <div className={`flex gap-2 flex-col border-b-2 border-zinc-5 pb-4`}>
@@ -75,7 +34,6 @@ export const DrawNoBet = () => {
         <OddButton
           onClick={() =>
             handleClick(
-              fullMatchDetailsFound.id,
               fullMatchDetailsFound.homeTeamName,
               fullMatchDetailsFound.awayTeamName,
               fullMatchDetailsFound.market[0].teamsOdds[0].homeOddDnb,
@@ -100,7 +58,6 @@ export const DrawNoBet = () => {
         <OddButton
           onClick={() =>
             handleClick(
-              fullMatchDetailsFound.id,
               fullMatchDetailsFound.homeTeamName,
               fullMatchDetailsFound.awayTeamName,
               fullMatchDetailsFound.market[0].teamsOdds[0].awayOddDnb,
