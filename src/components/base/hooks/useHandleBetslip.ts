@@ -11,6 +11,7 @@ import { updateUserAccountBalance } from "../utility/accountBalance/updateUserAc
 import { getAccountBalance } from "../utility/accountBalance/getAccountBalance";
 import { useHandleAccountBalance } from "../store/useHandleAccountBalance";
 import { deleteBetSlip } from "../utility/betSlip/deleteBetSlip";
+import { insertMyBets } from "../utility/myBets/insertMyBets";
 
 export const useHandleBetslip = () => {
   const [betTabs, setBetTabs] = useState<{ tabOne: boolean; tabTwo: boolean }>({
@@ -91,6 +92,20 @@ export const useHandleBetslip = () => {
       setError("Insufficient balance. Top up.");
     } else {
       updateAccountBalance(newBalance.toString());
+      setActiveBets(
+        selectedBetsArray,
+        formattedDate,
+        formattedTime,
+        betAmount,
+        Number(potentialReturn).toLocaleString()
+      );
+        insertMyBets({
+          totalStake: betAmount,
+          toReturn: potentialReturn,
+          userId: userInfo.userId,
+          selectedBetsArray
+        });
+      setBalance(newBalance.toString());
       setBetAmount("");
       clearSelectedBets();
       deleteSelectedBet(null);
@@ -100,14 +115,6 @@ export const useHandleBetslip = () => {
         transactionStatus: "successful",
         userId: userInfo.userId,
       });
-      setActiveBets(
-        selectedBetsArray,
-        formattedDate,
-        formattedTime,
-        betAmount,
-        Number(potentialReturn).toLocaleString()
-      );
-      setBalance(newBalance.toString());
     }
   };
 

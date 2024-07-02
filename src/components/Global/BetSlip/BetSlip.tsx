@@ -91,7 +91,7 @@ export const BetSlip = () => {
               >
                 <p>place bet</p>
                 <p className="font-bold">
-                  {!betAmount ? "0.00" : `${betAmount}.00`}
+                  {!betAmount ? "0.00" : `${betAmount}`}
                 </p>
               </button>
             </div>
