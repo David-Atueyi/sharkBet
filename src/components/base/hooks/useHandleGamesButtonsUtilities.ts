@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 import { useBetStore } from "../store/useBetStore";
 import { useGetUserInfo } from "../store/useGetUserInfo";
 import { deleteBetSlip } from "../utility/betSlip/deleteBetSlip";
@@ -42,37 +43,12 @@ export const useHandleGamesButtonsUtilities = () => {
     date: string,
     time: string
   ) => {
-    setSelectedBet(
-      matchId,
-      homeClub,
-      awayClub,
-      odd,
-      marketType,
-      oddName,
-      date,
-      time
-    );
-
-    const betAlreadyInSlip = selectedBetsArray.some(
-      (bet) =>
-        bet.homeClub === homeClub &&
-        bet.awayClub === awayClub &&
-        bet.oddName === oddName &&
-        bet.marketType === marketType
-    );
-
-    if (betAlreadyInSlip) {
-      deleteSelectedBet({
-        homeClub,
-        awayClub,
-        odd,
-        marketType,
-        oddName,
-        date,
-        time,
-      });
+    if (!userId) {
+      toast.error(
+        "You are not signed in. Create an account if you don't have one."
+      );
     } else {
-      insertBetSlip({
+      setSelectedBet(
         matchId,
         homeClub,
         awayClub,
@@ -80,9 +56,40 @@ export const useHandleGamesButtonsUtilities = () => {
         marketType,
         oddName,
         date,
-        time,
-        userId,
-      });
+        time
+      );
+
+      const betAlreadyInSlip = selectedBetsArray.some(
+        (bet) =>
+          bet.homeClub === homeClub &&
+          bet.awayClub === awayClub &&
+          bet.oddName === oddName &&
+          bet.marketType === marketType
+      );
+
+      if (betAlreadyInSlip) {
+        deleteSelectedBet({
+          homeClub,
+          awayClub,
+          odd,
+          marketType,
+          oddName,
+          date,
+          time,
+        });
+      } else {
+        insertBetSlip({
+          matchId,
+          homeClub,
+          awayClub,
+          odd,
+          marketType,
+          oddName,
+          date,
+          time,
+          userId,
+        });
+      }
     }
   };
 
