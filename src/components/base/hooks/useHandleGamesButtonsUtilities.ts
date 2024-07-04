@@ -3,10 +3,15 @@ import { useBetStore } from "../store/useBetStore";
 import { useGetUserInfo } from "../store/useGetUserInfo";
 import { deleteBetSlip } from "../utility/betSlip/deleteBetSlip";
 import { insertBetSlip } from "../utility/betSlip/insertBetSlip";
+import { useUserIsActive } from "../store/useUserIsActive";
 
 export const useHandleGamesButtonsUtilities = () => {
   const { userInfo } = useGetUserInfo((state) => ({
     userInfo: state.userInfo,
+  }));
+
+  const { userIsActive } = useUserIsActive((state) => ({
+    userIsActive: state.userIsActive,
   }));
 
   const userId = userInfo?.userId;
@@ -43,7 +48,7 @@ export const useHandleGamesButtonsUtilities = () => {
     date: string,
     time: string
   ) => {
-    if (!userId) {
+    if (!userIsActive) {
       toast.error(
         "You are not signed in. Create an account if you don't have one."
       );
