@@ -1,26 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import supabase from "../../../../config/superBaseClient";
 import { useGetUserInfo } from "../../store/useGetUserInfo";
-
-interface IDatas {
-    homeClub: string;
-    awayClub: string;
-    odd: number | undefined;
-    marketType: string | undefined;
-    oddName: string | undefined;
-    date: string;
-    time: string;
-    userId: string;
-  }
+import { SelectedBet } from "../../interface/IBetStore";
+import { toast } from "sonner";
 
 export const getBetSlip = () => {
   const { userInfo } = useGetUserInfo((state) => ({
     userInfo: state.userInfo,
   }));
 
-  const fetchedBetSlip = async ():Promise<IDatas[]> => {
+  const fetchedBetSlip = async (): Promise<SelectedBet[]> => {
     if (!userInfo.userId) {
-      console.warn("An error occured refresh the page ");
+      toast.error("An error has occured occured reload the page ");
       return [];
     }
 
@@ -30,10 +21,10 @@ export const getBetSlip = () => {
       .eq("userId", userInfo.userId);
 
     if (error) {
-      console.error(error);
+      toast.error("An error occurred while getting your bet slip data, check your internet connection and reload");
       return [];
     }
-    return betSlip as IDatas[];
+    return betSlip as SelectedBet[];
   };
 
   return useQuery({

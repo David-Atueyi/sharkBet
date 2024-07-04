@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import supabase from "../../../config/superBaseClient";
 import { Match } from "../interface/IMatch";
+import { toast } from "sonner";
 
 export const getMatchesFromDatabase = () => {
   const fetchedData = async (): Promise<Match[]> => {
@@ -18,7 +19,7 @@ export const getMatchesFromDatabase = () => {
       `);
 
     if (error) {
-      console.error("Error fetching match:", error.message, error.details);
+      toast.error("An error occured while loading your data, check your internet connection and reload");
       return [];
     }
     return matches as Match[];

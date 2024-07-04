@@ -1,35 +1,23 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { GeneralFooterLayout } from "../components/Global/Layout/GeneralFooterLayout";
 import { GeneralHeaderLayout } from "../components/Global/Layout/GeneralHeaderLayout";
 import { UserInfoLeftSideSection } from "./UserInfoLeftSideSection";
 import { Toaster } from "sonner";
-import { useEffect } from "react";
-import { useGetUserInfo } from "../components/base/store/useGetUserInfo";
-import { useHandleAccountBalance } from "../components/base/store/useHandleAccountBalance";
-import { getAccountBalance } from "../components/base/utility/accountBalance/getAccountBalance";
+import { useLayoutEffect } from "react";
 
 export const GeneralUserInfoLayout = () => {
-  const { data: accountBalance = [] } = getAccountBalance();
+  const { pathname } = useLocation();
 
-  const { setUserInfo } = useGetUserInfo((state) => ({
-    setUserInfo: state.setUserInfo,
-    userInfo: state.userInfo,
-  }));
+  useLayoutEffect(() => {
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
 
-  const { setBalance } = useHandleAccountBalance((state) => ({
-    balance: state.balance,
-    setBalance: state.setBalance,
-  }));
-
-  useEffect(() => {
-    setUserInfo();
-  }, [setUserInfo]);
-
-  useEffect(() => {
-    if (accountBalance && accountBalance[0] && accountBalance[0].balance) {
-      setBalance(accountBalance[0].balance);
+    if (pathname === "/me/my-bets") {
+      document.body.style.overflowY = "scroll";
     }
-  }, [accountBalance, setBalance]);
+  }, [pathname]);
 
   return (
     <div className="min-w-[320px] flex flex-col font-sharkBetFont max-w-[1200px] m-auto px-3">

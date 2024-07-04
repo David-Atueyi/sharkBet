@@ -3,8 +3,8 @@ import { useActiveBetsStore } from "../../base/store/useActiveBetsStore";
 import { insertTransactionsDatas } from "../../base/utility/transactionUtilities/insertTransactionsDatas";
 import { useGetUserInfo } from "../../base/store/useGetUserInfo";
 import { updateUserAccountBalance } from "../../base/utility/accountBalance/updateUserAccountBalance";
-import { getAccountBalance } from "../../base/utility/accountBalance/getAccountBalance";
 import { useHandleAccountBalance } from "../../base/store/useHandleAccountBalance";
+import { deleteMyBets } from "../../base/utility/myBets/deleteMyBets";
 
 export const MyBet = () => {
   const { pathname } = useLocation();
@@ -15,24 +15,23 @@ export const MyBet = () => {
   }));
 
   const { mutate: updateAccountBalance } = updateUserAccountBalance();
-  const { data: accountBalance } = getAccountBalance();
 
   const { userInfo } = useGetUserInfo((state) => ({
     userInfo: state.userInfo,
   }));
 
-  const { setBalance } = useHandleAccountBalance((state) => ({
+  const { balance, setBalance } = useHandleAccountBalance((state) => ({
     balance: state.balance,
     setBalance: state.setBalance,
   }));
 
+  const { mutate: deleteMyBet } = deleteMyBets();
+
   const handleCashOut = (amount: number, date: string, time: string) => {
+    const totalStake = amount.toString();
     const reducedAmount = amount * 0.7;
 
-    const currentBalance =
-      accountBalance && accountBalance[0]
-        ? parseFloat(accountBalance[0].balance)
-        : 0.0;
+    const currentBalance = balance ? parseFloat(balance) : Number("0.00");
 
     if (isNaN(currentBalance) || isNaN(reducedAmount)) {
       console.error("Invalid account balance or top-up amount");
@@ -42,15 +41,15 @@ export const MyBet = () => {
     const newBalance = (currentBalance + reducedAmount).toFixed(2);
 
     updateAccountBalance(newBalance);
+    setBalance(newBalance);
     removeActiveBet(date, time, amount.toString());
-
+    deleteMyBet({ date, time, totalStake });
     insertTransactionsDatas({
       transactionType: "Cash Out",
       amount: `+${reducedAmount}`,
       transactionStatus: "successful",
       userId: userInfo.userId,
     });
-
     setBalance(newBalance);
   };
 
@@ -63,16 +62,16 @@ export const MyBet = () => {
               <p>{activeBet.date}</p>
               <p>{activeBet.time}</p>
             </div>
-            {activeBet.selectedMatches.map((selectedMatch, matchIndex) => (
+            {activeBet.selectedMatches?.map((selectedMatch, matchIndex) => (
               <Link
-                to={`/FullMatch/homeTeam=${selectedMatch.homeClub}&awayTeam=${selectedMatch.awayClub}&?gameId=${selectedMatch.id}`}
+                to={`/FullMatch/homeTeam=${selectedMatch.homeClub}&awayTeam=${selectedMatch.awayClub}&?gameId=${selectedMatch.matchId}`}
                 className="flex justify-between bg-zinc-8 p-3 rounded-[13px] mx-2 my-[5px] items-center"
                 key={matchIndex}
               >
                 <div className="flex gap-2 flex-col">
                   <div className="flex gap-2 items-baseline capitalize">
                     <p
-                      className={`font-bold text-[14px] mobile:max-w-[50px] tablet:max-w-[70px]  truncate ${
+                      className={`font-bold text-[14px] mobile:max-w-[50px] tablet:max-w-[70px] truncate ${
                         pathname === "/me/my-bets"
                           ? "pc:max-w-[100%]"
                           : "pc:w-[55px]"

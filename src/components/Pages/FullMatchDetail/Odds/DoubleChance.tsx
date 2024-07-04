@@ -34,6 +34,7 @@ export const DoubleChance = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.homeTeamName,
               fullMatchDetailsFound.awayTeamName,
               fullMatchDetailsFound.market[0].teamsOdds[0].homeOddDoubleChance,
@@ -64,6 +65,7 @@ export const DoubleChance = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.homeTeamName,
               fullMatchDetailsFound.awayTeamName,
               fullMatchDetailsFound.market[0].generalMarkets[0]
@@ -97,6 +99,7 @@ export const DoubleChance = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.homeTeamName,
               fullMatchDetailsFound.awayTeamName,
               fullMatchDetailsFound.market[0].teamsOdds[0].awayOddDoubleChance,

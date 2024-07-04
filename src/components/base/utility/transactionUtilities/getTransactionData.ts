@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import supabase from "../../../../config/superBaseClient";
 import { ITransactionHistory } from "../../interface/ITransactionHistory";
 import { useGetUserInfo } from "../../store/useGetUserInfo";
+import { toast } from "sonner";
 
 export const getTransactionData = () => {
   const { userInfo } = useGetUserInfo((state) => ({
@@ -10,7 +11,7 @@ export const getTransactionData = () => {
 
   const fetchedTransactions = async (): Promise<ITransactionHistory[]> => {
     if (!userInfo.userId) {
-      console.warn("An error occured refresh the page ");
+      toast.error("An error occured reload the page");
       return [];
     }
 
@@ -20,7 +21,7 @@ export const getTransactionData = () => {
       .eq("userId", userInfo.userId);
 
     if (error) {
-      console.error(error);
+      toast.error("An error occurred getting your transaction history data, check your internet connection and reload");
       return [];
     }
     return transactions as ITransactionHistory[];

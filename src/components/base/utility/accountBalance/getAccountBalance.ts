@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import supabase from "../../../../config/superBaseClient";
 import { useGetUserInfo } from "../../store/useGetUserInfo";
+import { toast } from "sonner";
 
 interface IAccountBalance {
   balance: string;
@@ -13,7 +14,7 @@ export const getAccountBalance = () => {
 
   const fetchedData = async (): Promise<IAccountBalance[]> => {
     if (!userInfo || !userInfo.userId) {
-      console.log("User info is not available");
+      toast.error("An error occured while loading your data, check your internet connection and reload");
       return [];
     }
 
@@ -23,10 +24,7 @@ export const getAccountBalance = () => {
       .eq("userId", userInfo.userId);
 
     if (error) {
-      console.log(
-        "An error occurred while fetching the account balance data",
-        error
-      );
+      toast.error("An error occurred while loading your account balance, check your internet connection and reload");
       return [];
     }
 

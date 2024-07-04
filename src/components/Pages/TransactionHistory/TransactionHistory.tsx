@@ -2,7 +2,12 @@ import { Link } from "react-router-dom";
 import { getTransactionData } from "../../base/utility/transactionUtilities/getTransactionData";
 import { TransactionHistoryLoadingSkeletonTemplate } from "./TransactionHistoryLoadingSkeletonTemplate";
 
+
 export const TransactionHistory = () => {
+  const roundToTwoDecimalPlaces = (num:number) => {
+    return Math.round(num * 100) / 100;
+  };
+  
   const { data: transactionHistory = [], isLoading } = getTransactionData();
 
   return (
@@ -17,6 +22,7 @@ export const TransactionHistory = () => {
             ))
           : transactionHistory.map((transaction, index) => {
               const createdAt = new Date(transaction.created_at);
+              const transactionAmount = roundToTwoDecimalPlaces(Number(transaction.amount));
               return (
                 <div
                   className="flex justify-between border-b-2 border-b-zinc-5 px-4 py-2"
@@ -33,7 +39,7 @@ export const TransactionHistory = () => {
                   </div>
                   <div className="text-[12px] flex flex-col items-end">
                     <p className="font-bold text-[20px]">
-                      {transaction.amount}
+                      {transactionAmount}
                     </p>
                     <p>{transaction.status}</p>
                   </div>

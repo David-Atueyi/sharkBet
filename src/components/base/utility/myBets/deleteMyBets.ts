@@ -1,18 +1,19 @@
-import { useMutation } from "@tanstack/react-query";
 import supabase from "../../../../config/superBaseClient";
+import { useMutation } from "@tanstack/react-query";
 import { useGetUserInfo } from "../../store/useGetUserInfo";
-import { SelectedBet } from "../../interface/IBetStore";
+import { RemoveActiveBetsParams } from "../../interface/IActiveBets";
 import { toast } from "sonner";
 
-export const deleteBetSlip = () => {
+
+export const deleteMyBets = () => {
   const { userInfo } = useGetUserInfo((state) => ({
     userInfo: state.userInfo,
   }));
 
   const { mutate, error, data } = useMutation({
-    mutationFn: async (conditions: SelectedBet | null) => {
+    mutationFn: async (conditions: RemoveActiveBetsParams) => {
       let query = supabase
-        .from("betSlip")
+        .from("myBets")
         .delete()
         .eq("userId", userInfo.userId);
 
@@ -27,8 +28,10 @@ export const deleteBetSlip = () => {
       const { error } = await query;
 
       if (error) {
-        toast.error("An error occurred while deleting bet, check your internet connection and reload");
-      } 
+        toast.error("An error occurred while cashing out, check your internet connection and reload");
+      } else {
+        toast.success("cash out successfull");
+      }
     },
   });
 

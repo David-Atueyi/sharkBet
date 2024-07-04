@@ -49,6 +49,10 @@ export const UserInfoContent = () => {
     setUserIsActive(false);
   };
 
+  const formatBalance = (balance:string) => {
+    return Number(balance).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  };
+
   return (
     <div className="relative">
       <div className={`${isVisible ? "block" : "hidden"}`}>
@@ -97,7 +101,7 @@ export const UserInfoContent = () => {
                 </div>
                 <p className={`max-w-[70px] truncate`}>
                   {accountBalanceVisibility
-                    ? Number(balance).toLocaleString()
+                    ? formatBalance(balance)
                     : "******"}
                 </p>
               </div>
@@ -105,7 +109,7 @@ export const UserInfoContent = () => {
                 <p>NGN</p>
                 <p className="max-w-[90px] truncate">
                   {accountBalanceVisibility
-                    ? Number(balance).toLocaleString()
+                    ? formatBalance(balance)
                     : "******"}
                 </p>
                 <EyeOpenIcon

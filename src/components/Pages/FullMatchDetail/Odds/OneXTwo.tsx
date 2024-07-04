@@ -34,6 +34,7 @@ export const OneXTwo = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.homeTeamName,
               fullMatchDetailsFound.awayTeamName,
               fullMatchDetailsFound.market[0].teamsOdds[0].homeOdd1x2,
@@ -56,6 +57,7 @@ export const OneXTwo = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.homeTeamName,
               fullMatchDetailsFound.awayTeamName,
               fullMatchDetailsFound.market[0].generalMarkets[0].fullTimeResult[0].fullTimeDrawOdd,
@@ -80,6 +82,7 @@ export const OneXTwo = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.homeTeamName,
               fullMatchDetailsFound.awayTeamName,
               fullMatchDetailsFound.market[0].teamsOdds[0].awayOdd1x2,

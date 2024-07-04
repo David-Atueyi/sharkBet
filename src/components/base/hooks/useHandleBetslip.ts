@@ -79,7 +79,7 @@ export const useHandleBetslip = () => {
     const balance =
       accountBalance && accountBalance[0]
         ? Number(accountBalance[0].balance)
-        : 0.0;
+        : Number("0.00");
     const newBalance = balance - bet;
 
     if (!userIsActive) {
@@ -99,12 +99,14 @@ export const useHandleBetslip = () => {
         betAmount,
         Number(potentialReturn).toLocaleString()
       );
-        insertMyBets({
-          totalStake: betAmount,
-          toReturn: potentialReturn,
-          userId: userInfo.userId,
-          selectedBetsArray
-        });
+      insertMyBets({
+        date: formattedDate,
+        time: formattedTime,
+        totalStake: betAmount,
+        toReturn: potentialReturn,
+        userId: userInfo.userId,
+        selectedBetsArray,
+      });
       setBalance(newBalance.toString());
       setBetAmount("");
       clearSelectedBets();

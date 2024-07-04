@@ -1,17 +1,9 @@
+import { toast } from "sonner";
 import supabase from "../../../../config/superBaseClient";
-
-interface IDatas {
-  homeClub: string;
-  awayClub: string;
-  odd: number | undefined;
-  marketType: string | undefined;
-  oddName: string | undefined;
-  date: string;
-  time: string;
-  userId: string;
-}
+import { SelectedBet } from "../../interface/IBetStore";
 
 export const insertBetSlip = async ({
+  matchId,
   homeClub,
   awayClub,
   odd,
@@ -20,8 +12,9 @@ export const insertBetSlip = async ({
   date,
   time,
   userId,
-}: IDatas) => {
+}: SelectedBet) => {
   const datas = {
+    matchId: matchId,
     homeClub: homeClub,
     awayClub: awayClub,
     odd: odd,
@@ -31,13 +24,12 @@ export const insertBetSlip = async ({
     time: time,
     userId: userId,
   };
-  const { data: betSlipData, error } = await supabase
+  const { error } = await supabase
     .from("betSlip")
     .insert([datas])
     .select();
   if (error) {
-    console.log("an error occured while inserting bet slip", error);
+    toast.error("An error occured while adding a bet to your bet slip, check your internet connection and reload");
   }
-  console.log("successfully inserted bet slip" , betSlipData);
   
 };

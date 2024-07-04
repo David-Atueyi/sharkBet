@@ -4,10 +4,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { LockReset } from "../../../Global/Icons/LockReset";
 import { ChevronRight } from "../../../Global/Icons/ChevronRight";
 import { changePasswordValidator } from "./changePasswordValidator";
-import { useToggleUserDateOfBirth } from "../../../base/store/useToggleUserDateOfBirth";
 import { toast } from "sonner";
 import supabase from "../../../../config/superBaseClient";
 import { useMutation } from "@tanstack/react-query";
+import { usetoggleResetPassword } from "../../../base/store/useToggleResetPassword";
 
 interface FormData {
   new_password: string;
@@ -15,15 +15,14 @@ interface FormData {
 }
 
 export const ChangePassword = () => {
-
   const methods = useForm<FormData>({
     resolver: yupResolver(changePasswordValidator),
   });
 
-  const { toggleUserDateOfBirth, setToggleUserDateOfBirth } =
-    useToggleUserDateOfBirth((state) => ({
-      toggleUserDateOfBirth: state.toggleUserDateOfBirth,
-      setToggleUserDateOfBirth: state.setToggleUserDateOfBirth,
+  const { toggleResetPassword, setToggleResetPassword } =
+    usetoggleResetPassword((state) => ({
+      toggleResetPassword: state.toggleResetPassword,
+      setToggleResetPassword: state.setToggleResetPassword,
     }));
 
   const { mutate } = useMutation({
@@ -53,9 +52,9 @@ export const ChangePassword = () => {
   };
 
   const toggleForm = () => {
-    !toggleUserDateOfBirth
-      ? setToggleUserDateOfBirth(true)
-      : setToggleUserDateOfBirth(false);
+    !toggleResetPassword
+      ? setToggleResetPassword(true)
+      : setToggleResetPassword(false);
   };
 
   return (
@@ -74,7 +73,7 @@ export const ChangePassword = () => {
           <p>Edit</p>{" "}
           <ChevronRight
             extraStyle={`text-[12px] ${
-              toggleUserDateOfBirth
+              toggleResetPassword
                 ? "rotate-90 transition-all duration-200 ease-linear delay-50"
                 : "rotate-0 transition-all duration-200 ease-linear delay-50"
             }`}
@@ -85,14 +84,14 @@ export const ChangePassword = () => {
         <form
           onSubmit={methods.handleSubmit(handleSubmit)}
           className={`flex flex-col gap-2 rounded-b-lg border-zinc-6 ${
-            toggleUserDateOfBirth
+            toggleResetPassword
               ? " max-h-screen transition-all duration-700 ease-linear delay-150 border-b-2 border-x-2"
               : " max-h-0 transition-all duration-500 ease-linear delay-50  overflow-hidden"
           }`}
         >
           <div
             className={`px-3 ${
-              toggleUserDateOfBirth
+              toggleResetPassword
                 ? "visible transition-all duration-300 ease delay-500"
                 : "invisible transition-all duration-200 ease delay-300"
             }`}
@@ -115,7 +114,7 @@ export const ChangePassword = () => {
           </div>
           <div
             className={`px-3 ${
-              toggleUserDateOfBirth
+              toggleResetPassword
                 ? "visible transition-all duration-300 ease delay-500"
                 : "invisible transition-all duration-200 ease delay-300"
             }`}
@@ -141,7 +140,7 @@ export const ChangePassword = () => {
           </div>
           <button
             className={`bg-blue-7 p-2 mx-3 mb-2 capitalize font-bold mobile:w-[40%] tablet:w-[19%] rounded place-self-end ${
-              toggleUserDateOfBirth
+              toggleResetPassword
                 ? "visible transition-all duration-300 ease delay-500"
                 : "invisible transition-all duration-300 ease delay-500"
             }`}

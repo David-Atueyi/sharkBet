@@ -17,14 +17,12 @@ export const insertTransactionsDatas = async ({
     status: transactionStatus,
     userId: userId,
   };
-  const { data: insertedData, error: insertError } = await supabase
+  const { error: insertError } = await supabase
     .from("transactions")
     .insert([datas])
     .select();
 
   if (insertError) {
-    console.error("Error inserting transaction:", insertError);
-  } else {
-    console.log("Inserted transaction data:", insertedData);
+    return []
   }
 };

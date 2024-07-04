@@ -10,6 +10,7 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
         <OddsButton
           onClick={() =>
             handleClick(
+              gameOdds.id,
               gameOdds.homeTeamName,
               gameOdds.awayTeamName,
               gameOdds.market[0].teamsOdds[0].homeOdd1x2,
@@ -32,6 +33,7 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
         <OddsButton
           onClick={() =>
             handleClick(
+              gameOdds.id,
               gameOdds.homeTeamName,
               gameOdds.awayTeamName,
               gameOdds.market[0].generalMarkets[0].fullTimeResult[0]
@@ -62,6 +64,7 @@ export const OddsButtons = ({ gameOdds }: { gameOdds: any }) => {
         <OddsButton
           onClick={() =>
             handleClick(
+              gameOdds.id,
               gameOdds.homeTeamName,
               gameOdds.awayTeamName,
               gameOdds.market[0].teamsOdds[0].awayOdd1x2,

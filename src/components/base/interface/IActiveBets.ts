@@ -1,4 +1,9 @@
 import { SelectedBet } from "./IBetStore";
+export interface RemoveActiveBetsParams {
+  date: string;
+  time: string;
+  totalStake: string;
+}
 
 export interface IActiveBets {
   activeBets: {

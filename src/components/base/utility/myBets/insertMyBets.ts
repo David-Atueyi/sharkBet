@@ -1,29 +1,26 @@
 import supabase from "../../../../config/superBaseClient";
-
-interface IGame {
-  homeClub: string;
-  awayClub: string;
-  odd: number | undefined;
-  marketType: string | undefined;
-  oddName: string | undefined;
-  date: string;
-  time: string;
-}
+import { SelectedBet } from "../../interface/IBetStore";
 
 interface IDatas {
+  date: string;
+  time: string;
   totalStake: string;
   toReturn: string;
   userId: string;
-  selectedBetsArray: IGame[];
+  selectedBetsArray: SelectedBet[];
 }
 
 export const insertMyBets = async ({
+  date,
+  time,
   totalStake,
   toReturn,
   userId,
   selectedBetsArray,
 }: IDatas) => {
   const datas = {
+    date: date,
+    time: time,
     totalStake: totalStake,
     toReturn: toReturn,
     userId: userId,
@@ -46,6 +43,7 @@ export const insertMyBets = async ({
     date: selectedBet.date,
     time: selectedBet.time,
     myBetsId: myBetsId,
+    matchId: selectedBet.matchId,
   }));
 
   const { error: myBetsGamesError } = await supabase

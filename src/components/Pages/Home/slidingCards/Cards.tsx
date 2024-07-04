@@ -21,7 +21,9 @@ export const Cards = () => {
   );
 
   useEffect(() => {
-    setAllLeague(matchesFromDataBase);
+    if (matchesFromDataBase.length > 0) {
+      setAllLeague(matchesFromDataBase);
+    }
   }, [matchesFromDataBase]);
 
   const handleLeagueClicked = (index: number) => {

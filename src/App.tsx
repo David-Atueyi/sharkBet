@@ -11,8 +11,10 @@ import { DepositPage } from "./pages/DepositPage";
 import { MyBetsPage } from "./pages/MyBetsPage";
 import { TransactionHistoryPage } from "./pages/TransactionHistoryPage";
 import { MyAccountInfo } from "./pages/MyAccountInfo";
+import { useSetDatasOnPageLoadUtilities } from "./components/base/hooks/useSetDatasOnPageLoadUtilities";
 
 function App() {
+  useSetDatasOnPageLoadUtilities();
   return (
     <div className="bg-zinc-10 text-zinc-1 ">
       <Routes>

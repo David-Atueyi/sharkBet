@@ -34,6 +34,7 @@ export const DrawNoBet = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.homeTeamName,
               fullMatchDetailsFound.awayTeamName,
               fullMatchDetailsFound.market[0].teamsOdds[0].homeOddDnb,
@@ -58,6 +59,7 @@ export const DrawNoBet = () => {
         <OddButton
           onClick={() =>
             handleClick(
+              fullMatchDetailsFound.id,
               fullMatchDetailsFound.homeTeamName,
               fullMatchDetailsFound.awayTeamName,
               fullMatchDetailsFound.market[0].teamsOdds[0].awayOddDnb,

@@ -1,15 +1,16 @@
+import { toast } from "sonner";
 import supabase from "../../../../config/superBaseClient";
 
 export const insertAccountBalanceData = async (userId: string) => {
   const datas = { balance: "0.00", userId };
 
-  const { data: accountBalance, error } = await supabase
+  const { error } = await supabase
     .from("accountBalance")
     .insert([datas])
     .select();
   if (error) {
-    console.log("An error occurred while pushing", error);
-  } else {
-    console.log("Successfully inserted", accountBalance);
+    toast.error(
+      "An error occurred while toping up account balance, check your internet connection and reload"
+    );
   }
 };

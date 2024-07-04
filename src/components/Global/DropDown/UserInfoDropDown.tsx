@@ -38,6 +38,12 @@ export const UserInfoDropDown = () => {
     userIsActive: state.userIsActive,
   }));
 
+  const formatBalance = (balance: string) => {
+    return Number(balance)
+      .toFixed(2)
+      .replace(/\d(?=(\d{3})+\.)/g, "$&,");
+  };
+
   return (
     <>
       {userIsActive && (
@@ -64,7 +70,7 @@ export const UserInfoDropDown = () => {
             >
               <UserIcon />
               <p className="leading-4 truncate w-[48px] tablet:w-[100px]">
-                <span>&#x20A6;</span> <span>{balance}</span>
+                <span>&#x20A6;</span> <span>{formatBalance(balance)}</span>
               </p>
             </button>
             <UserInfoContent />
@@ -80,9 +86,7 @@ export const UserInfoDropDown = () => {
           <div className="flex gap-1">
             <p>NGN</p>
             <p>
-              {accountBalanceVisibility
-                ? Number(balance).toLocaleString()
-                : "******"}
+              {accountBalanceVisibility ? formatBalance(balance) : "******"}
             </p>
             <EyeOpenIcon
               extraStyle={`${accountBalanceVisibility ? "block" : "hidden"}`}

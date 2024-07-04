@@ -33,6 +33,7 @@ export const useHandleGamesButtonsUtilities = () => {
   };
 
   const handleClick = (
+    matchId: string,
     homeClub: string,
     awayClub: string,
     odd: number | undefined,
@@ -41,7 +42,16 @@ export const useHandleGamesButtonsUtilities = () => {
     date: string,
     time: string
   ) => {
-    setSelectedBet(homeClub, awayClub, odd, marketType, oddName, date, time);
+    setSelectedBet(
+      matchId,
+      homeClub,
+      awayClub,
+      odd,
+      marketType,
+      oddName,
+      date,
+      time
+    );
 
     const betAlreadyInSlip = selectedBetsArray.some(
       (bet) =>
@@ -63,6 +73,7 @@ export const useHandleGamesButtonsUtilities = () => {
       });
     } else {
       insertBetSlip({
+        matchId,
         homeClub,
         awayClub,
         odd,

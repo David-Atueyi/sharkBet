@@ -11,6 +11,7 @@ export const GameButtons = ({ data }: { data: Match }) => {
           buttonName={data.market[0].teamsOdds[0].homeOdd1x2}
           onClick={() =>
             handleClick(
+              data.id,
               data.homeTeamName,
               data.awayTeamName,
               data.market[0].teamsOdds[0].homeOdd1x2,
@@ -34,6 +35,7 @@ export const GameButtons = ({ data }: { data: Match }) => {
           }
           onClick={() =>
             handleClick(
+              data.id,
               data.homeTeamName,
               data.awayTeamName,
               data.market[0].generalMarkets[0].fullTimeResult[0]
@@ -60,6 +62,7 @@ export const GameButtons = ({ data }: { data: Match }) => {
           buttonName={data.market[0].teamsOdds[0].awayOdd1x2}
           onClick={() =>
             handleClick(
+              data.id,
               data.homeTeamName,
               data.awayTeamName,
               data.market[0].teamsOdds[0].awayOdd1x2,
@@ -88,6 +91,7 @@ export const GameButtons = ({ data }: { data: Match }) => {
           }
           onClick={() =>
             handleClick(
+              data.id,
               data.homeTeamName,
               data.awayTeamName,
               data.market[0].generalMarkets[0].overs[0].overZeroPointFiveOdd,
@@ -114,6 +118,7 @@ export const GameButtons = ({ data }: { data: Match }) => {
           }
           onClick={() =>
             handleClick(
+              data.id,
               data.homeTeamName,
               data.awayTeamName,
               data.market[0].generalMarkets[0].unders[0].underZeroPointFiveOdd,

@@ -15,6 +15,12 @@ export const UserInfoLeftSideSection = () => {
     setBalance: state.setBalance,
   }));
 
+  const formatBalance = (balance: string) => {
+    return Number(balance)
+      .toFixed(2)
+      .replace(/\d(?=(\d{3})+\.)/g, "$&,");
+  };
+
   return (
     <div className="w-[20%] hidden pc:block rounded-[20px] bg-zinc-1 text-zinc-9 capitalize pb-2 h-fit">
       <div className="bg-blue-6 h-[50px] rounded-t-[20px] flex items-center px-6 gap-1">
@@ -25,7 +31,7 @@ export const UserInfoLeftSideSection = () => {
         <p>my balance</p>
         <p className="font-extrabold text-[18px] flex gap-2">
           <span>NGN</span>
-          <span className="w-[100%] truncate">{Number(balance).toLocaleString()}</span>
+          <span className="w-[100%] truncate">{formatBalance(balance)}</span>
         </p>
       </div>
       <Link

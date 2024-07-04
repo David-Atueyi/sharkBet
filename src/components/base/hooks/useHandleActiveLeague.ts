@@ -5,7 +5,7 @@ import { Match } from "../interface/IMatch";
 import { getMatchesFromDatabase } from "../utility/getMatchesFromDatabase";
 
 export const useHandleActiveLeague = () => {
-  const { data: matchesFromDataBase = [] } = getMatchesFromDatabase(); 
+  const { data: matchesFromDataBase = [] } = getMatchesFromDatabase();
 
   const [allLeague, setAllLeague] = useState<Match[]>(matchesFromDataBase);
   const [leagueTitle, setLeagueTitle] = useState<{
@@ -20,7 +20,9 @@ export const useHandleActiveLeague = () => {
   }));
 
   useEffect(() => {
-    setAllLeague(matchesFromDataBase);
+    if (matchesFromDataBase.length > 0) {
+      setAllLeague(matchesFromDataBase);
+    }
   }, [matchesFromDataBase]);
 
   const handleButtonClick = (
