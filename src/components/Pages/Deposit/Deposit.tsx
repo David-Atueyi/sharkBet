@@ -1,6 +1,5 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { Input } from "../../Global/FormContent/Input";
-import { Button } from "../../Global/FormContent/Button";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { depositValidator } from "./depositValidator";
 import { IDepositInputs } from "../../base/interface/IDepositInputs";
@@ -9,8 +8,12 @@ import { useGetUserInfo } from "../../base/store/useGetUserInfo";
 import { updateUserAccountBalance } from "../../base/utility/accountBalance/updateUserAccountBalance";
 import { getAccountBalance } from "../../base/utility/accountBalance/getAccountBalance";
 import { useHandleAccountBalance } from "../../base/store/useHandleAccountBalance";
+import { toast } from "sonner";
+import { useState } from "react";
 
 export const Deposit = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const methods = useForm<IDepositInputs>({
     resolver: yupResolver(depositValidator),
   });
@@ -28,31 +31,38 @@ export const Deposit = () => {
   const { data: accountBalance = [] } = getAccountBalance();
 
   const submitFunction = async (data: any) => {
-    const currentBalance =
-      accountBalance && accountBalance[0]
-        ? parseFloat(accountBalance[0].balance)
-        : 0.0;
-    const topUpAmount = parseFloat(data.top_up);
+    setIsLoading(true);
+    setTimeout(() => {
+      const currentBalance =
+        accountBalance && accountBalance[0]
+          ? parseFloat(accountBalance[0].balance)
+          : 0.0;
+      const topUpAmount = parseFloat(data.top_up);
 
-    if (isNaN(currentBalance) || isNaN(topUpAmount)) {
-      console.error("Invalid account balance or top-up amount");
-      return;
-    }
+      if (isNaN(currentBalance) || isNaN(topUpAmount)) {
+        console.error("Invalid account balance or top-up amount");
+        return;
+      }
 
-    const newBalance = (currentBalance + topUpAmount).toFixed(2);
+      const newBalance = (currentBalance + topUpAmount).toFixed(2);
 
-    updateAccountBalance(newBalance);
+      updateAccountBalance(newBalance);
 
-    insertTransactionsDatas({
-      transactionType: "Deposits - Transfer",
-      amount: topUpAmount.toString(),
-      transactionStatus: "successful",
-      userId: userInfo.userId,
-    });
+      insertTransactionsDatas({
+        transactionType: "Deposits - Transfer",
+        amount: topUpAmount.toString(),
+        transactionStatus: "successful",
+        userId: userInfo.userId,
+      });
 
-    setBalance(newBalance);
+      setBalance(newBalance);
 
-    methods.reset();
+      methods.reset();
+
+      setIsLoading(false);
+
+      toast.success(`you have successfully made a deposit of ₦${topUpAmount}`);
+    }, 2000);
   };
 
   return (
@@ -142,10 +152,12 @@ export const Deposit = () => {
                 )}
               </div>
             </div>
-            <Button
-              className="mt-2 w-full place-self-end py-3 bg-blue-6 text-zinc-0 rounded-full capitalize font-bold tablet:w-[240px] pc:w-[300px]"
-              nameOfButton="top up now"
-            />
+            <button className="mt-2 w-full place-self-end py-4 bg-blue-6 text-zinc-0 rounded-full capitalize font-bold tablet:w-[240px] pc:w-[300px]">
+              <span
+                className={`loader ${!isLoading ? "hidden" : "inline-block"}`}
+              ></span>
+              <p className={`${isLoading ? "hidden" : "block"}`}>top up now</p>
+            </button>
           </div>
         </form>
       </FormProvider>

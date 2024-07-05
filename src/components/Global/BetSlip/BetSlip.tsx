@@ -18,13 +18,12 @@ export const BetSlip = () => {
     placeBet,
     betAmount,
     totalOdds,
+    isLoading,
   } = useHandleBetslip();
 
   const { selectedBetsArray } = useBetStore((state) => ({
     selectedBetsArray: state.selectedBetsArray,
   }));
-
-  
 
   return (
     <div className="bg-slate-50 rounded-[23px]">
@@ -89,10 +88,15 @@ export const BetSlip = () => {
                 onClick={placeBet}
                 className="bg-blue-7 w-full rounded-b-2xl text-sm p-2 capitalize text-slate-100 mobile:rounded-none pc:rounded-b-[20px]"
               >
-                <p>place bet</p>
-                <p className="font-bold">
-                  {!betAmount ? "0.00" : `${betAmount}`}
-                </p>
+                <span
+                  className={`loader ${!isLoading ? "hidden" : "inline-block"}`}
+                ></span>
+                <div className={`${isLoading ? "hidden" : "block"}`}>
+                  <p>place bet</p>
+                  <p className="font-bold">
+                    {!betAmount ? "0.00" : `${betAmount}`}
+                  </p>
+                </div>
               </button>
             </div>
           </div>

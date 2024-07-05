@@ -21,6 +21,7 @@ export const useHandleBetslip = () => {
   const [betAmount, setBetAmount] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [confirmClearBet, setConfirmClearBet] = useState<boolean>(false);
+  const [isLoading,setIsLoading] = useState<boolean>(false)
 
   const { selectedBetsArray, clearSelectedBets } = useBetStore((state) => ({
     selectedBetsArray: state.selectedBetsArray,
@@ -91,32 +92,37 @@ export const useHandleBetslip = () => {
     } else if (bet > balance) {
       setError("Insufficient balance. Top up.");
     } else {
-      updateAccountBalance(newBalance.toString());
-      setActiveBets(
-        selectedBetsArray,
-        formattedDate,
-        formattedTime,
-        betAmount,
-        Number(potentialReturn).toLocaleString()
-      );
-      insertMyBets({
-        date: formattedDate,
-        time: formattedTime,
-        totalStake: betAmount,
-        toReturn: potentialReturn,
-        userId: userInfo.userId,
-        selectedBetsArray,
-      });
-      setBalance(newBalance.toString());
-      setBetAmount("");
-      clearSelectedBets();
-      deleteSelectedBet(null);
-      insertTransactionsDatas({
-        transactionType: "Bet Placed",
-        amount: `-${betAmount}`,
-        transactionStatus: "successful",
-        userId: userInfo.userId,
-      });
+      setIsLoading(true)
+      setTimeout(() => {
+        updateAccountBalance(newBalance.toString());
+        setActiveBets(
+          selectedBetsArray,
+          formattedDate,
+          formattedTime,
+          betAmount,
+          Number(potentialReturn).toLocaleString()
+        );
+        insertMyBets({
+          date: formattedDate,
+          time: formattedTime,
+          totalStake: betAmount,
+          toReturn: potentialReturn,
+          userId: userInfo.userId,
+          selectedBetsArray,
+        });
+        setBalance(newBalance.toString());
+        setBetAmount("");
+        clearSelectedBets();
+        deleteSelectedBet(null);
+        insertTransactionsDatas({
+          transactionType: "Bet Placed",
+          amount: `-${betAmount}`,
+          transactionStatus: "successful",
+          userId: userInfo.userId,
+        });
+        toast.success("Bet Placed Successfully")
+        setIsLoading(false)
+      }, 2000);
     }
   };
 
@@ -131,5 +137,6 @@ export const useHandleBetslip = () => {
     placeBet,
     betAmount,
     totalOdds,
+    isLoading
   };
 };
