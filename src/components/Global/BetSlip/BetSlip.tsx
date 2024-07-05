@@ -85,6 +85,7 @@ export const BetSlip = () => {
             </div>
             <div>
               <button
+                disabled={isLoading}
                 onClick={placeBet}
                 className="bg-blue-7 w-full rounded-b-2xl text-sm p-2 capitalize text-slate-100 mobile:rounded-none pc:rounded-b-[20px]"
               >

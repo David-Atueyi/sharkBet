@@ -157,7 +157,7 @@ export const UserInfoContent = () => {
           <div className="px-[13px] pb-7 pc:pb-0 pc:px-0">
             <button
               onClick={handleLogOut}
-              className="capitalize font-bold h-[40px] pc:h-[45px] w-full border-2 pc:border-0 pc:border-t-4  border-blue-7 pc:border-zinc-3 text-blue-6 pc:text-zinc-9 rounded-full pc:rounded-none"
+              className="capitalize font-bold h-[40px] pc:h-[45px] w-full border-2 pc:border-0 pc:border-t-4  border-blue-7 pc:border-zinc-3 text-blue-6 pc:text-rose-6 rounded-full pc:rounded-none"
             >
               log out
             </button>

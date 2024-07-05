@@ -133,9 +133,10 @@ export const MyBet = () => {
                     activeBet.time
                   )
                 }
-                className="bg-blue-7 capitalize text-center font-bold p-2 rounded-full w-full mt-1 text-zinc-3"
+                className="bg-blue-7 capitalize py-[4px] text-center font-bold rounded-full w-full mt-1 text-zinc-3 text-[13px]"
               >
-                Cash Out
+                <p>Cash Out</p>
+                <p>{`NGN ${Number(activeBet.amount) * 0.7}`}</p>
               </button>
             </div>
           </div>
@@ -149,7 +150,7 @@ export const MyBet = () => {
       >
         <p className="capitalize">
           You do not have any active bets{" "}
-          <Link to={"/"} className="text-blue-6">
+          <Link to={"/"} className="text-blue-6 pc:hidden">
             Place Bet Now
           </Link>
         </p>

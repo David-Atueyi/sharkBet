@@ -8,6 +8,7 @@ import { logInFormValidator } from "./logInFormValidator";
 import { useMutation } from "@tanstack/react-query";
 import supabase from "../../../../config/superBaseClient";
 import { toast } from "sonner";
+import { useSetDatasOnPageLoadUtilities } from "../../../base/hooks/useSetDatasOnPageLoadUtilities";
 
 type ILogIn = Omit<IAuthInputs, "user_name" | "date_of_birth">;
 
@@ -37,6 +38,7 @@ export const LogInForm = () => {
     onSuccess: () => {
       methods.reset();
       redirect("/");
+      useSetDatasOnPageLoadUtilities();
     },
   });
 

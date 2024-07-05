@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getAuthData } from "../utility/getAuthData";
+import { getAuthData } from "../utility/Auth/getAuthData";
 
 interface IUserInfo {
   userId: string;

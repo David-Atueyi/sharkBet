@@ -17,8 +17,8 @@ export const OddsButton = ({
 }: IOddsButton) => {
   return (
     <button
-      className={`cursor-pointer flex items-center justify-between pc:hover:bg-zinc-10 ${extraStyle} ${
-        isClicked ? "bg-blue-700" : "bg-zinc-7"
+      className={`cursor-pointer flex items-center justify-between ${extraStyle} ${
+        isClicked ? "bg-blue-700" : "bg-zinc-7 pc:hover:bg-zinc-10"
       }`}
       onClick={onClick}
     >

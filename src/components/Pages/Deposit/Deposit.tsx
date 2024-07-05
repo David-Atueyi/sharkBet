@@ -152,9 +152,14 @@ export const Deposit = () => {
                 )}
               </div>
             </div>
-            <button className="mt-2 w-full place-self-end py-4 bg-blue-6 text-zinc-0 rounded-full capitalize font-bold tablet:w-[240px] pc:w-[300px]">
+            <button
+              disabled={isLoading}
+              className={`mt-2 w-full place-self-end py-4 bg-blue-6 text-zinc-0 rounded-full capitalize font-bold tablet:w-[240px] pc:w-[300px] ${
+                isLoading ? "bg-blue-4" : "bg-blue-6"
+              }`}
+            >
               <span
-                className={`loader ${!isLoading ? "hidden" : "inline-block"}`}
+                className={`loader ${isLoading ? "inline-block" : "hidden"}`}
               ></span>
               <p className={`${isLoading ? "hidden" : "block"}`}>top up now</p>
             </button>

@@ -81,9 +81,9 @@ export const GameButtons = ({ data }: { data: Match }) => {
         />
       </div>
       <div className="flex gap-[3px] mobile:hidden pc:flex">
-        <button className="mobile:w-[52px] pc:w-[60px] flex justify-center items-center h-[40px] rounded-[8px] bg-zinc-7 hover:bg-zinc-10">
+        <div className="mobile:w-[52px] pc:w-[60px] flex justify-center items-center h-[40px] rounded-[8px] bg-zinc-10">
           0.5
-        </button>
+        </div>
         {/*  */}
         <GameButton
           buttonName={

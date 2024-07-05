@@ -2,13 +2,16 @@ import { Link } from "react-router-dom";
 import { getTransactionData } from "../../base/utility/transactionUtilities/getTransactionData";
 import { TransactionHistoryLoadingSkeletonTemplate } from "./TransactionHistoryLoadingSkeletonTemplate";
 
-
 export const TransactionHistory = () => {
-  const roundToTwoDecimalPlaces = (num:number) => {
+  const roundToTwoDecimalPlaces = (num: number) => {
     return Math.round(num * 100) / 100;
   };
-  
+
   const { data: transactionHistory = [], isLoading } = getTransactionData();
+
+  const sortedTransactionHistory = transactionHistory.sort((a, b) => {
+    return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+  });
 
   return (
     <div className="text-zinc-3 bg-zinc-9 mobile:min-h-[50dvh] mobile:pb-3 tablet:min-h-[57.6dvh] rounded-[20px]">
@@ -20,7 +23,7 @@ export const TransactionHistory = () => {
           ? Array.from({ length: 4 }).map((_, index) => (
               <TransactionHistoryLoadingSkeletonTemplate key={index} />
             ))
-          : transactionHistory.map((transaction, index) => {
+          : sortedTransactionHistory.map((transaction, index) => {
               const createdAt = new Date(transaction.created_at);
               const transactionAmount = roundToTwoDecimalPlaces(Number(transaction.amount));
               return (
@@ -46,7 +49,7 @@ export const TransactionHistory = () => {
                 </div>
               );
             })}
-        {transactionHistory.length === 0 && !isLoading && (
+        {sortedTransactionHistory.length === 0 && !isLoading && (
           <p className="text-[14px] p-2 text-center mobile:translate-y-[18.5dvh] tablet:translate-y-[19.5dvh]">
             You have not made any deposits.
             <Link to="/me/deposit" className="text-blue-7 ml-1">

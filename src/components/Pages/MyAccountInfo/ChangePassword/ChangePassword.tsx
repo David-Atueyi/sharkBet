@@ -4,10 +4,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { LockReset } from "../../../Global/Icons/LockReset";
 import { ChevronRight } from "../../../Global/Icons/ChevronRight";
 import { changePasswordValidator } from "./changePasswordValidator";
-import { toast } from "sonner";
-import supabase from "../../../../config/superBaseClient";
-import { useMutation } from "@tanstack/react-query";
-import { usetoggleResetPassword } from "../../../base/store/useToggleResetPassword";
+import { usetoggleResetPasswordDropDown } from "../../../base/store/useToggleResetPasswordDropDown";
+import { useState } from "react";
+import { updateUserPassword } from "../../../base/utility/Auth/updateUserPassword";
 
 interface FormData {
   new_password: string;
@@ -15,46 +14,33 @@ interface FormData {
 }
 
 export const ChangePassword = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const methods = useForm<FormData>({
     resolver: yupResolver(changePasswordValidator),
   });
 
-  const { toggleResetPassword, setToggleResetPassword } =
-    usetoggleResetPassword((state) => ({
-      toggleResetPassword: state.toggleResetPassword,
-      setToggleResetPassword: state.setToggleResetPassword,
+  const { toggleResetPasswordDropDown, setToggleResetPasswordDropDown } =
+    usetoggleResetPasswordDropDown((state) => ({
+      toggleResetPasswordDropDown: state.toggleResetPasswordDropDown,
+      setToggleResetPasswordDropDown: state.setToggleResetPasswordDropDown,
     }));
 
-  const { mutate } = useMutation({
-    mutationFn: async (data: FormData) => {
-      const response = await supabase.auth.updateUser({
-        password: data.confirm_new_password,
-      });
-
-      if (response.error) {
-        throw new Error(response.error.message);
-      }
-      return response;
-    },
-
-    onError: (error: any) => {
-      toast.error(error.message);
-    },
-
-    onSuccess: () => {
-      toast.success("password changed successfully");
-      methods.reset();
-    },
-  });
+  const { mutate: changePassword } = updateUserPassword();
 
   const handleSubmit = async (data: FormData) => {
-    mutate(data);
+    setIsLoading(true);
+    setTimeout(() => {
+      changePassword(data);
+      methods.reset();
+      setIsLoading(false);
+    }, 2000);
   };
 
   const toggleForm = () => {
-    !toggleResetPassword
-      ? setToggleResetPassword(true)
-      : setToggleResetPassword(false);
+    !toggleResetPasswordDropDown
+      ? setToggleResetPasswordDropDown(true)
+      : setToggleResetPasswordDropDown(false);
   };
 
   return (
@@ -73,7 +59,7 @@ export const ChangePassword = () => {
           <p>Edit</p>{" "}
           <ChevronRight
             extraStyle={`text-[12px] ${
-              toggleResetPassword
+              toggleResetPasswordDropDown
                 ? "rotate-90 transition-all duration-200 ease-linear delay-50"
                 : "rotate-0 transition-all duration-200 ease-linear delay-50"
             }`}
@@ -84,14 +70,14 @@ export const ChangePassword = () => {
         <form
           onSubmit={methods.handleSubmit(handleSubmit)}
           className={`flex flex-col gap-2 rounded-b-lg border-zinc-6 ${
-            toggleResetPassword
+            toggleResetPasswordDropDown
               ? " max-h-screen transition-all duration-700 ease-linear delay-150 border-b-2 border-x-2"
               : " max-h-0 transition-all duration-500 ease-linear delay-50  overflow-hidden"
           }`}
         >
           <div
             className={`px-3 ${
-              toggleResetPassword
+              toggleResetPasswordDropDown
                 ? "visible transition-all duration-300 ease delay-500"
                 : "invisible transition-all duration-200 ease delay-300"
             }`}
@@ -101,7 +87,7 @@ export const ChangePassword = () => {
             </label>
             <Input
               name="new_password"
-              type="text"
+              type="password"
               placeholder="new password"
               id="new_password"
               extraStyle="w-[100%]"
@@ -114,7 +100,7 @@ export const ChangePassword = () => {
           </div>
           <div
             className={`px-3 ${
-              toggleResetPassword
+              toggleResetPasswordDropDown
                 ? "visible transition-all duration-300 ease delay-500"
                 : "invisible transition-all duration-200 ease delay-300"
             }`}
@@ -127,7 +113,7 @@ export const ChangePassword = () => {
             </label>
             <Input
               name="confirm_new_password"
-              type="text"
+              type="password"
               placeholder="confirm new password"
               id="confirm_new_password"
               extraStyle="w-[100%]"
@@ -139,13 +125,17 @@ export const ChangePassword = () => {
             )}
           </div>
           <button
+            disabled={isLoading}
             className={`bg-blue-7 p-2 mx-3 mb-2 capitalize font-bold mobile:w-[40%] tablet:w-[19%] rounded place-self-end ${
-              toggleResetPassword
+              toggleResetPasswordDropDown
                 ? "visible transition-all duration-300 ease delay-500"
                 : "invisible transition-all duration-300 ease delay-500"
             }`}
           >
-            submit
+            <span
+              className={`loader ${isLoading ? "inline-block" : "hidden"}`}
+            ></span>
+            <p className={`${isLoading ? "hidden" : "block"}`}>submit</p>
           </button>
         </form>
       </FormProvider>

@@ -3,8 +3,8 @@ import { MenuDropDown } from "../DropDown/MenuDropDown";
 import { LogInFormPcView } from "../../Pages/Auth/LogIn/LogInFormPcView";
 import { UserInfoDropDown } from "../DropDown/UserInfoDropDown";
 import { useEffect } from "react";
-import { getAuthData } from "../../base/utility/getAuthData";
 import { useUserIsActive } from "../../base/store/useUserIsActive";
+import { getAuthData } from "../../base/utility/Auth/getAuthData";
 
 export const GeneralHeaderLayout = () => {
   const { userIsActive, setUserIsActive } = useUserIsActive((state) => ({

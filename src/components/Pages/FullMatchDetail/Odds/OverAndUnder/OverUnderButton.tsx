@@ -12,8 +12,8 @@ export const OverUnderButton = ({
   return (
     <button
       onClick={onClick}
-      className={`capitalize pc:hover:bg-zinc-10 w-[200px] px-[10px] mobile:min-h-[35px] pc:min-h-[40px] rounded-[8px] ${extraStyle} ${
-        isClicked ? "bg-blue-700 text-blue-3" : "bg-zinc-7 text-blue-6"
+      className={`capitalize w-[200px] px-[10px] mobile:min-h-[35px] pc:min-h-[40px] rounded-[8px] ${extraStyle} ${
+        isClicked ? "bg-blue-700 text-blue-3" : "bg-zinc-7 text-blue-6 pc:hover:bg-zinc-10"
       }`}
     >
       {content}
