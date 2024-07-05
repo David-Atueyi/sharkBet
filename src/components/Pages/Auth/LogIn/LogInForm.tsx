@@ -64,7 +64,7 @@ export const LogInForm = () => {
             extraStyle="mobile:w-[30vh] tablet:w-[300px]"
           />
           {methods.formState.errors.email && (
-            <p className="text-right mt-1 mobile:text-[11px] tablet:text-sm text-rose-5">
+            <p className="text-right mt-1 mobile:text-[11px] tablet:[13px] text-rose-5">
               {methods.formState.errors?.email.message}
             </p>
           )}
@@ -82,7 +82,7 @@ export const LogInForm = () => {
             extraStyle="mobile:w-[30vh] tablet:w-[300px]"
           />
           {methods.formState.errors.password && (
-            <p className="text-right mt-1 mobile:text-[11px] tablet:text-sm text-rose-5">
+            <p className="text-right mt-1 mobile:text-[11px] tablet:[13px] text-rose-5">
               {methods.formState.errors?.password.message}
             </p>
           )}
