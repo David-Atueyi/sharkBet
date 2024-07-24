@@ -31,8 +31,8 @@ export const SignUpForm = () => {
       return response;
     },
 
-    onError: (error: any) => {
-      toast.error(error.message);
+    onError: () => {
+      toast.error("An error occured while signing up, check your internet connection and reload");
     },
 
     onSuccess: async (response) => {

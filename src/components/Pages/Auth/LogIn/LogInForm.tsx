@@ -63,7 +63,7 @@ export const LogInForm = () => {
             type="text"
             placeholder="email"
             id="email"
-            extraStyle="mobile:w-[30vh] tablet:w-[300px]"
+            extraStyle="tablet:w-[300px]"
           />
           {methods.formState.errors.email && (
             <p className="text-right mt-1 mobile:text-[11px] tablet:[13px] text-rose-5">
@@ -81,7 +81,7 @@ export const LogInForm = () => {
             type="password"
             placeholder="password"
             id="password"
-            extraStyle="mobile:w-[30vh] tablet:w-[300px]"
+            extraStyle=" tablet:w-[300px]"
           />
           {methods.formState.errors.password && (
             <p className="text-right mt-1 mobile:text-[11px] tablet:[13px] text-rose-5">
